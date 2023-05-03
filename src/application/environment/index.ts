@@ -9,7 +9,9 @@ const environment = {
     process.env.DOMAIN ||
     `http://localhost:${process.env.PORT || process.env.API_PORT || 5000}`,
   DATABASE_URL: process.env.DATABASE_URL,
-  JWT_SECRET: process.env.JWT_SECRET
+  JWT_SECRET_ADMIN: process.env.JWT_SECRET_ADMIN,
+  JWT_SECRET_CHEF: process.env.JWT_SECRET_CHEF,
+  JWT_SECRET_CUSTOMER: process.env.JWT_SECRET_CUSTOMER
 };
 
 if (Object.values(environment).includes(undefined)) {
