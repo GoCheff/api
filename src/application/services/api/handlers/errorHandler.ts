@@ -8,8 +8,10 @@ function errorHandler(
   res: Response,
   next: NextFunction
 ) {
-  if (err instanceof AppError) {
-    return res.status(err.statusCode).json(responseHandler(err));
+  if (err.name === "AppError") {
+    const _err = err as AppError;
+
+    return res.status(_err.statusCode).json(responseHandler(_err));
   }
 
   console.log("-----------------------------------------------------");

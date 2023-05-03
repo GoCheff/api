@@ -7,7 +7,9 @@ const environment = {
   API_PORT: +process.env.PORT || +process.env.API_PORT || 5000,
   DOMAIN:
     process.env.DOMAIN ||
-    `http://localhost:${process.env.PORT || process.env.API_PORT || 5000}`
+    `http://localhost:${process.env.PORT || process.env.API_PORT || 5000}`,
+  DATABASE_URL: process.env.DATABASE_URL,
+  JWT_SECRET: process.env.JWT_SECRET
 };
 
 if (Object.values(environment).includes(undefined)) {
