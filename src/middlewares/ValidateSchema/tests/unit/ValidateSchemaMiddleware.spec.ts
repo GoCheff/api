@@ -3,8 +3,6 @@ import { serverMock } from "../../../../application/services/api/Server/tests/mo
 import { schemaFactory } from "../../../../schemas/tests/factories/Schema";
 import { ServerMockDTO } from "../../../../application/services/api/Server/tests/mocks/Server/ServerMockDTO";
 
-const joi = require("joi");
-
 afterEach(() => {
   jest.clearAllMocks();
 });

@@ -15,7 +15,7 @@ namespace TokenProviderDTO {
 
   export type VerifyDTO = string;
 
-  export type VerifyTokenResponseDTO = Promise<ITokenPayload>;
+  export type VerifyTokenResponseDTO = Promise<ITokenPayload | { id: null }>;
 }
 
 export { TokenProviderDTO };
