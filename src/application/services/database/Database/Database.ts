@@ -9,7 +9,7 @@ class Database implements DatabaseDTO.IDatabase {
     this.db = new PrismaClient();
   }
 
-  async disconnect() {
+  async disconnect(): DatabaseDTO.DisconnectResponseDTO {
     await this.db.$disconnect();
   }
 }

@@ -6,7 +6,10 @@ import { AppError } from "../../errors/AppError";
 class ValidateSchemaMiddleware
   implements ValidateSchemaMiddlewareDTO.IValidateSchemaMiddleware
 {
-  public handle({ schema, type }: ValidateSchemaMiddlewareDTO.HandleDTO) {
+  public handle({
+    schema,
+    type
+  }: ValidateSchemaMiddlewareDTO.HandleDTO): ValidateSchemaMiddlewareDTO.HandleResponseDTO {
     return (req: Request, res: Response, next: NextFunction) => {
       const { error } = schema.validate(req[type], {
         abortEarly: false

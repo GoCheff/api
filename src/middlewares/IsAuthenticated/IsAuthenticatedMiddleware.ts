@@ -17,7 +17,7 @@ class IsAuthenticatedMiddleware
     req: ExpressCustomTypes.AuthenticatedRequest,
     res: Response,
     next: NextFunction
-  ): Promise<void> {
+  ): IsAuthenticatedMiddlewareDTO.HandleResponseDTO {
     const { authorization } = req.headers;
 
     if (!authorization) {
