@@ -9,5 +9,6 @@
     "outDir": "./dist",
     "lib": ["es2017", "dom"]
   },
-  "include": ["src/**/*.ts"]
+  "include": ["src/**/*.ts"],
+  "exclude": ["src/application/executables/**/*", "src/**/*.spec.ts"]
 }
