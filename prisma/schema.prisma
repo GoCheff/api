@@ -33,3 +33,15 @@ model Customer {
   @@unique([email, deletedAt])
   @@map("customers")
 }
+
+model Cheff {
+  id        Int       @id @default(autoincrement())
+  email     String
+  password  String
+  createdAt DateTime  @default(now()) @map("created_at")
+  updatedAt DateTime  @updatedAt @map("updated_at")
+  deletedAt DateTime? @map("deleted_at")
+
+  @@unique([email, deletedAt])
+  @@map("cheffs")
+}

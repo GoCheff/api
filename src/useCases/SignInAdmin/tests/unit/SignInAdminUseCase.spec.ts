@@ -53,7 +53,7 @@ describe("SignInAdminUseCase", () => {
     await expect(useCase)
       .rejects.toBeInstanceOf(NotFoundError)
       .catch((error) => {
-        expect(error.message).toBe("User not found");
+        expect(error.message).toBe("Admin not found");
       });
 
     expect(adminRepositoryFindByEmail).toHaveBeenCalledTimes(1);
@@ -81,7 +81,7 @@ describe("SignInAdminUseCase", () => {
     await expect(useCase)
       .rejects.toBeInstanceOf(NotFoundError)
       .catch((error) => {
-        expect(error.message).toBe("User not found");
+        expect(error.message).toBe("Admin not found");
       });
 
     expect(adminRepositoryFindByEmail).toHaveBeenCalledTimes(1);

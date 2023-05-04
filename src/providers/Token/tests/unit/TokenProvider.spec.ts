@@ -43,7 +43,7 @@ describe("TokenProvider", () => {
   describe("chef", () => {
     describe("generate", () => {
       it("should generate a token", async () => {
-        const token = await tokenProvider.chef.generate({
+        const token = await tokenProvider.cheff.generate({
           id: 1
         });
 
@@ -54,22 +54,24 @@ describe("TokenProvider", () => {
     describe("verify", () => {
       it("should verify a token", async () => {
         const id = 1;
-        const token = await tokenProviderFactory.chef.generate({
+        const token = await tokenProviderFactory.cheff.generate({
           id
         });
 
-        const decodedToken = await tokenProvider.chef.verify(token);
+        const decodedToken = await tokenProvider.cheff.verify(token);
 
         expect(decodedToken.id).toBe(id);
       });
 
       it("should return id null if token is invalid", async () => {
         const id = 1;
-        const token = await tokenProviderFactory.chef.generate({
+        const token = await tokenProviderFactory.cheff.generate({
           id
         });
 
-        const decodedToken = await tokenProvider.chef.verify(`${token}invalid`);
+        const decodedToken = await tokenProvider.cheff.verify(
+          `${token}invalid`
+        );
 
         expect(decodedToken.id).toBe(null);
       });

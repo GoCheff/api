@@ -16,7 +16,7 @@ class AdminController implements AdminControllerDTO.IAdminController {
   ): Promise<ExpressCustomTypes.Response> {
     const source = req.body;
 
-    const message = "Customer signed in successfully";
+    const message = "Admin signed in successfully";
     const data = await this.signInAdminUseCase.execute({
       email: source.email,
       password: source.password

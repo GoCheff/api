@@ -20,7 +20,7 @@ class SignInCustomerUseCase
     const customer = await this.customersRepository.findByEmail({ email });
 
     if (!customer) {
-      throw new NotFoundError("User not found");
+      throw new NotFoundError("Customer not found");
     }
 
     const passwordMatch = await this.cryptProvider.compare({
@@ -29,7 +29,7 @@ class SignInCustomerUseCase
     });
 
     if (!passwordMatch) {
-      throw new NotFoundError("User not found");
+      throw new NotFoundError("Customer not found");
     }
 
     const token = await this.tokenProvider.generate({

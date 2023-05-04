@@ -1,1 +1,5 @@
-export { adminRepository, customersRepository } from "./Users";
+export {
+  adminRepository,
+  cheffsRepository,
+  customersRepository
+} from "./Users";

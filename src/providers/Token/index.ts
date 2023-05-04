@@ -9,7 +9,7 @@ const tokenCustomerProvider = new TokenProvider(JWT_SECRET_CUSTOMER);
 
 const tokenProvider = {
   admin: tokenAdminProvider,
-  chef: tokenChefProvider,
+  cheff: tokenChefProvider,
   customer: tokenCustomerProvider
 };
 

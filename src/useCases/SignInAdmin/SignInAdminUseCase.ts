@@ -18,7 +18,7 @@ class SignInAdminUseCase implements SignInAdminUseCaseDTO.ISignInAdminUseCase {
     const admin = await this.adminRepository.findByEmail({ email });
 
     if (!admin) {
-      throw new NotFoundError("User not found");
+      throw new NotFoundError("Admin not found");
     }
 
     const passwordMatch = await this.cryptProvider.compare({
@@ -27,7 +27,7 @@ class SignInAdminUseCase implements SignInAdminUseCaseDTO.ISignInAdminUseCase {
     });
 
     if (!passwordMatch) {
-      throw new NotFoundError("User not found");
+      throw new NotFoundError("Admin not found");
     }
 
     const token = await this.tokenProvider.generate({
