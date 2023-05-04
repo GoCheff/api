@@ -1,10 +1,10 @@
 import { createCustomerUseCase } from "../..";
 import { usersRepository } from "../../../../repositories";
 import { createCustomerUseCaseFactory } from "../factories/CreateCustomer";
-import { cryptProvider } from "../../../../providers/Crypt";
+import { cryptProvider } from "../../../../providers";
 import { UnauthorizedError } from "../../../../errors/UnauthorizedError";
 
-afterEach(() => {
+beforeEach(() => {
   jest.clearAllMocks();
 });
 
@@ -58,9 +58,11 @@ describe("CreateCustomerUseCase", () => {
         async () => ({ ...customer, password: hashedPassword } as any)
       );
 
-    await expect(
-      createCustomerUseCase.execute(customer)
-    ).rejects.toBeInstanceOf(UnauthorizedError);
+    await expect(createCustomerUseCase.execute(customer))
+      .rejects.toBeInstanceOf(UnauthorizedError)
+      .catch((error) => {
+        expect(error.message).toBe("Email already exists");
+      });
 
     expect(customersRepositoryFindByEmail).toHaveBeenCalledTimes(1);
     expect(cryptProviderCrypt).toHaveBeenCalledTimes(0);

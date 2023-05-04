@@ -4,7 +4,7 @@ import { sign, verify } from "jsonwebtoken";
 class TokenProvider implements TokenProviderDTO.ITokenProvider {
   constructor(private readonly secret: string) {}
 
-  async generate({
+  public async generate({
     id
   }: TokenProviderDTO.GenerateDTO): TokenProviderDTO.GenerateTokenResponseDTO {
     return sign({ id }, this.secret, {
@@ -12,7 +12,7 @@ class TokenProvider implements TokenProviderDTO.ITokenProvider {
     });
   }
 
-  async verify(
+  public async verify(
     token: TokenProviderDTO.VerifyDTO
   ): TokenProviderDTO.VerifyTokenResponseDTO {
     try {

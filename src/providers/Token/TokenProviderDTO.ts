@@ -9,11 +9,13 @@ namespace TokenProviderDTO {
     id: number;
   }
 
+  export type IToken = string;
+
   export type GenerateDTO = ITokenPayload;
 
-  export type GenerateTokenResponseDTO = Promise<string>;
+  export type GenerateTokenResponseDTO = Promise<IToken>;
 
-  export type VerifyDTO = string;
+  export type VerifyDTO = IToken;
 
   export type VerifyTokenResponseDTO = Promise<ITokenPayload | { id: null }>;
 }

@@ -1,6 +1,6 @@
 import { CreateCustomerUseCaseDTO } from "./CreateCustomerUseCaseDTO";
 import { CustomersRepositoryDTO } from "../../repositories/Users/Customers/CustomersRepositoryDTO";
-import { CryptProviderDTO } from "../../providers/Crypt/CryptProviderDTO";
+import { CryptProviderDTO } from "../../providers";
 import { UnauthorizedError } from "../../errors/UnauthorizedError";
 
 class CreateCustomerUseCase
