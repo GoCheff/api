@@ -15,7 +15,8 @@ class CustomersRepository
     return (
       this.customers.findFirst({
         where: {
-          id
+          id,
+          deletedAt: null
         }
       }) || null
     );
@@ -27,7 +28,8 @@ class CustomersRepository
     return (
       this.customers.findFirst({
         where: {
-          email
+          email,
+          deletedAt: null
         }
       }) || null
     );

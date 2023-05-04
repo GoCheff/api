@@ -15,6 +15,7 @@ class Server {
   constructor() {
     this.useConfig();
     this.useRoutes();
+    this.useHandlers();
   }
 
   private useConfig(): void {

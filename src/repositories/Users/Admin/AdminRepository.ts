@@ -13,7 +13,8 @@ class AdminRepository implements AdminRepositoryDTO.IAdminRepository {
     return (
       this.admin.findFirst({
         where: {
-          id
+          id,
+          deletedAt: null
         }
       }) || null
     );
@@ -25,7 +26,8 @@ class AdminRepository implements AdminRepositoryDTO.IAdminRepository {
     return (
       this.admin.findFirst({
         where: {
-          email
+          email,
+          deletedAt: null
         }
       }) || null
     );

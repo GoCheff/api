@@ -1,6 +1,6 @@
 import { Router } from "express";
 import { customersRoutes } from "./Customers";
-import { responseHandler } from "../handlers";
+import { NotFoundError } from "../../../../errors/NotFoundError";
 
 const routes = Router();
 
@@ -10,16 +10,8 @@ routes.get("/", (req, res) => {
 
 routes.use("/customers", customersRoutes);
 
-routes.use("/*", (req, res) => {
-  const message = "Route not found";
-  const statusCode = 404;
-
-  res.status(statusCode).json(
-    responseHandler({
-      message,
-      statusCode
-    })
-  );
+routes.use("/*", () => {
+  throw new NotFoundError("Route not found");
 });
 
 export { routes };
