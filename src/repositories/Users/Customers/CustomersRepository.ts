@@ -1,14 +1,13 @@
 import { CustomersRepositoryDTO } from "./CustomersRepositoryDTO";
 import { UsersRepositoryDTO } from "../UsersRepositoryDTO";
 import { DatabaseDTO } from "../../../application/services/database/Database/DatabaseDTO";
-import IDatabase = DatabaseDTO.IDatabase;
 
 class CustomersRepository
   implements CustomersRepositoryDTO.ICustomersRepository
 {
   private readonly customers = this.database.db.customer;
 
-  constructor(private database: IDatabase) {}
+  constructor(private database: DatabaseDTO.IDatabase) {}
 
   public async findById({
     id

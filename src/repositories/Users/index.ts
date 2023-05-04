@@ -1,5 +1,5 @@
-import { adminRepository } from "./Admin";
 import { customersRepository } from "./Customers";
+import { adminRepository } from "./Admin";
 
 const usersRepository = {
   admin: adminRepository,
