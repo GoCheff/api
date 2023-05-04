@@ -4,6 +4,8 @@ namespace UsersRepositoryDTO {
   export interface IUsersRepository {
     findById(data: FindByIdDTO): FindByIdResponseDTO;
 
+    findByEmail(data: FindByEmailDTO): FindByEmailResponseDTO;
+
     create(data: CreateDTO): CreateResponseDTO;
   }
 
@@ -12,6 +14,12 @@ namespace UsersRepositoryDTO {
   };
 
   export type FindByIdResponseDTO = Promise<User | null>;
+
+  export type FindByEmailDTO = {
+    email: string;
+  };
+
+  export type FindByEmailResponseDTO = Promise<User | null>;
 
   export type CreateDTO = {
     email: string;

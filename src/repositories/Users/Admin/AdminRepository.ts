@@ -11,11 +11,25 @@ class AdminRepository implements AdminRepositoryDTO.IAdminRepository {
   public async findById({
     id
   }: UsersRepositoryDTO.FindByIdDTO): AdminRepositoryDTO.FindByIdResponseDTO {
-    return this.admin.findFirst({
-      where: {
-        id
-      }
-    });
+    return (
+      this.admin.findFirst({
+        where: {
+          id
+        }
+      }) || null
+    );
+  }
+
+  public async findByEmail({
+    email
+  }: UsersRepositoryDTO.FindByEmailDTO): AdminRepositoryDTO.FindByEmailResponseDTO {
+    return (
+      this.admin.findFirst({
+        where: {
+          email
+        }
+      }) || null
+    );
   }
 
   public async create({

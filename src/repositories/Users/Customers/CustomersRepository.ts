@@ -13,11 +13,25 @@ class CustomersRepository
   public async findById({
     id
   }: UsersRepositoryDTO.FindByIdDTO): CustomersRepositoryDTO.FindByIdResponseDTO {
-    return this.customers.findFirst({
-      where: {
-        id
-      }
-    });
+    return (
+      this.customers.findFirst({
+        where: {
+          id
+        }
+      }) || null
+    );
+  }
+
+  public async findByEmail({
+    email
+  }: UsersRepositoryDTO.FindByEmailDTO): CustomersRepositoryDTO.FindByEmailResponseDTO {
+    return (
+      this.customers.findFirst({
+        where: {
+          email
+        }
+      }) || null
+    );
   }
 
   public async create({
