@@ -3,6 +3,7 @@ import cors from "cors";
 import "express-async-errors";
 import { errorHandler } from "../handlers";
 import { environment } from "../../../environment";
+import { routes } from "../routes";
 
 const { API_PORT, DOMAIN } = environment;
 
@@ -20,7 +21,9 @@ class Server {
     this.app.use(cors());
   }
 
-  private useRoutes(): void {}
+  private useRoutes(): void {
+    this.app.use("/", routes);
+  }
 
   private useHandlers(): void {
     this.app.use(errorHandler);
