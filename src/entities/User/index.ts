@@ -1,5 +1,5 @@
-import { Admin } from "@prisma/client";
+import { Admin, Customer } from "@prisma/client";
 
-type User = Admin;
+type User = Admin | Customer;
 
 export { User };

@@ -8,12 +8,24 @@ class AdminRepository implements AdminRepositoryDTO.IAdminRepository {
 
   constructor(private database: IDatabase) {}
 
-  findById({
+  public async findById({
     id
   }: UsersRepositoryDTO.FindByIdDTO): AdminRepositoryDTO.FindByIdResponseDTO {
     return this.admin.findFirst({
       where: {
         id
+      }
+    });
+  }
+
+  public async create({
+    email,
+    password
+  }: UsersRepositoryDTO.CreateDTO): AdminRepositoryDTO.CreateResponseDTO {
+    return this.admin.create({
+      data: {
+        email,
+        password
       }
     });
   }
