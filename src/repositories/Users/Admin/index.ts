@@ -1,5 +1,5 @@
-import { AdminRepository } from "./AdminRepository";
 import { database } from "../../../application/services";
+import { AdminRepository } from "./AdminRepository";
 
 const adminRepository = new AdminRepository(database);
 

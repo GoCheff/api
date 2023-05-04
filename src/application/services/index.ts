@@ -1,2 +1,2 @@
 export { database } from "./database";
-export { api } from "./api";
+export { server } from "./api";

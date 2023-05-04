@@ -1,9 +1,9 @@
 import { IsAuthenticatedMiddleware } from "./IsAuthenticatedMiddleware";
-import { usersRepository } from "../../repositories";
+import { adminRepository } from "../../repositories";
 import { tokenProvider } from "../../providers";
 
 const isAuthenticatedAdminMiddleware = new IsAuthenticatedMiddleware(
-  usersRepository.admin,
+  adminRepository,
   tokenProvider.admin
 );
 

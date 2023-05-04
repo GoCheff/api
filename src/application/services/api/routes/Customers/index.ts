@@ -1,7 +1,7 @@
 import { Router } from "express";
-import { customersController } from "../../controllers/Customers";
 import { validateSchemaMiddleware } from "../../../../../middlewares";
 import { CustomersSchema } from "../../../../../schemas/Customers";
+import { customersController } from "../../controllers/Customers";
 
 const customersRoutes = Router();
 

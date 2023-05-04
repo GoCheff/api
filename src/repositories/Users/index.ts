@@ -1,9 +1,2 @@
-import { customersRepository } from "./Customers";
-import { adminRepository } from "./Admin";
-
-const usersRepository = {
-  admin: adminRepository,
-  customers: customersRepository
-};
-
-export { usersRepository };
+export { customersRepository } from "./Customers";
+export { adminRepository } from "./Admin";

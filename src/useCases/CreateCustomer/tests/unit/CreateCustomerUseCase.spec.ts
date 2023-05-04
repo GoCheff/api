@@ -1,10 +1,10 @@
-import { createCustomerUseCase } from "../..";
-import { usersRepository } from "../../../../repositories";
 import { createCustomerUseCaseFactory } from "../factories/CreateCustomer";
+import { createCustomerUseCase } from "../..";
 import { cryptProvider } from "../../../../providers";
 import { UnauthorizedError } from "../../../../errors/UnauthorizedError";
+import { customersRepository } from "../../../../repositories";
 
-beforeEach(() => {
+afterEach(() => {
   jest.clearAllMocks();
 });
 
@@ -13,7 +13,7 @@ describe("CreateCustomerUseCase", () => {
     const customer = createCustomerUseCaseFactory.getExecuteData();
 
     const customersRepositoryFindByEmail = jest
-      .spyOn(usersRepository.customers, "findByEmail")
+      .spyOn(customersRepository, "findByEmail")
       .mockImplementationOnce(async () => undefined);
 
     const hashedPassword = "hashedPassword";
@@ -23,7 +23,7 @@ describe("CreateCustomerUseCase", () => {
       .mockImplementationOnce(async () => hashedPassword);
 
     const customersRepositoryCreate = jest
-      .spyOn(usersRepository.customers, "create")
+      .spyOn(customersRepository, "create")
       .mockImplementationOnce(
         async () => ({ ...customer, password: hashedPassword } as any)
       );
@@ -43,7 +43,7 @@ describe("CreateCustomerUseCase", () => {
     const customer = createCustomerUseCaseFactory.getExecuteData();
 
     const customersRepositoryFindByEmail = jest
-      .spyOn(usersRepository.customers, "findByEmail")
+      .spyOn(customersRepository, "findByEmail")
       .mockImplementationOnce(async () => customer as any);
 
     const hashedPassword = "hashedPassword";
@@ -53,7 +53,7 @@ describe("CreateCustomerUseCase", () => {
       .mockImplementationOnce(async () => hashedPassword);
 
     const customersRepositoryCreate = jest
-      .spyOn(usersRepository.customers, "create")
+      .spyOn(customersRepository, "create")
       .mockImplementationOnce(
         async () => ({ ...customer, password: hashedPassword } as any)
       );

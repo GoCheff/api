@@ -1,6 +1,6 @@
 import { CustomersController } from "./CustomersController";
-import { createCustomerUseCase } from "../../../../../useCases/CreateCustomer";
 import { signInCustomerUseCase } from "../../../../../useCases/SignInCustomer";
+import { createCustomerUseCase } from "../../../../../useCases/CreateCustomer";
 
 const customersController = new CustomersController(
   createCustomerUseCase,

@@ -1,9 +1,9 @@
-import { CreateCustomerUseCase } from "./CreateCustomerUseCase";
-import { usersRepository } from "../../repositories";
+import { customersRepository } from "../../repositories";
 import { cryptProvider } from "../../providers";
+import { CreateCustomerUseCase } from "./CreateCustomerUseCase";
 
 const createCustomerUseCase = new CreateCustomerUseCase(
-  usersRepository.customers,
+  customersRepository,
   cryptProvider
 );
 

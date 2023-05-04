@@ -1,11 +1,10 @@
-import { signInCustomerUseCase } from "../..";
-import { usersRepository } from "../../../../repositories";
-import { cryptProvider } from "../../../../providers";
-import { signInCustomerUseCaseFactory } from "../factories/SignInCustomer";
-import { tokenProvider } from "../../../../providers";
+import { cryptProvider, tokenProvider } from "../../../../providers";
 import { NotFoundError } from "../../../../errors/NotFoundError";
+import { signInCustomerUseCase } from "../..";
+import { signInCustomerUseCaseFactory } from "../factories/SignInCustomer";
+import { customersRepository } from "../../../../repositories";
 
-beforeEach(() => {
+afterEach(() => {
   jest.clearAllMocks();
 });
 
@@ -16,7 +15,7 @@ describe("SignInCustomerUseCase", () => {
       await signInCustomerUseCaseFactory.getExecuteResponseData();
 
     const customersRepositoryFindByEmail = jest
-      .spyOn(usersRepository.customers, "findByEmail")
+      .spyOn(customersRepository, "findByEmail")
       .mockImplementationOnce(async () => customerReturn.user);
 
     const cryptProviderCrypt = jest
@@ -42,7 +41,7 @@ describe("SignInCustomerUseCase", () => {
     const customer = signInCustomerUseCaseFactory.getExecuteData();
 
     const customersRepositoryFindByEmail = jest
-      .spyOn(usersRepository.customers, "findByEmail")
+      .spyOn(customersRepository, "findByEmail")
       .mockImplementationOnce(async () => undefined);
 
     const cryptProviderCrypt = jest.spyOn(cryptProvider, "compare");
@@ -71,7 +70,7 @@ describe("SignInCustomerUseCase", () => {
       await signInCustomerUseCaseFactory.getExecuteResponseData();
 
     const customersRepositoryFindByEmail = jest
-      .spyOn(usersRepository.customers, "findByEmail")
+      .spyOn(customersRepository, "findByEmail")
       .mockImplementationOnce(async () => customerReturn.user);
 
     const cryptProviderCrypt = jest
