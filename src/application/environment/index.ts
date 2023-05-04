@@ -11,7 +11,8 @@ const environment = {
   DATABASE_URL: process.env.DATABASE_URL,
   JWT_SECRET_ADMIN: process.env.JWT_SECRET_ADMIN,
   JWT_SECRET_CHEF: process.env.JWT_SECRET_CHEF,
-  JWT_SECRET_CUSTOMER: process.env.JWT_SECRET_CUSTOMER
+  JWT_SECRET_CUSTOMER: process.env.JWT_SECRET_CUSTOMER,
+  CRYPT_SALT: +process.env.CRYPT_SALT
 };
 
 if (Object.values(environment).includes(undefined)) {
