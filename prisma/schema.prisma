@@ -50,6 +50,27 @@ model Cheff {
   updatedAt      DateTime       @updatedAt @map("updated_at")
   deletedAt      DateTime?      @map("deleted_at")
 
+  foodPlates FoodPlate[]
+
   @@unique([email, deletedAt])
   @@map("cheffs")
+}
+
+model FoodPlate {
+  id          Int       @id @default(autoincrement())
+  cheffId     Int       @map("cheff_id")
+  name        String
+  description String
+  imageUrl    String    @map("image_url")
+  price       Float
+  minServe    Int       @map("min_serve")
+  maxServe    Int       @map("max_serve")
+  cookTime    Float     @map("cook_time")
+  createdAt   DateTime  @default(now()) @map("created_at")
+  updatedAt   DateTime  @updatedAt @map("updated_at")
+  deletedAt   DateTime? @map("deleted_at")
+
+  cheff Cheff? @relation(fields: [cheffId], references: [id])
+
+  @@map("food_plates")
 }
