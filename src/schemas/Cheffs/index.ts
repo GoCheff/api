@@ -1,6 +1,19 @@
 import Joi from "joi";
 
 namespace CheffsSchema {
+  export type RequestRegistrationDTO = {
+    email: string;
+    password: string;
+    registerReason: string;
+  };
+
+  export const RequestRegistrationBodySchema =
+    Joi.object<RequestRegistrationDTO>({
+      email: Joi.string().email().required(),
+      password: Joi.string().min(6).required(),
+      registerReason: Joi.string().required()
+    });
+
   export type SignUpDTO = {
     email: string;
     password: string;

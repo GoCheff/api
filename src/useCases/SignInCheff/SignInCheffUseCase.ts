@@ -16,7 +16,7 @@ class SignInCheffUseCase implements SignInCheffUseCaseDTO.ISignInCheffUseCase {
   }: SignInCheffUseCaseDTO.ExecuteDTO): SignInCheffUseCaseDTO.ExecuteResponseDTO {
     const cheff = await this.cheffsRepository.findByEmail({ email });
 
-    if (!cheff) {
+    if (!cheff || cheff.registerStatus !== "approved") {
       throw new NotFoundError("Cheff not found");
     }
 

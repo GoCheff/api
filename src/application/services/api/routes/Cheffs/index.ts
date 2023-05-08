@@ -7,6 +7,15 @@ import { foodPlatesRoutes } from "./FoodPlates";
 const cheffsRoutes = Router();
 
 cheffsRoutes.post(
+  "/request-registration",
+  validateSchemaMiddleware.handle({
+    type: "body",
+    schema: CheffsSchema.RequestRegistrationBodySchema
+  }),
+  (req, res) => cheffsController.requestRegistration(req, res)
+);
+
+cheffsRoutes.post(
   "/sign-in",
   validateSchemaMiddleware.handle({
     type: "body",
