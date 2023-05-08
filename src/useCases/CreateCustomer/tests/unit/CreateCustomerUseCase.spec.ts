@@ -14,7 +14,7 @@ describe("CreateCustomerUseCase", () => {
 
     const customersRepositoryFindByEmail = jest
       .spyOn(customersRepository, "findByEmail")
-      .mockImplementationOnce(async () => undefined);
+      .mockImplementationOnce(async () => null);
 
     const hashedPassword = "hashedPassword";
 

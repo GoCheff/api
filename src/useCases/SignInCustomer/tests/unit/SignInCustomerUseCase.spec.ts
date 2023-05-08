@@ -42,7 +42,7 @@ describe("SignInCustomerUseCase", () => {
 
     const customersRepositoryFindByEmail = jest
       .spyOn(customersRepository, "findByEmail")
-      .mockImplementationOnce(async () => undefined);
+      .mockImplementationOnce(async () => null);
 
     const cryptProviderCrypt = jest.spyOn(cryptProvider, "compare");
 

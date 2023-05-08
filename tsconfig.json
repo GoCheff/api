@@ -1,13 +1,13 @@
 {
   "compilerOptions": {
-    "target": "es2017",
+    "target": "es2015",
     "module": "commonjs",
     "allowJs": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
     "outDir": "./dist",
-    "lib": ["es2017", "dom"]
+    "lib": ["es2015", "dom"]
   },
   "include": ["src/**/*.ts"],
   "exclude": ["src/application/executables/**/*", "src/**/*.spec.ts"]

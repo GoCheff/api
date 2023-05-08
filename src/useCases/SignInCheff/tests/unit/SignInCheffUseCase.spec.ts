@@ -42,7 +42,7 @@ describe("SignInCheffUseCase", () => {
 
     const cheffsRepositoryFindByEmail = jest
       .spyOn(cheffsRepository, "findByEmail")
-      .mockImplementationOnce(async () => undefined);
+      .mockImplementationOnce(async () => null);
 
     const cryptProviderCrypt = jest.spyOn(cryptProvider, "compare");
 

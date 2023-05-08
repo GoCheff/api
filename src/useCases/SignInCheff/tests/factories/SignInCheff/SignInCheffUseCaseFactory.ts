@@ -18,6 +18,8 @@ class SignInCheffUseCaseFactory
         id: faker.datatype.number(),
         email: faker.internet.email(),
         password: faker.internet.password(),
+        registerStatus: "approved", // "approved" | "disapproved" | "pending"
+        registerReason: faker.lorem.sentence(),
         createdAt: faker.date.past(),
         updatedAt: faker.date.past(),
         deletedAt: null

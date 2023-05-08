@@ -10,12 +10,16 @@ namespace CheffsRepositoryDTO {
       data: UsersRepositoryDTO.FindByEmailDTO
     ): FindByEmailResponseDTO;
 
-    create(data: UsersRepositoryDTO.CreateDTO): CreateResponseDTO;
+    create(data: CreateDTO): CreateResponseDTO;
   }
 
   export type FindByIdResponseDTO = Promise<Cheff | null>;
 
   export type FindByEmailResponseDTO = Promise<Cheff | null>;
+
+  export type CreateDTO = UsersRepositoryDTO.CreateDTO & {
+    registerReason: string;
+  };
 
   export type CreateResponseDTO = Promise<Cheff>;
 }

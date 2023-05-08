@@ -35,11 +35,13 @@ class CheffsRepository implements CheffsRepositoryDTO.ICheffsRepository {
 
   public async create({
     email,
+    registerReason,
     password
-  }: UsersRepositoryDTO.CreateDTO): CheffsRepositoryDTO.CreateResponseDTO {
+  }: CheffsRepositoryDTO.CreateDTO): CheffsRepositoryDTO.CreateResponseDTO {
     return this.cheffs.create({
       data: {
         email,
+        registerReason,
         password
       }
     });

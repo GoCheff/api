@@ -42,7 +42,7 @@ describe("SignInAdminUseCase", () => {
 
     const adminRepositoryFindByEmail = jest
       .spyOn(adminRepository, "findByEmail")
-      .mockImplementationOnce(async () => undefined);
+      .mockImplementationOnce(async () => null);
 
     const cryptProviderCrypt = jest.spyOn(cryptProvider, "compare");
 
