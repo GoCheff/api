@@ -7,8 +7,20 @@ const isAuthenticatedAdminMiddleware = new IsAuthenticatedMiddleware(
   tokenProvider.admin
 );
 
+const isAuthenticatedCheffMiddleware = new IsAuthenticatedMiddleware(
+  adminRepository,
+  tokenProvider.cheff
+);
+
+const isAuthenticatedCustomerMiddleware = new IsAuthenticatedMiddleware(
+  adminRepository,
+  tokenProvider.customer
+);
+
 const isAuthenticatedMiddleware = {
-  admin: isAuthenticatedAdminMiddleware
+  admin: isAuthenticatedAdminMiddleware,
+  cheff: isAuthenticatedCheffMiddleware,
+  customer: isAuthenticatedCustomerMiddleware
 };
 
 export { isAuthenticatedMiddleware };

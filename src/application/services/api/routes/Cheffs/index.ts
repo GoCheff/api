@@ -2,7 +2,7 @@ import { Router } from "express";
 import { validateSchemaMiddleware } from "../../../../../middlewares";
 import { CheffsSchema } from "../../../../../schemas/Cheffs";
 import { cheffsController } from "../../controllers/Cheffs";
-import { foodPlatesRoutes } from "./FoodPlates";
+import { cheffFoodPlatesRoutes } from "./CheffFoodPlates";
 
 const cheffsRoutes = Router();
 
@@ -24,6 +24,6 @@ cheffsRoutes.post(
   (req, res) => cheffsController.signIn(req, res)
 );
 
-cheffsRoutes.use("/food-plates", foodPlatesRoutes);
+cheffsRoutes.use("/food-plates", cheffFoodPlatesRoutes);
 
 export { cheffsRoutes };

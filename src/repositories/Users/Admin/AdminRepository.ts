@@ -33,15 +33,11 @@ class AdminRepository implements AdminRepositoryDTO.IAdminRepository {
     );
   }
 
-  public async create({
-    email,
-    password
-  }: UsersRepositoryDTO.CreateDTO): AdminRepositoryDTO.CreateResponseDTO {
+  public async create(
+    data: UsersRepositoryDTO.CreateDTO
+  ): AdminRepositoryDTO.CreateResponseDTO {
     return this.admin.create({
-      data: {
-        email,
-        password
-      }
+      data
     });
   }
 }

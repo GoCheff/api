@@ -35,15 +35,11 @@ class CustomersRepository
     );
   }
 
-  public async create({
-    email,
-    password
-  }: UsersRepositoryDTO.CreateDTO): CustomersRepositoryDTO.CreateResponseDTO {
+  public async create(
+    data: UsersRepositoryDTO.CreateDTO
+  ): CustomersRepositoryDTO.CreateResponseDTO {
     return this.customers.create({
-      data: {
-        email,
-        password
-      }
+      data
     });
   }
 }
