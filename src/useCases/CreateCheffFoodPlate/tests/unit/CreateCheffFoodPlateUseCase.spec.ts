@@ -30,7 +30,7 @@ describe("CreateCheffFoodPlateUseCase", () => {
     expect(useCase).toEqual(undefined);
   });
 
-  it("should not be able to create a new food plate to a cheff if the cheff does not exists", async () => {
+  it("should throw an error if cheff not found", async () => {
     const cheffFoodPlate = createCheffFoodPlateUseCaseFactory.getExecuteData();
 
     const cheffsRepositoryFindById = jest

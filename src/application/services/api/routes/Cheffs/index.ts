@@ -2,7 +2,7 @@ import { Router } from "express";
 import { validateSchemaMiddleware } from "../../../../../middlewares";
 import { CheffsSchema } from "../../../../../schemas/Cheffs";
 import { cheffsController } from "../../controllers/Cheffs";
-import { cheffFoodPlatesRoutes } from "./CheffFoodPlates";
+import { cheffFoodPlatesRoutes } from "./FoodPlates";
 
 const cheffsRoutes = Router();
 

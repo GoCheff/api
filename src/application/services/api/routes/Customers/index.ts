@@ -2,6 +2,7 @@ import { Router } from "express";
 import { validateSchemaMiddleware } from "../../../../../middlewares";
 import { CustomersSchema } from "../../../../../schemas/Customers";
 import { customersController } from "../../controllers/Customers";
+import { customerCheffs } from "./Cheffs";
 
 const customersRoutes = Router();
 
@@ -22,5 +23,7 @@ customersRoutes.post(
   }),
   (req, res) => customersController.signIn(req, res)
 );
+
+customersRoutes.use("/cheffs", customerCheffs);
 
 export { customersRoutes };

@@ -1,5 +1,4 @@
 import { CheffsRepositoryDTO } from "./CheffsRepositoryDTO";
-import { UsersRepositoryDTO } from "../UsersRepositoryDTO";
 import { DatabaseDTO } from "../../../application/services/database/Database/DatabaseDTO";
 
 class CheffsRepository implements CheffsRepositoryDTO.ICheffsRepository {
@@ -8,10 +7,12 @@ class CheffsRepository implements CheffsRepositoryDTO.ICheffsRepository {
   constructor(private database: DatabaseDTO.IDatabase) {}
 
   public async findById({
-    id
-  }: UsersRepositoryDTO.FindByIdDTO): CheffsRepositoryDTO.FindByIdResponseDTO {
+    id,
+    include = {}
+  }: CheffsRepositoryDTO.FindByIdDTO): CheffsRepositoryDTO.FindByIdResponseDTO {
     return (
       this.cheffs.findFirst({
+        include,
         where: {
           id,
           deletedAt: null
@@ -21,10 +22,12 @@ class CheffsRepository implements CheffsRepositoryDTO.ICheffsRepository {
   }
 
   public async findByEmail({
-    email
-  }: UsersRepositoryDTO.FindByEmailDTO): CheffsRepositoryDTO.FindByEmailResponseDTO {
+    email,
+    include = {}
+  }: CheffsRepositoryDTO.FindByEmailDTO): CheffsRepositoryDTO.FindByEmailResponseDTO {
     return (
       this.cheffs.findFirst({
+        include,
         where: {
           email,
           deletedAt: null

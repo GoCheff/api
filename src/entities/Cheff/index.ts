@@ -5,4 +5,8 @@ type Cheff = _Cheff & {
   foodPlates?: FoodPlate[];
 };
 
-export { Cheff };
+type CheffIncludeRelations = {
+  foodPlates?: boolean;
+};
+
+export { Cheff, CheffIncludeRelations };
