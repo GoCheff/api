@@ -56,6 +56,7 @@ describe("SignInCustomerUseCase", () => {
     await expect(useCase)
       .rejects.toBeInstanceOf(NotFoundError)
       .catch((error) => {
+        expect(error.statusCode).toBe(404);
         expect(error.message).toBe("Customer not found");
       });
 
@@ -87,6 +88,7 @@ describe("SignInCustomerUseCase", () => {
     await expect(useCase)
       .rejects.toBeInstanceOf(NotFoundError)
       .catch((error) => {
+        expect(error.statusCode).toBe(404);
         expect(error.message).toBe("Customer not found");
       });
 

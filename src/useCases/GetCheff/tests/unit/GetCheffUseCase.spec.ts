@@ -58,6 +58,7 @@ describe("GetCheffUseCase", () => {
     await expect(getCheffUseCase.execute(cheffId))
       .rejects.toBeInstanceOf(NotFoundError)
       .catch((error) => {
+        expect(error.statusCode).toBe(404);
         expect(error.message).toBe("Cheff not found");
       });
     expect(cheffsRepositoryFindById).toHaveBeenCalledTimes(1);
@@ -81,6 +82,7 @@ describe("GetCheffUseCase", () => {
     await expect(getCheffUseCase.execute({ cheffId }))
       .rejects.toBeInstanceOf(NotFoundError)
       .catch((error) => {
+        expect(error.statusCode).toBe(404);
         expect(error.message).toBe("Cheff not found");
       });
     expect(cheffsRepositoryFindById).toHaveBeenCalledTimes(1);
@@ -103,6 +105,7 @@ describe("GetCheffUseCase", () => {
     await expect(getCheffUseCase.execute({ cheffId }))
       .rejects.toBeInstanceOf(NotFoundError)
       .catch((error) => {
+        expect(error.statusCode).toBe(404);
         expect(error.message).toBe("Cheff not found");
       });
     expect(cheffsRepositoryFindById).toHaveBeenCalledTimes(1);

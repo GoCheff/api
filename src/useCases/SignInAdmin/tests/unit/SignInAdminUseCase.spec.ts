@@ -53,6 +53,7 @@ describe("SignInAdminUseCase", () => {
     await expect(useCase)
       .rejects.toBeInstanceOf(NotFoundError)
       .catch((error) => {
+        expect(error.statusCode).toBe(404);
         expect(error.message).toBe("Admin not found");
       });
 
@@ -81,6 +82,7 @@ describe("SignInAdminUseCase", () => {
     await expect(useCase)
       .rejects.toBeInstanceOf(NotFoundError)
       .catch((error) => {
+        expect(error.statusCode).toBe(404);
         expect(error.message).toBe("Admin not found");
       });
 

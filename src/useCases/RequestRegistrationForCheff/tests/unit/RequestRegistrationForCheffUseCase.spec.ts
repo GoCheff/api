@@ -40,6 +40,7 @@ describe("RequestRegistrationForCheffUseCase", () => {
     await expect(useCase)
       .rejects.toBeInstanceOf(UnauthorizedError)
       .catch((error) => {
+        expect(error.statusCode).toBe(401);
         expect(error.message).toBe("Cheff already exists");
       });
 

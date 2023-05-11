@@ -2,7 +2,8 @@ import { Router } from "express";
 import { validateSchemaMiddleware } from "../../../../../middlewares";
 import { CustomersSchema } from "../../../../../schemas/Customers";
 import { customersController } from "../../controllers/Customers";
-import { customerCheffs } from "./Cheffs";
+import { customerCheffsRoutes } from "./Cheffs";
+import { customerCartItemsRoutes } from "./CartItems";
 
 const customersRoutes = Router();
 
@@ -24,6 +25,8 @@ customersRoutes.post(
   (req, res) => customersController.signIn(req, res)
 );
 
-customersRoutes.use("/cheffs", customerCheffs);
+customersRoutes.use("/cheffs", customerCheffsRoutes);
+
+customersRoutes.use("/cart-items", customerCartItemsRoutes);
 
 export { customersRoutes };

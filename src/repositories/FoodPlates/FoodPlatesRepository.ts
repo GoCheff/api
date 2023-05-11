@@ -15,6 +15,16 @@ class FoodPlatesRepository
       data
     });
   }
+
+  public async findByIdAndCheffId(
+    where: FoodPlatesRepositoryDTO.FindByIdAndCheffIdDTO
+  ): FoodPlatesRepositoryDTO.FindByIdAndCheffIdResponseDTO {
+    return (
+      this.foodPlates.findFirst({
+        where
+      }) || null
+    );
+  }
 }
 
 export { FoodPlatesRepository };

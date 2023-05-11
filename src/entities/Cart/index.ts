@@ -9,7 +9,20 @@ type Cart = _Cart & {
 
 type CartIndludeRelations = {
   customer?: boolean;
-  cartItems?: boolean;
+  cartItems?:
+    | boolean
+    | {
+        include: { foodPlate: boolean };
+      }
+    | {
+        include: {
+          foodPlate: {
+            include: {
+              cheff: boolean;
+            };
+          };
+        };
+      };
 };
 
 export { Cart, CartIndludeRelations };

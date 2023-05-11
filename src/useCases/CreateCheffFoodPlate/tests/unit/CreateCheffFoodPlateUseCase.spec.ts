@@ -45,6 +45,7 @@ describe("CreateCheffFoodPlateUseCase", () => {
     await expect(createCheffFoodPlateUseCase.execute(cheffFoodPlate))
       .rejects.toBeInstanceOf(NotFoundError)
       .catch((error) => {
+        expect(error.statusCode).toBe(404);
         expect(error.message).toBe("Cheff not found");
       });
     expect(cheffsRepositoryFindById).toHaveBeenCalledTimes(1);

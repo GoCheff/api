@@ -57,6 +57,7 @@ describe("SignInCheffUseCase", () => {
     await expect(useCase)
       .rejects.toBeInstanceOf(NotFoundError)
       .catch((error) => {
+        expect(error.statusCode).toBe(404);
         expect(error.message).toBe("Cheff not found");
       });
 
@@ -109,6 +110,7 @@ describe("SignInCheffUseCase", () => {
     await expect(useCase)
       .rejects.toBeInstanceOf(NotFoundError)
       .catch((error) => {
+        expect(error.statusCode).toBe(404);
         expect(error.message).toBe("Cheff not found");
       });
 
@@ -137,6 +139,7 @@ describe("SignInCheffUseCase", () => {
     await expect(useCase)
       .rejects.toBeInstanceOf(NotFoundError)
       .catch((error) => {
+        expect(error.statusCode).toBe(404);
         expect(error.message).toBe("Cheff not found");
       });
 

@@ -61,6 +61,7 @@ describe("CreateCustomerUseCase", () => {
     await expect(createCustomerUseCase.execute(customer))
       .rejects.toBeInstanceOf(UnauthorizedError)
       .catch((error) => {
+        expect(error.statusCode).toBe(401);
         expect(error.message).toBe("Email already exists");
       });
 
