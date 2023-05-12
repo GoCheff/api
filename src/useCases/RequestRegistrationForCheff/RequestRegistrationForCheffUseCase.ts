@@ -1,6 +1,6 @@
 import { RequestRegistrationForCheffUseCaseDTO } from "./RequestRegistrationForCheffUseCaseDTO";
 import { CheffsRepositoryDTO } from "../../repositories/Users/Cheffs/CheffsRepositoryDTO";
-import { UnauthorizedError } from "../../errors/UnauthorizedError";
+import { UnprocessableEntityError } from "../../errors/UnprocessableEntityError";
 
 class RequestRegistrationForCheffUseCase
   implements
@@ -20,7 +20,7 @@ class RequestRegistrationForCheffUseCase
     });
 
     if (cheffAlreadyExists) {
-      throw new UnauthorizedError("Cheff already exists");
+      throw new UnprocessableEntityError("Cheff already exists");
     }
 
     await this.cheffsRepository.create({

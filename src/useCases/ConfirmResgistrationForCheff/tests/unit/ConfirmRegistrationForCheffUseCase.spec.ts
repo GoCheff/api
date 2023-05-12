@@ -1,9 +1,9 @@
 import { confirmRegistrationForCheffUseCaseFactory } from "../factories/ConfirmRegistrationForCheff";
 import { NotFoundError } from "../../../../errors/NotFoundError";
-import { UnauthorizedError } from "../../../../errors/UnauthorizedError";
 import { confirmRegistrationForCheffUseCase } from "../../index";
 import { cryptProvider } from "../../../../providers";
 import { adminRepository, cheffsRepository } from "../../../../repositories";
+import { UnprocessableEntityError } from "../../../../errors/UnprocessableEntityError";
 
 afterEach(() => {
   jest.clearAllMocks();
@@ -116,9 +116,9 @@ describe("ConfirmRegistrationForCheffUseCase", () => {
     const useCase = confirmRegistrationForCheffUseCase.execute(data);
 
     await expect(useCase)
-      .rejects.toBeInstanceOf(UnauthorizedError)
+      .rejects.toBeInstanceOf(UnprocessableEntityError)
       .catch((error) => {
-        expect(error.statusCode).toBe(401);
+        expect(error.statusCode).toBe(422);
         expect(error.message).toBe("Cheff already approved");
       });
 
@@ -159,9 +159,9 @@ describe("ConfirmRegistrationForCheffUseCase", () => {
     const useCase = confirmRegistrationForCheffUseCase.execute(data);
 
     await expect(useCase)
-      .rejects.toBeInstanceOf(UnauthorizedError)
+      .rejects.toBeInstanceOf(UnprocessableEntityError)
       .catch((error) => {
-        expect(error.statusCode).toBe(401);
+        expect(error.statusCode).toBe(422);
         expect(error.message).toBe("Cheff already rejected");
       });
 
@@ -196,9 +196,9 @@ describe("ConfirmRegistrationForCheffUseCase", () => {
     const useCase = confirmRegistrationForCheffUseCase.execute(data);
 
     await expect(useCase)
-      .rejects.toBeInstanceOf(UnauthorizedError)
+      .rejects.toBeInstanceOf(UnprocessableEntityError)
       .catch((error) => {
-        expect(error.statusCode).toBe(401);
+        expect(error.statusCode).toBe(422);
         expect(error.message).toBe("Invalid password");
       });
 

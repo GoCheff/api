@@ -1,7 +1,7 @@
 import { CreateCustomerUseCaseDTO } from "./CreateCustomerUseCaseDTO";
 import { CustomersRepositoryDTO } from "../../repositories/Users/Customers/CustomersRepositoryDTO";
 import { CryptProviderDTO } from "../../providers";
-import { UnauthorizedError } from "../../errors/UnauthorizedError";
+import { UnprocessableEntityError } from "../../errors/UnprocessableEntityError";
 
 class CreateCustomerUseCase
   implements CreateCustomerUseCaseDTO.ICreateCustomerUseCase
@@ -20,7 +20,7 @@ class CreateCustomerUseCase
     });
 
     if (customerAlreadyExists) {
-      throw new UnauthorizedError("Email already in use");
+      throw new UnprocessableEntityError("Email already in use");
     }
 
     const passwordHash = await this.cryptProvider.crypt(password);

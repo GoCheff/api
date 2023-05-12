@@ -3,7 +3,7 @@ import { AdminRepositoryDTO } from "../../repositories/Users/Admin/AdminReposito
 import { CheffsRepositoryDTO } from "../../repositories/Users/Cheffs/CheffsRepositoryDTO";
 import { NotFoundError } from "../../errors/NotFoundError";
 import { CryptProviderDTO } from "../../providers";
-import { UnauthorizedError } from "../../errors/UnauthorizedError";
+import { UnprocessableEntityError } from "../../errors/UnprocessableEntityError";
 
 class ConfirmRegistrationForCheffUseCase
   implements
@@ -34,7 +34,7 @@ class ConfirmRegistrationForCheffUseCase
     });
 
     if (!passwordMatch) {
-      throw new UnauthorizedError("Invalid password");
+      throw new UnprocessableEntityError("Invalid password");
     }
 
     const cheffExists = await this.cheffsRepository.findById({ id });
@@ -44,11 +44,11 @@ class ConfirmRegistrationForCheffUseCase
     }
 
     if (cheffExists.registerStatus === "approved") {
-      throw new UnauthorizedError("Cheff already approved");
+      throw new UnprocessableEntityError("Cheff already approved");
     }
 
     if (cheffExists.registerStatus === "rejected") {
-      throw new UnauthorizedError("Cheff already rejected");
+      throw new UnprocessableEntityError("Cheff already rejected");
     }
 
     await this.cheffsRepository.updateStatus({

@@ -1,7 +1,7 @@
 import { requestRegistrationForCheffUseCase } from "../../index";
 import { cheffsRepository } from "../../../../repositories";
 import { requestRegistrationForCheffUseCaseFactory } from "../../factories/RequestRegistrationForCheff";
-import { UnauthorizedError } from "../../../../errors/UnauthorizedError";
+import { UnprocessableEntityError } from "../../../../errors/UnprocessableEntityError";
 
 afterEach(() => {
   jest.clearAllMocks();
@@ -38,9 +38,9 @@ describe("RequestRegistrationForCheffUseCase", () => {
     const useCase = requestRegistrationForCheffUseCase.execute(cheff);
 
     await expect(useCase)
-      .rejects.toBeInstanceOf(UnauthorizedError)
+      .rejects.toBeInstanceOf(UnprocessableEntityError)
       .catch((error) => {
-        expect(error.statusCode).toBe(401);
+        expect(error.statusCode).toBe(422);
         expect(error.message).toBe("Cheff already exists");
       });
 

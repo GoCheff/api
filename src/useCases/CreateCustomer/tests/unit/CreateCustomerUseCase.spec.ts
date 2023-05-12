@@ -1,8 +1,8 @@
 import { createCustomerUseCaseFactory } from "../factories/CreateCustomer";
 import { createCustomerUseCase } from "../..";
 import { cryptProvider } from "../../../../providers";
-import { UnauthorizedError } from "../../../../errors/UnauthorizedError";
 import { customersRepository } from "../../../../repositories";
+import { UnprocessableEntityError } from "../../../../errors/UnprocessableEntityError";
 
 afterEach(() => {
   jest.clearAllMocks();
@@ -59,9 +59,9 @@ describe("CreateCustomerUseCase", () => {
       );
 
     await expect(createCustomerUseCase.execute(customer))
-      .rejects.toBeInstanceOf(UnauthorizedError)
+      .rejects.toBeInstanceOf(UnprocessableEntityError)
       .catch((error) => {
-        expect(error.statusCode).toBe(401);
+        expect(error.statusCode).toBe(422);
         expect(error.message).toBe("Email already exists");
       });
 
