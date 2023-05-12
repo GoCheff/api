@@ -8,6 +8,8 @@ namespace CheffsRepositoryDTO {
 
     findByEmail(data: FindByEmailDTO): FindByEmailResponseDTO;
 
+    findByStatus(data: FindByStatusDTO): FindByStatusResponseDTO;
+
     create(data: CreateDTO): CreateResponseDTO;
   }
 
@@ -22,6 +24,14 @@ namespace CheffsRepositoryDTO {
   };
 
   export type FindByEmailResponseDTO = Promise<Cheff | null>;
+
+  export type FindByStatusDTO = {
+    registerStatus: "pending" | "approved" | "rejected";
+  } & {
+    include?: CheffIncludeRelations;
+  };
+
+  export type FindByStatusResponseDTO = Promise<Cheff[]>;
 
   export type CreateDTO = UsersRepositoryDTO.CreateDTO & {
     registerReason: string;

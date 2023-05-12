@@ -36,6 +36,18 @@ class CheffsRepository implements CheffsRepositoryDTO.ICheffsRepository {
     );
   }
 
+  public async findByStatus({
+    registerStatus,
+    include = {}
+  }: CheffsRepositoryDTO.FindByStatusDTO): CheffsRepositoryDTO.FindByStatusResponseDTO {
+    return this.cheffs.findMany({
+      include,
+      where: {
+        registerStatus
+      }
+    });
+  }
+
   public async create(
     data: CheffsRepositoryDTO.CreateDTO
   ): CheffsRepositoryDTO.CreateResponseDTO {

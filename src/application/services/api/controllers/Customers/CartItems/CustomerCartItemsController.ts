@@ -23,9 +23,7 @@ class CustomerCartItemsController
     };
 
     const message = "Cart updated successfully!";
-    const data = await this.addCheffFoodPlateToCartUseCase.execute(
-      source as AddCheffFoodPlateToCartUseCaseDTO.ExecuteDTO
-    );
+    const data = await this.addCheffFoodPlateToCartUseCase.execute(source);
     const statusCode = 200;
 
     return res.status(statusCode).json(

@@ -1,5 +1,5 @@
 import Joi from "joi";
-import { CheffFoodPlatesSchema } from "./CheffFoodPlates";
+import { CheffFoodPlatesSchema } from "./FoodPlates";
 
 namespace CheffsSchema {
   export type RequestRegistrationDTO = {

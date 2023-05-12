@@ -1,3 +1,4 @@
+import { CustomerCartItemsSchema } from "./CartItems";
 import Joi from "joi";
 
 namespace CustomersSchema {
@@ -22,4 +23,4 @@ namespace CustomersSchema {
   });
 }
 
-export { CustomersSchema };
+export { CustomersSchema, CustomerCartItemsSchema };
