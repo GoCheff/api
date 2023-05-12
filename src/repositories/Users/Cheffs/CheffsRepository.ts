@@ -55,6 +55,20 @@ class CheffsRepository implements CheffsRepositoryDTO.ICheffsRepository {
       data
     });
   }
+
+  public async updateStatus({
+    id,
+    registerStatus
+  }: CheffsRepositoryDTO.UpdateStatusDTO): CheffsRepositoryDTO.UpdateStatusResponseDTO {
+    this.cheffs.update({
+      where: {
+        id
+      },
+      data: {
+        registerStatus
+      }
+    });
+  }
 }
 
 export { CheffsRepository };

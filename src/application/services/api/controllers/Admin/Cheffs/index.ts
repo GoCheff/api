@@ -1,8 +1,10 @@
 import { AdminCheffsController } from "./AdminCheffsController";
 import { getAllPendingCheffsUseCase } from "../../../../../../useCases/GetAllPendingCheffs";
+import { confirmRegistrationForCheffUseCase } from "../../../../../../useCases/ConfirmResgistrationForCheff";
 
 const adminCheffsController = new AdminCheffsController(
-  getAllPendingCheffsUseCase
+  getAllPendingCheffsUseCase,
+  confirmRegistrationForCheffUseCase
 );
 
 export { adminCheffsController };

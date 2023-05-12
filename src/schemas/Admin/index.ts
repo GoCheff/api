@@ -1,3 +1,4 @@
+import { AdminCheffsSchema } from "./Cheffs";
 import Joi from "joi";
 
 namespace AdminSchema {
@@ -22,4 +23,4 @@ namespace AdminSchema {
   });
 }
 
-export { AdminSchema };
+export { AdminSchema, AdminCheffsSchema };

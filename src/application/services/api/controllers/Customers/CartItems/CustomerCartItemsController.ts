@@ -3,6 +3,7 @@ import { ExpressCustomTypes } from "../../../../../../@types/express";
 import { CustomerCartItemsControllerDTO } from "./CustomerCartItemsControllerDTO";
 import { AddCheffFoodPlateToCartUseCaseDTO } from "../../../../../../useCases/AddCheffFoodPlateToCart/AddCheffFoodPlateToCartUseCaseDTO";
 import { responseHandler } from "../../../handlers";
+import { CustomerCartItemsSchema } from "../../../../../../schemas/Customers";
 
 class CustomerCartItemsController
   implements CustomerCartItemsControllerDTO.ICustomerCartItemsController
@@ -23,7 +24,9 @@ class CustomerCartItemsController
     };
 
     const message = "Cart updated successfully!";
-    const data = await this.addCheffFoodPlateToCartUseCase.execute(source);
+    const data = await this.addCheffFoodPlateToCartUseCase.execute(
+      source as CustomerCartItemsSchema.UpdateOrCreateDTO
+    );
     const statusCode = 200;
 
     return res.status(statusCode).json(

@@ -2,7 +2,9 @@ import Joi from "joi";
 
 namespace CustomerCartItemsSchema {
   export type UpdateOrCreateDTO = {
+    customerId: number;
     cheffId: number;
+    foodPlateId: number;
     quantity: number;
   };
 

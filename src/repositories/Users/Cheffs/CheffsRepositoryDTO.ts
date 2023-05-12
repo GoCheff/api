@@ -11,6 +11,8 @@ namespace CheffsRepositoryDTO {
     findByStatus(data: FindByStatusDTO): FindByStatusResponseDTO;
 
     create(data: CreateDTO): CreateResponseDTO;
+
+    updateStatus(data: UpdateStatusDTO): UpdateStatusResponseDTO;
   }
 
   export type FindByIdDTO = UsersRepositoryDTO.FindByIdDTO & {
@@ -38,6 +40,13 @@ namespace CheffsRepositoryDTO {
   };
 
   export type CreateResponseDTO = Promise<Cheff>;
+
+  export type UpdateStatusDTO = {
+    id: number;
+    registerStatus: "pending" | "approved" | "rejected";
+  };
+
+  export type UpdateStatusResponseDTO = Promise<void>;
 }
 
 export { CheffsRepositoryDTO };
