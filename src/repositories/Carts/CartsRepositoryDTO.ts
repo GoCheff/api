@@ -4,6 +4,10 @@ namespace CartsRepositoryDTO {
   export interface ICartsRepository {
     findByCustomerId(data: FindByCustomerIdDTO): FindByCustomerIdResponseDTO;
 
+    findByStatusAndCheffId(
+      data: FindByStatusAndCheffIdDTO
+    ): FindByStatusAndCheffIdResponseDTO;
+
     create(data: CreateDTO): CreateResponseDTO;
   }
 
@@ -14,6 +18,20 @@ namespace CartsRepositoryDTO {
   };
 
   export type FindByCustomerIdResponseDTO = Promise<Cart | null>;
+
+  export type FindByStatusAndCheffIdDTO = {
+    status:
+      | "open"
+      | "sent"
+      | "approved"
+      | "rejected"
+      | "paid"
+      | "canceled"
+      | "delivered";
+    cheffId: number;
+  };
+
+  export type FindByStatusAndCheffIdResponseDTO = Promise<Cart[]>;
 
   export type CreateDTO = {
     customerId: number;

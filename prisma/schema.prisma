@@ -78,12 +78,23 @@ model FoodPlate {
   @@map("food_plates")
 }
 
+enum CartStatus {
+  open
+  sent
+  approved
+  rejected
+  paid
+  canceled
+  delivered
+}
+
 model Cart {
-  id         Int       @id @default(autoincrement())
-  customerId Int       @map("customer_id")
-  createdAt  DateTime  @default(now()) @map("created_at")
-  updatedAt  DateTime  @updatedAt @map("updated_at")
-  deletedAt  DateTime? @map("deleted_at")
+  id         Int        @id @default(autoincrement())
+  customerId Int        @map("customer_id")
+  status     CartStatus @default(open)
+  createdAt  DateTime   @default(now()) @map("created_at")
+  updatedAt  DateTime   @updatedAt @map("updated_at")
+  deletedAt  DateTime?  @map("deleted_at")
 
   customer  Customer   @relation(fields: [customerId], references: [id])
   cartItems CartItem[]
