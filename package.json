@@ -6,6 +6,7 @@
     "prepare": "husky install",
     "lint": "eslint . --ext .ts",
     "build": "tsc",
+    "migrate": "prisma migrate deploy",
     "start": "node ./dist/index.js",
     "dev": "npm run dev:load-envs npx ts-node-dev -- src/index.ts -e ts",
     "dev:prisma:studio": "npm run dev:load-envs npx prisma studio",

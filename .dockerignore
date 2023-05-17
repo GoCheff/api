@@ -1,0 +1,10 @@
+## Build
+dist
+node_modules
+
+## Tests
+coverage
+
+## Misc
+yarn.lock
+.idea

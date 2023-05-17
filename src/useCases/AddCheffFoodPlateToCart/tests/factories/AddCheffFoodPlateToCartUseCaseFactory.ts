@@ -19,6 +19,7 @@ class AddCheffFoodPlateToCartUseCaseFactory
     return {
       id: faker.datatype.number(),
       customerId: faker.datatype.number(),
+      status: "open",
       createdAt: faker.date.recent(),
       updatedAt: faker.date.recent(),
       deletedAt: null
