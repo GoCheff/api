@@ -1,0 +1,262 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "GoCheff API",
+    "description": "API for GoCheff app",
+    "version": "1.0.0",
+    "contact": {
+      "name": "Vinícius Gugelmin",
+      "email": "vinigugelmin@gmail.com"
+    }
+  },
+  "servers": [
+    {
+      "url": "http://localhost:5000",
+      "description": "Local server"
+    }
+  ],
+  "paths": {},
+  "components": {
+    "schemas": {
+      "Admin": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          },
+          "createdAt": {
+            "type": "string"
+          },
+          "updatedAt": {
+            "type": "string"
+          },
+          "deletedAt": {
+            "type": "string"
+          }
+        }
+      },
+      "Customer": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          },
+          "createdAt": {
+            "type": "string"
+          },
+          "updatedAt": {
+            "type": "string"
+          },
+          "deletedAt": {
+            "type": "string"
+          },
+          "carts": {
+            "type": "array",
+            "required": false,
+            "items": {
+              "$ref": "#/components/schemas/Cart"
+            }
+          }
+        }
+      },
+      "Cheff": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          },
+          "registerStatus": {
+            "type": "string",
+            "enum": ["pending", "approved", "rejected"]
+          },
+          "registerReason": {
+            "type": "string"
+          },
+          "createdAt": {
+            "type": "string"
+          },
+          "updatedAt": {
+            "type": "string"
+          },
+          "deletedAt": {
+            "type": "string"
+          },
+          "foodPlates": {
+            "type": "array",
+            "required": false,
+            "items": {
+              "$ref": "#/components/schemas/FoodPlate"
+            }
+          }
+        }
+      },
+      "FoodPlate": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "cheffId": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "imageUrl": {
+            "type": "string"
+          },
+          "price": {
+            "type": "number"
+          },
+          "minServe": {
+            "type": "number"
+          },
+          "maxServe": {
+            "type": "number"
+          },
+          "cookTime": {
+            "type": "number"
+          },
+          "createdAt": {
+            "type": "string"
+          },
+          "updatedAt": {
+            "type": "string"
+          },
+          "deletedAt": {
+            "type": "string"
+          },
+          "cheff": {
+            "$ref": "#/components/schemas/Cheff"
+          },
+          "cartItem": {
+            "type": "array",
+            "required": false,
+            "items": {
+              "$ref": "#/components/schemas/CartItem"
+            }
+          }
+        }
+      },
+      "Cart": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "customerId": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "open",
+              "sent",
+              "approved",
+              "rejected",
+              "paid",
+              "canceled",
+              "delivered"
+            ]
+          },
+          "createdAt": {
+            "type": "string"
+          },
+          "updatedAt": {
+            "type": "string"
+          },
+          "deletedAt": {
+            "type": "string"
+          },
+          "customer": {
+            "$ref": "#/components/schemas/Customer"
+          },
+          "cartItems": {
+            "type": "array",
+            "required": false,
+            "items": {
+              "$ref": "#/components/schemas/CartItem"
+            }
+          }
+        }
+      },
+      "CartItem": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "cartId": {
+            "type": "string"
+          },
+          "foodPlateId": {
+            "type": "string"
+          },
+          "quantity": {
+            "type": "number"
+          },
+          "createdAt": {
+            "type": "string"
+          },
+          "updatedAt": {
+            "type": "string"
+          },
+          "deletedAt": {
+            "type": "string"
+          },
+          "cart": {
+            "$ref": "#/components/schemas/Cart"
+          },
+          "foodPlate": {
+            "$ref": "#/components/schemas/FoodPlate"
+          }
+        }
+      },
+      "Error": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "object"
+          },
+          "message": {
+            "type": "string"
+          },
+          "statusCode": {
+            "type": "number"
+          },
+          "status": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
+    }
+  }
+}

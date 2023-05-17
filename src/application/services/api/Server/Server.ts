@@ -4,8 +4,10 @@ import "express-async-errors";
 import { errorHandler } from "../handlers";
 import { environment } from "../../../environment";
 import { routes } from "../routes";
+import swaggerUi from "swagger-ui-express";
+import swaggerDocs from "../../../docs/swagger.json";
 
-const { API_PORT, DOMAIN } = environment;
+const { NODE_ENV, API_PORT, DOMAIN } = environment;
 
 class Server {
   private readonly app: express.Application = express();
@@ -24,6 +26,10 @@ class Server {
   }
 
   private useRoutes(): void {
+    if (NODE_ENV === "development") {
+      this.app.use("/docs", swaggerUi.serve, swaggerUi.setup(swaggerDocs));
+    }
+
     this.app.use("/", routes);
   }
 
@@ -34,6 +40,10 @@ class Server {
   public init() {
     this.app.listen(this.port, async () => {
       console.log(`API is running on: ${this.domain}`);
+
+      if (NODE_ENV === "development") {
+        console.log(`API docs is running on: ${this.domain}/docs`);
+      }
     });
   }
 }
