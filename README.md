@@ -71,6 +71,8 @@ E por fim, rode o comando para iniciar a aplicação
 $ npm run dev
 ```
 
+Caso queira ter acesso à documentação da API, entre na rota `/docs` da aplicação.
+
 <a name="contribuindo"></a>
 
 ## 💻 Contribuindo
