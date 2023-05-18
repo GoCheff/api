@@ -9,12 +9,6 @@
       "email": "vinigugelmin@gmail.com"
     }
   },
-  "servers": [
-    {
-      "url": "http://localhost:5000",
-      "description": "Local server"
-    }
-  ],
   "paths": {
     "/": {
       "get": {
@@ -56,7 +50,7 @@
     },
     "/admin/sign-in": {
       "post": {
-        "summary": "Sign in",
+        "summary": "Sign in admin",
         "description": "Signs in an admin",
         "tags": ["Admin"],
         "requestBody": {
@@ -277,6 +271,149 @@
           },
           "422": {
             "description": "Admin password incorrect",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/cheffs/request-registration": {
+      "post": {
+        "summary": "Request cheff registration",
+        "description": "Requests cheff registration",
+        "tags": ["Cheffs"],
+        "requestBody": {
+          "description": "Cheff data",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "email": {
+                    "type": "string"
+                  },
+                  "password": {
+                    "type": "string"
+                  },
+                  "registerReason": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Cheff registration requested",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    },
+                    "status": {
+                      "type": "string"
+                    },
+                    "statusCode": {
+                      "type": "number"
+                    },
+                    "data": {
+                      "type": "object"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Cheff already registered or email already in use",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Validation error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/cheffs/sign-in": {
+      "post": {
+        "summary": "Sign in cheff",
+        "description": "Signs in cheff",
+        "tags": ["Cheffs"],
+        "requestBody": {
+          "description": "Cheff data",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "email": {
+                    "type": "string"
+                  },
+                  "password": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Cheff signed in",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    },
+                    "status": {
+                      "type": "string"
+                    },
+                    "statusCode": {
+                      "type": "number"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "token": {
+                          "type": "string"
+                        },
+                        "cheff": {
+                          "$ref": "#/components/schemas/Cheff"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Cheff not found or password incorrect",
             "content": {
               "application/json": {
                 "schema": {
