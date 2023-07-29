@@ -1,8 +1,8 @@
 import { NotFoundError } from "../../../../errors/NotFoundError";
 import { AppError } from "../../../../errors/AppError";
 import { approveCustomerCartUseCase } from "../..";
-import { cartsRepository } from "../../../../repositories/Carts";
 import { approveCustomerCartUseCaseFactory } from "../factories/ApproveCustomerCart";
+import { cartsRepository } from "../../../../repositories/Carts";
 
 afterEach(() => {
   jest.clearAllMocks();
