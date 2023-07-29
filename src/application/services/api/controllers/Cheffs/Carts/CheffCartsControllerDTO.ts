@@ -7,6 +7,11 @@ namespace CheffCartsControllerDTO {
       req: ExpressCustomTypes.AuthenticatedRequest,
       res: Response
     ): Promise<ExpressCustomTypes.Response>;
+
+    approve(
+      req: ExpressCustomTypes.AuthenticatedRequest,
+      res: Response
+    ): Promise<ExpressCustomTypes.Response>;
   }
 }
 

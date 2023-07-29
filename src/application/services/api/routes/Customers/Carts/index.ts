@@ -4,7 +4,7 @@ import { customerCartsController } from "../../../controllers/Customers/Carts";
 
 const customerCartsRoutes = Router();
 
-customerCartsRoutes.get(
+customerCartsRoutes.patch(
   "/:id",
   (req, res, next) => isAuthenticatedMiddleware.customer.handle(req, res, next),
   (req, res) => customerCartsController.patch(req, res)

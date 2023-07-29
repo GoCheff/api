@@ -1,10 +1,10 @@
-import { SendCartToCheffUseCaseDTO } from "./SendCartToCheffUseCaseDTO";
+import { ApproveCustomerCartUseCaseDTO } from "./ApproveCustomerCartUseCaseDTO";
 import { CartsRepositoryDTO } from "../../repositories/Carts/CartsRepositoryDTO";
 import { AppError } from "../../errors/AppError";
 import { NotFoundError } from "../../errors/NotFoundError";
 
-class SendCartToCheffUseCase
-  implements SendCartToCheffUseCaseDTO.ISendCartToCheffUseCase
+class ApproveCustomerCartUseCase
+  implements ApproveCustomerCartUseCaseDTO.IApproveCustomerCartUseCase
 {
   constructor(
     private readonly cartsRepository: CartsRepositoryDTO.ICartsRepository
@@ -12,7 +12,8 @@ class SendCartToCheffUseCase
 
   public async execute({
     cartId
-  }: SendCartToCheffUseCaseDTO.ExecuteDTO): SendCartToCheffUseCaseDTO.ExecuteResponseDTO {
+  }: // @ts-ignore
+  ApproveCustomerCartUseCaseDTO.ExecuteDTO): ApproveCustomerCartUseCaseDTO.ExecuteResponseDTO {
     const cart = await this.cartsRepository.findById({
       id: cartId,
       include: {
@@ -28,15 +29,11 @@ class SendCartToCheffUseCase
       throw new AppError("Cart is not open", 409);
     }
 
-    if (cart.cartItems.length === 0) {
-      throw new AppError("Cart is empty", 409);
-    }
-
-    return this.cartsRepository.update({
+    return await this.cartsRepository.update({
       ...cart,
-      status: "sent"
+      status: "approved"
     });
   }
 }
 
-export { SendCartToCheffUseCase };
+export { ApproveCustomerCartUseCase };
