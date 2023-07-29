@@ -3,5 +3,4 @@
 
 npx prettier --write --ignore-unknown ./src
 git add .
-git commit -m "style: prettier"
 npm run test
