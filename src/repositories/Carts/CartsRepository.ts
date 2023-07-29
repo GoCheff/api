@@ -6,6 +6,18 @@ class CartsRepository implements CartsRepositoryDTO.ICartsRepository {
 
   constructor(private database: DatabaseDTO.IDatabase) {}
 
+  public async findById({
+    id,
+    include = {}
+  }: CartsRepositoryDTO.FindByIdDTO): CartsRepositoryDTO.FindByIdResponseDTO {
+    return (
+      this.carts.findFirst({
+        where: { id, deletedAt: null },
+        include
+      }) || null
+    );
+  }
+
   public async findByCustomerId({
     customerId,
     include = {},
@@ -57,6 +69,18 @@ class CartsRepository implements CartsRepositoryDTO.ICartsRepository {
         cartItems: {
           create: cartItems
         }
+      }
+    });
+  }
+
+  public async update({
+    id,
+    status
+  }: CartsRepositoryDTO.UpdateDTO): CartsRepositoryDTO.UpdateResponseDTO {
+    return this.carts.update({
+      where: { id },
+      data: {
+        status
       }
     });
   }

@@ -1,7 +1,9 @@
-import { Cart, CartIndludeRelations, CartItem } from "../../entities";
+import { Cart, CartIncludeRelations, CartItem } from "../../entities";
 
 namespace CartsRepositoryDTO {
   export interface ICartsRepository {
+    findById(data: FindByIdDTO): FindByIdResponseDTO;
+
     findByCustomerId(data: FindByCustomerIdDTO): FindByCustomerIdResponseDTO;
 
     findByStatusAndCheffId(
@@ -9,7 +11,17 @@ namespace CartsRepositoryDTO {
     ): FindByStatusAndCheffIdResponseDTO;
 
     create(data: CreateDTO): CreateResponseDTO;
+
+    update(data: UpdateDTO): UpdateResponseDTO;
   }
+
+  export type FindByIdDTO = {
+    id: number;
+  } & {
+    include?: CartIncludeRelations;
+  };
+
+  export type FindByIdResponseDTO = Promise<Cart | null>;
 
   export type FindByCustomerIdDTO = {
     customerId: number;
@@ -24,7 +36,7 @@ namespace CartsRepositoryDTO {
         | "delivered";
     };
   } & {
-    include?: CartIndludeRelations;
+    include?: CartIncludeRelations;
   };
 
   export type FindByCustomerIdResponseDTO = Promise<Cart | null>;
@@ -50,10 +62,24 @@ namespace CartsRepositoryDTO {
       "id" | "cartId" | "createdAt" | "updatedAt" | "deletedAt"
     >[];
   } & {
-    include?: CartIndludeRelations;
+    include?: CartIncludeRelations;
   };
 
   export type CreateResponseDTO = Promise<Cart>;
+
+  export type UpdateDTO = {
+    id: number;
+    status:
+      | "open"
+      | "sent"
+      | "approved"
+      | "rejected"
+      | "paid"
+      | "canceled"
+      | "delivered";
+  };
+
+  export type UpdateResponseDTO = Promise<Cart>;
 }
 
 export { CartsRepositoryDTO };

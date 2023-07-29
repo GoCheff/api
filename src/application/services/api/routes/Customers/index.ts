@@ -4,6 +4,7 @@ import { CustomersSchema } from "../../../../../schemas/Customers";
 import { customersController } from "../../controllers/Customers";
 import { customerCheffsRoutes } from "./Cheffs";
 import { customerCartItemsRoutes } from "./CartItems";
+import { customerCartsRoutes } from "./Carts";
 
 const customersRoutes = Router();
 
@@ -26,6 +27,8 @@ customersRoutes.post(
 );
 
 customersRoutes.use("/cheffs", customerCheffsRoutes);
+
+customersRoutes.use("/carts", customerCartsRoutes);
 
 customersRoutes.use("/cart-items", customerCartItemsRoutes);
 

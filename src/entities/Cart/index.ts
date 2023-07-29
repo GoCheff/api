@@ -7,7 +7,7 @@ type Cart = _Cart & {
   cartItems?: CartItem[];
 };
 
-type CartIndludeRelations = {
+type CartIncludeRelations = {
   customer?: boolean;
   cartItems?:
     | boolean
@@ -25,4 +25,4 @@ type CartIndludeRelations = {
       };
 };
 
-export { Cart, CartIndludeRelations };
+export { Cart, CartIncludeRelations };
