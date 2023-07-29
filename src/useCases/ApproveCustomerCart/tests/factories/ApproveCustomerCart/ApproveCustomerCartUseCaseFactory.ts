@@ -16,7 +16,7 @@ class ApproveCustomerCartUseCaseFactory
     return {
       id: faker.datatype.number(),
       customerId: faker.datatype.number(),
-      status: "open",
+      status: "sent",
       createdAt: new Date(),
       updatedAt: new Date(),
       deletedAt: null,

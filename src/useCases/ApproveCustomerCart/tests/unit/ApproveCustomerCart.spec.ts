@@ -68,7 +68,7 @@ describe("ApproveCustomerCart", () => {
     await expect(useCase)
       .rejects.toBeInstanceOf(AppError)
       .catch((error) => {
-        expect(error.statusCode).toBe(400);
+        expect(error.statusCode).toBe(409);
         expect(error.message).toBe("Cart is not sent");
       });
 

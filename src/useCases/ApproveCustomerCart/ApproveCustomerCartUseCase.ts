@@ -25,7 +25,7 @@ class ApproveCustomerCartUseCase
       throw new NotFoundError("Cart not found");
     }
 
-    if (cart.status !== "open") {
+    if (cart.status !== "sent") {
       throw new AppError("Cart is not open", 409);
     }
 
