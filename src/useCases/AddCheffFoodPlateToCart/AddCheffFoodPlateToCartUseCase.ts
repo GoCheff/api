@@ -23,6 +23,7 @@ class AddCheffFoodPlateToCartUseCase
     // check if customer has a cart open
     const cart = await this.cartsRepository.findByCustomerId({
       customerId: customerId,
+      where: { status: "open" },
       include: {
         cartItems: {
           include: {

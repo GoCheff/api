@@ -13,6 +13,16 @@ namespace CartsRepositoryDTO {
 
   export type FindByCustomerIdDTO = {
     customerId: number;
+    where?: {
+      status?:
+        | "open"
+        | "sent"
+        | "approved"
+        | "rejected"
+        | "paid"
+        | "canceled"
+        | "delivered";
+    };
   } & {
     include?: CartIndludeRelations;
   };

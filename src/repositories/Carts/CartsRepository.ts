@@ -8,11 +8,12 @@ class CartsRepository implements CartsRepositoryDTO.ICartsRepository {
 
   public async findByCustomerId({
     customerId,
-    include = {}
+    include = {},
+    where = {}
   }: CartsRepositoryDTO.FindByCustomerIdDTO): CartsRepositoryDTO.FindByCustomerIdResponseDTO {
     return (
       this.carts.findFirst({
-        where: { customerId, deletedAt: null },
+        where: { customerId, deletedAt: null, ...where },
         include
       }) || null
     );
