@@ -54,6 +54,9 @@ describe("AddCheffFoodPlateToCartUseCase", () => {
 
     expect(cartsRepositoryFindById).toHaveBeenCalledWith({
       customerId: data.customerId,
+      where: {
+        status: "open"
+      },
       include: {
         cartItems: {
           include: {
@@ -130,6 +133,9 @@ describe("AddCheffFoodPlateToCartUseCase", () => {
 
     expect(cartsRepositoryFindById).toHaveBeenCalledWith({
       customerId: data.customerId,
+      where: {
+        status: "open"
+      },
       include: {
         cartItems: {
           include: {
@@ -218,6 +224,9 @@ describe("AddCheffFoodPlateToCartUseCase", () => {
 
     expect(cartsRepositoryFindById).toHaveBeenCalledWith({
       customerId: data.customerId,
+      where: {
+        status: "open"
+      },
       include: {
         cartItems: {
           include: {
@@ -302,6 +311,9 @@ describe("AddCheffFoodPlateToCartUseCase", () => {
 
     expect(cartsRepositoryFindById).toHaveBeenCalledWith({
       customerId: data.customerId,
+      where: {
+        status: "open"
+      },
       include: {
         cartItems: {
           include: {
@@ -362,6 +374,9 @@ describe("AddCheffFoodPlateToCartUseCase", () => {
 
     expect(cartsRepositoryFindById).toHaveBeenCalledWith({
       customerId: data.customerId,
+      where: {
+        status: "open"
+      },
       include: {
         cartItems: {
           include: {
