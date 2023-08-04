@@ -10,6 +10,8 @@ namespace CartsRepositoryDTO {
       data: FindByStatusAndCheffIdDTO
     ): FindByStatusAndCheffIdResponseDTO;
 
+    findByCheffId(data: FindByCheffIdDTO): FindByCheffIdResponseDTO;
+
     create(data: CreateDTO): CreateResponseDTO;
 
     update(data: UpdateDTO): UpdateResponseDTO;
@@ -54,6 +56,12 @@ namespace CartsRepositoryDTO {
   };
 
   export type FindByStatusAndCheffIdResponseDTO = Promise<Cart[]>;
+
+  export type FindByCheffIdDTO = {
+    cheffId: number;
+  };
+
+  export type FindByCheffIdResponseDTO = Promise<Cart[]>;
 
   export type CreateDTO = {
     customerId: number;

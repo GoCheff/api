@@ -4,16 +4,35 @@ import { CheffCartsControllerDTO } from "./CheffCartsControllerDTO";
 import { responseHandler } from "../../../handlers";
 import { GetAllSentCartsFromCheffUseCaseDTO } from "../../../../../../useCases/GetAllSentCartsFromCheff/GetAllSentCartsFromCheffUseCaseDTO";
 import { ApproveCustomerCartUseCaseDTO } from "../../../../../../useCases/ApproveCustomerCart/ApproveCustomerCartUseCaseDTO";
+import { GetAllCartsFromCheffUseCaseDTO } from "../../../../../../useCases/GetAllCartsFromCheff/GetAllCartsFromCheffUseCaseDTO";
 
 class CheffCartsController
   implements CheffCartsControllerDTO.ICheffCartsController
 {
   constructor(
+    private readonly getAllCartsFromCheffUseCase: GetAllCartsFromCheffUseCaseDTO.IGetAllCartsFromCheffUseCase,
     private readonly getAllSentCartsFromCheffUseCase: GetAllSentCartsFromCheffUseCaseDTO.IGetAllSentCartsFromCheffUseCase,
     private readonly approveCustomerCartUseCase: ApproveCustomerCartUseCaseDTO.IApproveCustomerCartUseCase
   ) {}
 
   public async get(
+    req: ExpressCustomTypes.AuthenticatedRequest,
+    res: Response
+  ): Promise<ExpressCustomTypes.Response> {
+    const { id } = req.user;
+
+    const message = "Sent carts retrieved successfully";
+    const data = await this.getAllCartsFromCheffUseCase.execute({
+      cheffId: id
+    });
+    const statusCode = 200;
+
+    return res
+      .status(statusCode)
+      .json(responseHandler({ message, data, statusCode }));
+  }
+
+  public async getAllSent(
     req: ExpressCustomTypes.AuthenticatedRequest,
     res: Response
   ): Promise<ExpressCustomTypes.Response> {

@@ -57,6 +57,23 @@ class CartsRepository implements CartsRepositoryDTO.ICartsRepository {
     });
   }
 
+  public async findByCheffId({
+    cheffId
+  }: CartsRepositoryDTO.FindByCheffIdDTO): CartsRepositoryDTO.FindByCheffIdResponseDTO {
+    return this.carts.findMany({
+      where: {
+        deletedAt: null,
+        cartItems: {
+          some: {
+            foodPlate: {
+              cheffId
+            }
+          }
+        }
+      }
+    });
+  }
+
   public async create({
     customerId,
     cartItems,

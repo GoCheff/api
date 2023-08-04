@@ -10,6 +10,12 @@ cheffCartsRoutes.get(
   (req, res) => cheffCartsController.get(req, res)
 );
 
+cheffCartsRoutes.get(
+  "/sent",
+  (req, res, next) => isAuthenticatedMiddleware.cheff.handle(req, res, next),
+  (req, res) => cheffCartsController.getAllSent(req, res)
+);
+
 cheffCartsRoutes.patch(
   "/:id/approve",
   (req, res, next) => isAuthenticatedMiddleware.cheff.handle(req, res, next),
