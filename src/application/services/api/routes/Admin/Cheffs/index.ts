@@ -22,4 +22,14 @@ adminCheffsRoutes.patch(
   (req, res) => adminCheffsController.approve(req, res)
 );
 
+adminCheffsRoutes.patch(
+  "/refuse/:id",
+  validateSchemaMiddleware.handle({
+    type: "body",
+    schema: AdminCheffsSchema.RefuseBodySchema
+  }),
+  (req, res, next) => isAuthenticatedMiddleware.admin.handle(req, res, next),
+  (req, res) => adminCheffsController.refuse(req, res)
+);
+
 export { adminCheffsRoutes };
