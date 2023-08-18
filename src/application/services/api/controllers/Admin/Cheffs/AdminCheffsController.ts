@@ -6,6 +6,7 @@ import { GetAllPendingCheffsUseCaseDTO } from "../../../../../../useCases/GetAll
 import { ConfirmRegistrationForCheffUseCaseDTO } from "../../../../../../useCases/ConfirmResgistrationForCheff/ConfirmRegistrationForCheffUseCaseDTO";
 import { AdminCheffsSchema } from "../../../../../../schemas/Admin";
 import { RefuseRegistrationForCheffUseCaseDTO } from "../../../../../../useCases/RefuseResgistrationForCheff/RefuseRegistrationForCheffUseCaseDTO";
+import { GetAllApprovedCheffsUseCaseDTO } from "../../../../../../useCases/GetAllApprovedCheffs/GetAllApprovedCheffsUseCaseDTO";
 
 class AdminCheffsController
   implements AdminCheffsControllerDTO.IAdminCheffsController
@@ -13,7 +14,8 @@ class AdminCheffsController
   constructor(
     private readonly getAllPendingCheffs: GetAllPendingCheffsUseCaseDTO.IGetAllPendingCheffsUseCase,
     private readonly confirmRegistrationForCheff: ConfirmRegistrationForCheffUseCaseDTO.IConfirmRegistrationForCheffUseCase,
-    private readonly refuseRegistrationForCheff: RefuseRegistrationForCheffUseCaseDTO.IRefuseRegistrationForCheffUseCase
+    private readonly refuseRegistrationForCheff: RefuseRegistrationForCheffUseCaseDTO.IRefuseRegistrationForCheffUseCase,
+    private readonly getAllApprovedCheffs: GetAllApprovedCheffsUseCaseDTO.IGetAllApprovedCheffsUseCase
   ) {}
 
   public async getAllPending(
@@ -22,6 +24,19 @@ class AdminCheffsController
   ): Promise<ExpressCustomTypes.Response> {
     const message = "All pending cheffs fetched successfully";
     const data = await this.getAllPendingCheffs.execute();
+    const statusCode = 200;
+
+    return res
+      .status(statusCode)
+      .json(responseHandler({ data, message, statusCode }));
+  }
+
+  public async getAllApproved(
+    req: ExpressCustomTypes.AuthenticatedRequest,
+    res: Response
+  ): Promise<ExpressCustomTypes.Response> {
+    const message = "All approved cheffs fetched successfully";
+    const data = await this.getAllApprovedCheffs.execute();
     const statusCode = 200;
 
     return res

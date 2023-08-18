@@ -1,8 +1,8 @@
-import { GetAllPendingCheffsUseCase } from "./GetAllPendingCheffsUseCase";
+import { GetAllApprovedCheffsUseCase } from "./GetAllApprovedCheffsUseCase";
 import { cheffsRepository } from "../../repositories";
 
-const getAllPendingCheffsUseCase = new GetAllPendingCheffsUseCase(
+const getAllApprovedCheffsUseCase = new GetAllApprovedCheffsUseCase(
   cheffsRepository
 );
 
-export { getAllPendingCheffsUseCase };
+export { getAllApprovedCheffsUseCase };

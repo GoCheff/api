@@ -8,6 +8,11 @@ namespace AdminCheffsControllerDTO {
       res: Response
     ): Promise<ExpressCustomTypes.Response>;
 
+    getAllApproved(
+      req: ExpressCustomTypes.AuthenticatedRequest,
+      res: Response
+    ): Promise<ExpressCustomTypes.Response>;
+
     approve(
       req: ExpressCustomTypes.AuthenticatedRequest,
       res: Response

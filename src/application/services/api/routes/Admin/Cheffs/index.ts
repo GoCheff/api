@@ -12,6 +12,12 @@ adminCheffsRoutes.get(
   (req, res) => adminCheffsController.getAllPending(req, res)
 );
 
+adminCheffsRoutes.get(
+  "/approved",
+  (req, res, next) => isAuthenticatedMiddleware.admin.handle(req, res, next),
+  (req, res) => adminCheffsController.getAllApproved(req, res)
+);
+
 adminCheffsRoutes.patch(
   "/approve/:id",
   validateSchemaMiddleware.handle({
