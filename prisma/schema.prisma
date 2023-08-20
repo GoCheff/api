@@ -67,6 +67,7 @@ model Cheff {
   password       String
   gender         Gender         @default(preferNotToSay)
   mainCuisine    String         @map("main_cuisine")
+  city           String
   registerStatus RegisterStatus @default(pending) @map("register_status")
   registerReason String         @map("register_reason")
   createdAt      DateTime       @default(now()) @map("created_at")
