@@ -20,8 +20,12 @@ class CheffsController implements CheffsControllerDTO.ICheffsController {
 
     const message = "Cheff registration requested successfully";
     await this.requestRegistrationCheffUseCase.execute({
+      name: source.name,
       email: source.email,
       password: source.password,
+      gender: source.gender,
+      mainCuisine: source.mainCuisine,
+      city: source.city,
       registerReason: source.registerReason
     } as CheffsSchema.RequestRegistrationDTO);
     const statusCode = 201;

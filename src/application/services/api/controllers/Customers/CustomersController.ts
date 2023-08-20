@@ -22,8 +22,10 @@ class CustomersController
 
     const message = "Customer created successfully";
     const data = await this.createCustomerUseCase.execute({
+      name: source.name,
       email: source.email,
-      password: source.password
+      password: source.password,
+      gender: source.gender
     } as CustomersSchema.SignUpDTO);
     const statusCode = 201;
 

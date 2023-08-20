@@ -3,8 +3,10 @@ import Joi from "joi";
 
 namespace CustomersSchema {
   export type SignUpDTO = {
+    name: string;
     email: string;
     password: string;
+    gender: "female" | "male" | "other" | "preferNotToSay";
   };
 
   export const SignUpBodySchema = Joi.object<SignUpDTO>({

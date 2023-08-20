@@ -8,8 +8,12 @@ class RequestRegistrationForCheffUseCaseFactory
 {
   public getExecuteData(): RequestRegistrationForCheffUseCaseDTO.ExecuteDTO {
     return {
+      name: faker.name.fullName(),
       email: faker.internet.email(),
       password: faker.internet.password(),
+      gender: "preferNotToSay",
+      mainCuisine: faker.lorem.word(),
+      city: faker.address.city(),
       registerReason: faker.lorem.paragraph()
     };
   }

@@ -6,6 +6,26 @@ import { adminCheffsRoutes } from "./Cheffs";
 
 const adminRoutes = Router();
 
+/**
+ * @swagger
+ * /admin/sign-in:
+ *   post:
+ *     description: Sign in as admin
+ *     tags:
+ *       - Admin
+ *     requestBody:
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: '#/components/schemas/AdminSignInBodySchema'
+ *     responses:
+ *       200:
+ *         description: Returns a message with the API name
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Response'
+ */
 adminRoutes.post(
   "/sign-in",
   validateSchemaMiddleware.handle({

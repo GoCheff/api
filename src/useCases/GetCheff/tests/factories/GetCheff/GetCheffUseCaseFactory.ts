@@ -14,8 +14,12 @@ class GetCheffUseCaseFactory
   public async getExecuteResponseData(): GetCheffUseCaseDTO.ExecuteResponseDTO {
     return {
       id: faker.datatype.number(),
+      name: faker.name.fullName(),
       email: faker.internet.email(),
       password: faker.internet.password(),
+      gender: "preferNotToSay",
+      mainCuisine: faker.lorem.sentence(),
+      city: faker.address.city(),
       registerStatus: "approved", // "approved" | "rejected" | "pending"
       registerReason: faker.lorem.sentence(),
       createdAt: faker.date.past(),
@@ -38,6 +42,11 @@ class GetCheffUseCaseFactory
       minServe: faker.datatype.number(),
       maxServe: faker.datatype.number(),
       cookTime: faker.datatype.number(),
+      glutenFree: faker.datatype.boolean(),
+      lactoseFree: faker.datatype.boolean(),
+      vegan: faker.datatype.boolean(),
+      vegetarian: faker.datatype.boolean(),
+      light: faker.datatype.boolean(),
       createdAt: faker.date.past(),
       updatedAt: faker.date.past(),
       deletedAt: null

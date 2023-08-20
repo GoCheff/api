@@ -7,8 +7,10 @@ class CreateCustomerUseCaseFactory
 {
   public getExecuteData(): CreateCustomerUseCaseDTO.ExecuteDTO {
     return {
+      name: faker.name.fullName(),
       email: faker.internet.email(),
-      password: faker.internet.password()
+      password: faker.internet.password(),
+      gender: "preferNotToSay"
     };
   }
 }

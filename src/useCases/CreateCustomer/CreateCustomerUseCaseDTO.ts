@@ -6,8 +6,10 @@ namespace CreateCustomerUseCaseDTO {
   }
 
   export type ExecuteDTO = {
+    name: string;
     email: string;
     password: string;
+    gender: "female" | "male" | "other" | "preferNotToSay";
   };
 
   export type ExecuteResponseDTO = Promise<Customer>;

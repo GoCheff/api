@@ -12,8 +12,10 @@ class CreateCustomerUseCase
   ) {}
 
   public async execute({
+    name,
     email,
-    password
+    password,
+    gender
   }: CreateCustomerUseCaseDTO.ExecuteDTO): CreateCustomerUseCaseDTO.ExecuteResponseDTO {
     const customerAlreadyExists = await this.customersRepository.findByEmail({
       email
@@ -25,8 +27,10 @@ class CreateCustomerUseCase
 
     const passwordHash = await this.cryptProvider.crypt(password);
     const customer = {
+      name,
       email,
-      password: passwordHash
+      password: passwordHash,
+      gender
     };
 
     return this.customersRepository.create(customer);

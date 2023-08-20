@@ -22,8 +22,10 @@ namespace UsersRepositoryDTO {
   export type FindByEmailResponseDTO = Promise<User | null>;
 
   export type CreateDTO = {
+    name: string;
     email: string;
     password: string;
+    gender: "female" | "male" | "other" | "preferNotToSay";
   };
 
   export type CreateResponseDTO = Promise<User>;

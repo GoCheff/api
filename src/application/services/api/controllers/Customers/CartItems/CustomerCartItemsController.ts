@@ -18,6 +18,10 @@ class CustomerCartItemsController
   ): Promise<ExpressCustomTypes.Response> {
     const source = {
       customerId: req.user.id,
+      locale: req.body.locale,
+      eventDate: new Date(req.body.eventDate),
+      phoneContact: req.body.phoneContact,
+      observation: req.body.observation,
       cheffId: +req.body.cheffId,
       foodPlateId: +req.params.id,
       quantity: +req.body.quantity

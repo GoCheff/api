@@ -16,6 +16,10 @@ class AddCheffFoodPlateToCartUseCase
 
   public async execute({
     customerId,
+    locale,
+    eventDate,
+    phoneContact,
+    observation,
     cheffId,
     foodPlateId,
     quantity
@@ -56,6 +60,10 @@ class AddCheffFoodPlateToCartUseCase
     if (!cart) {
       return await this.cartsRepository.create({
         customerId: customerId,
+        locale,
+        eventDate,
+        phoneContact,
+        observation,
         cartItems: [
           {
             foodPlateId: foodPlateId,

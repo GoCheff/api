@@ -3,15 +3,25 @@ import { CheffFoodPlatesSchema } from "./FoodPlates";
 
 namespace CheffsSchema {
   export type RequestRegistrationDTO = {
+    name: string;
     email: string;
     password: string;
+    gender: "female" | "male" | "other" | "preferNotToSay";
+    mainCuisine: string;
+    city: string;
     registerReason: string;
   };
 
   export const RequestRegistrationBodySchema =
     Joi.object<RequestRegistrationDTO>({
+      name: Joi.string().required(),
       email: Joi.string().email().required(),
       password: Joi.string().min(6).required(),
+      gender: Joi.string()
+        .valid("female", "male", "other", "preferNotToSay")
+        .required(),
+      mainCuisine: Joi.string().required(),
+      city: Joi.string().required(),
       registerReason: Joi.string().required()
     });
 

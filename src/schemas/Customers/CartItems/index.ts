@@ -3,6 +3,10 @@ import Joi from "joi";
 namespace CustomerCartItemsSchema {
   export type UpdateOrCreateDTO = {
     customerId: number;
+    locale: string;
+    eventDate: Date;
+    phoneContact: string;
+    observation: string;
     cheffId: number;
     foodPlateId: number;
     quantity: number;

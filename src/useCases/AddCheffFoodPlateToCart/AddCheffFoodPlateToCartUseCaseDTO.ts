@@ -7,6 +7,10 @@ namespace AddCheffFoodPlateToCartUseCaseDTO {
 
   export type ExecuteDTO = {
     customerId: number;
+    locale: string;
+    eventDate: Date;
+    phoneContact: string;
+    observation: string;
     cheffId: number;
     foodPlateId: number;
     quantity: number;

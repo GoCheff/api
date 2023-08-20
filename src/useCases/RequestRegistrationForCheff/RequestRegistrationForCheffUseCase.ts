@@ -11,8 +11,12 @@ class RequestRegistrationForCheffUseCase
   ) {}
 
   public async execute({
+    name,
     email,
     password,
+    gender,
+    mainCuisine,
+    city,
     registerReason
   }: RequestRegistrationForCheffUseCaseDTO.ExecuteDTO): RequestRegistrationForCheffUseCaseDTO.ExecuteResponseDTO {
     const cheffAlreadyExists = await this.cheffsRepository.findByEmail({
@@ -24,8 +28,12 @@ class RequestRegistrationForCheffUseCase
     }
 
     await this.cheffsRepository.create({
+      name,
       email,
       password,
+      gender,
+      mainCuisine,
+      city,
       registerReason
     });
   }

@@ -150,6 +150,10 @@ describe("AddCheffFoodPlateToCartUseCase", () => {
     });
     expect(cartsRepositoryCreate).toHaveBeenCalledWith({
       customerId: data.customerId,
+      locale: data.locale,
+      eventDate: data.eventDate,
+      observation: data.observation,
+      phoneContact: data.phoneContact,
       cartItems: [
         {
           foodPlateId: data.foodPlateId,

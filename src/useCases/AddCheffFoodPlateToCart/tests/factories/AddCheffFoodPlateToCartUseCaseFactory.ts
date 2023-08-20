@@ -9,6 +9,10 @@ class AddCheffFoodPlateToCartUseCaseFactory
   public getExecuteData(): AddCheffFoodPlateToCartUseCaseDTO.ExecuteDTO {
     return {
       customerId: faker.datatype.number(),
+      locale: faker.address.city(),
+      eventDate: new Date(),
+      phoneContact: faker.phone.number(),
+      observation: faker.lorem.paragraph(),
       cheffId: faker.datatype.number(),
       foodPlateId: faker.datatype.number(),
       quantity: faker.datatype.number()
@@ -19,6 +23,10 @@ class AddCheffFoodPlateToCartUseCaseFactory
     return {
       id: faker.datatype.number(),
       customerId: faker.datatype.number(),
+      locale: faker.address.city(),
+      eventDate: new Date(),
+      phoneContact: faker.phone.number(),
+      observation: faker.lorem.paragraph(),
       status: "open",
       createdAt: faker.date.recent(),
       updatedAt: faker.date.recent(),

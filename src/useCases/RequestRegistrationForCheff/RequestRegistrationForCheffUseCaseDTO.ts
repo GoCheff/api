@@ -4,8 +4,12 @@ namespace RequestRegistrationForCheffUseCaseDTO {
   }
 
   export type ExecuteDTO = {
+    name: string;
     email: string;
     password: string;
+    gender: "female" | "male" | "other" | "preferNotToSay";
+    mainCuisine: string;
+    city: string;
     registerReason: string;
   };
 

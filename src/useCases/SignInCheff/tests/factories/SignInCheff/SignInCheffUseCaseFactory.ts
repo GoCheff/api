@@ -16,8 +16,12 @@ class SignInCheffUseCaseFactory
     return {
       user: {
         id: faker.datatype.number(),
+        name: faker.name.fullName(),
         email: faker.internet.email(),
         password: faker.internet.password(),
+        gender: "preferNotToSay",
+        mainCuisine: faker.lorem.word(),
+        city: faker.address.city(),
         registerStatus: "approved", // "approved" | "rejected" | "pending"
         registerReason: faker.lorem.sentence(),
         createdAt: faker.date.past(),

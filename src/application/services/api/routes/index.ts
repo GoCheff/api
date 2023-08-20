@@ -6,6 +6,17 @@ import { cheffsRoutes } from "./Cheffs";
 
 const routes = Router();
 
+/**
+ * @swagger
+ * /:
+ *   get:
+ *     description: GoCheff API
+ *     tags:
+ *       - 'Config'
+ *     responses:
+ *       200:
+ *         description: Returns a message with the API name
+ */
 routes.get("/", (req, res) => {
   res.send("GoCheff API");
 });

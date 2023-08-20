@@ -37,6 +37,8 @@ namespace CheffsRepositoryDTO {
 
   export type CreateDTO = UsersRepositoryDTO.CreateDTO & {
     registerReason: string;
+    mainCuisine: string;
+    city: string;
   };
 
   export type CreateResponseDTO = Promise<Cheff>;

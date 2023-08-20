@@ -76,6 +76,10 @@ class CartsRepository implements CartsRepositoryDTO.ICartsRepository {
 
   public async create({
     customerId,
+    locale,
+    eventDate,
+    phoneContact,
+    observation,
     cartItems,
     include = {}
   }: CartsRepositoryDTO.CreateDTO): CartsRepositoryDTO.CreateResponseDTO {
@@ -83,6 +87,10 @@ class CartsRepository implements CartsRepositoryDTO.ICartsRepository {
       include,
       data: {
         customerId,
+        locale,
+        eventDate,
+        phoneContact,
+        observation,
         cartItems: {
           create: cartItems
         }

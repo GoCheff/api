@@ -65,6 +65,10 @@ namespace CartsRepositoryDTO {
 
   export type CreateDTO = {
     customerId: number;
+    locale: string;
+    eventDate: Date;
+    phoneContact: string;
+    observation: string;
     cartItems: Omit<
       CartItem,
       "id" | "cartId" | "createdAt" | "updatedAt" | "deletedAt"
