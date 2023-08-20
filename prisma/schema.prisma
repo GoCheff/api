@@ -17,10 +17,19 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+enum Gender {
+  female
+  male
+  other
+  preferNotToSay
+}
+
 model Admin {
   id        Int       @id @default(autoincrement())
+  name      String
   email     String
   password  String
+  gender    Gender    @default(preferNotToSay)
   createdAt DateTime  @default(now()) @map("created_at")
   updatedAt DateTime  @updatedAt @map("updated_at")
   deletedAt DateTime? @map("deleted_at")
@@ -31,8 +40,10 @@ model Admin {
 
 model Customer {
   id        Int       @id @default(autoincrement())
+  name      String
   email     String
   password  String
+  gender    Gender    @default(preferNotToSay)
   createdAt DateTime  @default(now()) @map("created_at")
   updatedAt DateTime  @updatedAt @map("updated_at")
   deletedAt DateTime? @map("deleted_at")
@@ -51,8 +62,11 @@ enum RegisterStatus {
 
 model Cheff {
   id             Int            @id @default(autoincrement())
+  name           String
   email          String
   password       String
+  gender         Gender         @default(preferNotToSay)
+  mainCuisine    String         @map("main_cuisine")
   registerStatus RegisterStatus @default(pending) @map("register_status")
   registerReason String         @map("register_reason")
   createdAt      DateTime       @default(now()) @map("created_at")
@@ -75,6 +89,11 @@ model FoodPlate {
   minServe    Int       @map("min_serve")
   maxServe    Int       @map("max_serve")
   cookTime    Float     @map("cook_time")
+  glutenFree  Boolean   @default(false) @map("gluten_free")
+  lactoseFree Boolean   @default(false) @map("lactose_free")
+  vegan       Boolean   @default(false)
+  vegetarian  Boolean   @default(false)
+  light       Boolean   @default(false)
   createdAt   DateTime  @default(now()) @map("created_at")
   updatedAt   DateTime  @updatedAt @map("updated_at")
   deletedAt   DateTime? @map("deleted_at")
@@ -96,12 +115,16 @@ enum CartStatus {
 }
 
 model Cart {
-  id         Int        @id @default(autoincrement())
-  customerId Int        @map("customer_id")
-  status     CartStatus @default(open)
-  createdAt  DateTime   @default(now()) @map("created_at")
-  updatedAt  DateTime   @updatedAt @map("updated_at")
-  deletedAt  DateTime?  @map("deleted_at")
+  id           Int        @id @default(autoincrement())
+  customerId   Int        @map("customer_id")
+  status       CartStatus @default(open)
+  locale       String
+  eventDate    DateTime   @map("event_date")
+  phoneContact String     @map("phone_contact")
+  observation  String?
+  createdAt    DateTime   @default(now()) @map("created_at")
+  updatedAt    DateTime   @updatedAt @map("updated_at")
+  deletedAt    DateTime?  @map("deleted_at")
 
   customer  Customer   @relation(fields: [customerId], references: [id])
   cartItems CartItem[]
