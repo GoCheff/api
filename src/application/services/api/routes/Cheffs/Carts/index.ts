@@ -22,4 +22,10 @@ cheffCartsRoutes.patch(
   (req, res) => cheffCartsController.approve(req, res)
 );
 
+cheffCartsRoutes.patch(
+  "/:id/refuse",
+  (req, res, next) => isAuthenticatedMiddleware.cheff.handle(req, res, next),
+  (req, res) => cheffCartsController.refuse(req, res)
+);
+
 export { cheffCartsRoutes };

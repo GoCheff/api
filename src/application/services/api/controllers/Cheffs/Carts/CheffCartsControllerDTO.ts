@@ -17,6 +17,11 @@ namespace CheffCartsControllerDTO {
       req: ExpressCustomTypes.AuthenticatedRequest,
       res: Response
     ): Promise<ExpressCustomTypes.Response>;
+
+    refuse(
+      req: ExpressCustomTypes.AuthenticatedRequest,
+      res: Response
+    ): Promise<ExpressCustomTypes.Response>;
   }
 }
 

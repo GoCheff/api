@@ -1,10 +1,10 @@
-import { ApproveCustomerCartUseCaseDTO } from "./ApproveCustomerCartUseCaseDTO";
+import { RefuseCustomerCartUseCaseDTO } from "./RefuseCustomerCartUseCaseDTO";
 import { CartsRepositoryDTO } from "../../repositories/Carts/CartsRepositoryDTO";
 import { AppError } from "../../errors/AppError";
 import { NotFoundError } from "../../errors/NotFoundError";
 
-class ApproveCustomerCartUseCase
-  implements ApproveCustomerCartUseCaseDTO.IApproveCustomerCartUseCase
+class RefuseCustomerCartUseCase
+  implements RefuseCustomerCartUseCaseDTO.IRefuseCustomerCartUseCase
 {
   constructor(
     private readonly cartsRepository: CartsRepositoryDTO.ICartsRepository
@@ -13,7 +13,7 @@ class ApproveCustomerCartUseCase
   public async execute({
     cartId
   }: // @ts-ignore
-  ApproveCustomerCartUseCaseDTO.ExecuteDTO): ApproveCustomerCartUseCaseDTO.ExecuteResponseDTO {
+  RefuseCustomerCartUseCaseDTO.ExecuteDTO): RefuseCustomerCartUseCaseDTO.ExecuteResponseDTO {
     const cart = await this.cartsRepository.findById({
       id: cartId,
       include: {
@@ -31,9 +31,9 @@ class ApproveCustomerCartUseCase
 
     return await this.cartsRepository.update({
       ...cart,
-      status: "approved"
+      status: "rejected"
     });
   }
 }
 
-export { ApproveCustomerCartUseCase };
+export { RefuseCustomerCartUseCase };
