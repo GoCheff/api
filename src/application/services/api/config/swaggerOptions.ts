@@ -5,6 +5,49 @@ const options = {
     openapi: "3.0.0",
     components: {
       schemas: {
+        Admin: {
+          type: "object",
+          properties: {
+            id: {
+              type: "number",
+              description: "User id"
+            },
+            name: {
+              type: "string",
+              description: "User name"
+            },
+            email: {
+              type: "string",
+              format: "email",
+              description: "User email"
+            },
+            password: {
+              type: "string",
+              format: "password",
+              description: "User hashed password"
+            },
+            gender: {
+              type: "string",
+              pattern: "^(female|male|other|preferNotToSay)$",
+              description: "User gender"
+            },
+            createdAt: {
+              type: "string",
+              format: "date-time",
+              description: "User creation date"
+            },
+            updatedAt: {
+              type: "string",
+              format: "date-time",
+              description: "User update date"
+            },
+            deletedAt: {
+              type: "string",
+              format: "date-time",
+              description: "User deletion date"
+            }
+          }
+        },
         AdminSignInBodySchema: {
           type: "object",
           properties: {
@@ -19,23 +62,6 @@ const options = {
               format: "password",
               example: "123456",
               description: "User password"
-            }
-          }
-        },
-        Response: {
-          type: "object",
-          properties: {
-            message: {
-              type: "string"
-            },
-            data: {
-              type: "object"
-            },
-            statusCode: {
-              type: "number"
-            },
-            status: {
-              type: "string"
             }
           }
         }

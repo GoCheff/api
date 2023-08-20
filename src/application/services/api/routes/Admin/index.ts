@@ -20,11 +20,28 @@ const adminRoutes = Router();
  *             $ref: '#/components/schemas/AdminSignInBodySchema'
  *     responses:
  *       200:
- *         description: Returns a message with the API name
+ *         description: Admin signed in
  *         content:
  *           application/json:
  *             schema:
- *               $ref: '#/components/schemas/Response'
+ *               type: object
+ *               properties:
+ *                 user:
+ *                   $ref: '#/components/schemas/Admin'
+ *                   description: Admin
+ *                 token:
+ *                   type: string
+ *                   description: JWT token
+ *       404:
+ *         description: Admin not found or password does not match
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message:
+ *                   type: string
+ *                   description: Error message
  */
 adminRoutes.post(
   "/sign-in",
