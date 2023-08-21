@@ -12,6 +12,11 @@ namespace CustomerCartsControllerDTO {
       req: ExpressCustomTypes.AuthenticatedRequest,
       res: Response
     ): Promise<ExpressCustomTypes.Response>;
+
+    delete(
+      req: ExpressCustomTypes.AuthenticatedRequest,
+      res: Response
+    ): Promise<ExpressCustomTypes.Response>;
   }
 }
 

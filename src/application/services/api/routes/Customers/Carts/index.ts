@@ -16,4 +16,10 @@ customerCartsRoutes.patch(
   (req, res) => customerCartsController.patch(req, res)
 );
 
+customerCartsRoutes.delete(
+  "/:id",
+  (req, res, next) => isAuthenticatedMiddleware.customer.handle(req, res, next),
+  (req, res) => customerCartsController.delete(req, res)
+);
+
 export { customerCartsRoutes };
