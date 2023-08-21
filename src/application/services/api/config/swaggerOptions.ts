@@ -1,7 +1,7 @@
 import swaggerJSDoc from "swagger-jsdoc";
 
 const options = {
-  definition: {
+  swaggerDefinition: {
     openapi: "3.0.0",
     components: {
       schemas: {
@@ -65,6 +65,26 @@ const options = {
             }
           }
         },
+        AdminCheffApproveBodySchema: {
+          type: "object",
+          properties: {
+            adminPassword: {
+              type: "string",
+              format: "password",
+              description: "Admin password"
+            }
+          }
+        },
+        AdminCheffRefuseBodySchema: {
+          type: "object",
+          properties: {
+            adminPassword: {
+              type: "string",
+              format: "password",
+              description: "Admin password"
+            }
+          }
+        },
         Cheff: {
           type: "object",
           properties: {
@@ -125,11 +145,22 @@ const options = {
             }
           }
         }
+      },
+      securitySchemes: {
+        bearerAuth: {
+          type: "http",
+          scheme: "bearer",
+          bearerFormat: "JWT"
+        }
       }
     },
     info: {
       title: "GoCheff API",
-      version: "1.0.0"
+      version: "1.0.0",
+      contact: {
+        name: "Vinícius Gugelmin",
+        email: "vinigugelmin@gmail.com"
+      }
     },
     servers: [
       {
@@ -142,8 +173,7 @@ const options = {
       }
     ]
   },
-  apis: ["./src/application/services/api/routes/**/*.ts"],
-  schemas: ["./src/schemas/**/*.ts"]
+  apis: ["./src/application/services/api/routes/**/*.ts"]
 };
 
 const swaggerOptions = swaggerJSDoc(options);
