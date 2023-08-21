@@ -64,6 +64,66 @@ const options = {
               description: "User password"
             }
           }
+        },
+        Cheff: {
+          type: "object",
+          properties: {
+            id: {
+              type: "number",
+              description: "User id"
+            },
+            name: {
+              type: "string",
+              description: "User name"
+            },
+            email: {
+              type: "string",
+              format: "email",
+              description: "User email"
+            },
+            password: {
+              type: "string",
+              format: "password",
+              description: "User hashed password"
+            },
+            gender: {
+              type: "string",
+              pattern: "^(female|male|other|preferNotToSay)$",
+              description: "User gender"
+            },
+            mainCuisine: {
+              type: "string",
+              description: "User main cuisine"
+            },
+            city: {
+              type: "string",
+              description: "User city"
+            },
+            registerStatus: {
+              type: "string",
+              pattern: "^(pending|approved|rejected)$",
+              description: "User register status"
+            },
+            registerReason: {
+              type: "string",
+              description: "User register reason"
+            },
+            createdAt: {
+              type: "string",
+              format: "date-time",
+              description: "User creation date"
+            },
+            updatedAt: {
+              type: "string",
+              format: "date-time",
+              description: "User update date"
+            },
+            deletedAt: {
+              type: "string",
+              format: "date-time",
+              description: "User deletion date"
+            }
+          }
         }
       }
     },

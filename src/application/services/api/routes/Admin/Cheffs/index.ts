@@ -6,6 +6,23 @@ import { AdminCheffsSchema } from "../../../../../../schemas/Admin";
 
 const adminCheffsRoutes = Router();
 
+/**
+ * @swagger
+ * /admin/cheffs/pending:
+ *   post:
+ *     description: Get all pending cheffs
+ *     tags:
+ *       - AdminCheff
+ *     responses:
+ *       200:
+ *         description: All pending cheffs
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: array
+ *               items:
+ *                 $ref: '#/components/schemas/Cheff'
+ */
 adminCheffsRoutes.get(
   "/pending",
   (req, res, next) => isAuthenticatedMiddleware.admin.handle(req, res, next),
