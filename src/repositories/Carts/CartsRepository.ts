@@ -18,6 +18,19 @@ class CartsRepository implements CartsRepositoryDTO.ICartsRepository {
     );
   }
 
+  public async findAllByCustomerId({
+    customerId,
+    include = {},
+    where = {}
+  }: CartsRepositoryDTO.FindAllByCustomerIdDTO): CartsRepositoryDTO.FindAllByCustomerIdResponseDTO {
+    return (
+      this.carts.findMany({
+        where: { customerId, deletedAt: null, ...where },
+        include
+      }) || null
+    );
+  }
+
   public async findByCustomerId({
     customerId,
     include = {},
