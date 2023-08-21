@@ -4,12 +4,46 @@ import { cheffCartsController } from "../../../controllers/Cheffs/Carts";
 
 const cheffCartsRoutes = Router();
 
+/**
+ * @swagger
+ * /cheffs/carts:
+ *   get:
+ *     description: Get all carts
+ *     tags:
+ *       - CheffCart
+ *     responses:
+ *       200:
+ *         description: All carts with cheff food plates
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: array
+ *               items:
+ *                 $ref: '#/components/schemas/Cart'
+ */
 cheffCartsRoutes.get(
   "/",
   (req, res, next) => isAuthenticatedMiddleware.cheff.handle(req, res, next),
   (req, res) => cheffCartsController.get(req, res)
 );
 
+/**
+ * @swagger
+ * /cheffs/carts/sent:
+ *   get:
+ *     description: Get all carts sent
+ *     tags:
+ *       - CheffCart
+ *     responses:
+ *       200:
+ *         description: All carts with cheff food plates sent
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: array
+ *               items:
+ *                 $ref: '#/components/schemas/Cart'
+ */
 cheffCartsRoutes.get(
   "/sent",
   (req, res, next) => isAuthenticatedMiddleware.cheff.handle(req, res, next),

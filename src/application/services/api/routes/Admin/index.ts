@@ -34,14 +34,6 @@ const adminRoutes = Router();
  *                   description: JWT token
  *       404:
  *         description: Admin not found or password does not match
- *         content:
- *           application/json:
- *             schema:
- *               type: object
- *               properties:
- *                 message:
- *                   type: string
- *                   description: Error message
  */
 adminRoutes.post(
   "/sign-in",

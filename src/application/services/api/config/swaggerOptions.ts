@@ -85,6 +85,57 @@ const options = {
             }
           }
         },
+        Cart: {
+          type: "object",
+          properties: {
+            id: {
+              type: "number",
+              description: "Cart id"
+            },
+            customerId: {
+              type: "number",
+              description: "Cart customer id"
+            },
+            status: {
+              type: "string",
+              pattern:
+                "^(open|sent|approved|rejected|paid|canceled|delivered)$",
+              description: "Cart status"
+            },
+            locale: {
+              type: "string",
+              description: "Cart locale"
+            },
+            eventDate: {
+              type: "string",
+              format: "date-time",
+              description: "Cart event date"
+            },
+            phoneContact: {
+              type: "string",
+              description: "Cart phone contact"
+            },
+            observation: {
+              type: "string",
+              description: "Cart observation"
+            },
+            createdAt: {
+              type: "string",
+              format: "date-time",
+              description: "Cart creation date"
+            },
+            updatedAt: {
+              type: "string",
+              format: "date-time",
+              description: "Cart update date"
+            },
+            deletedAt: {
+              type: "string",
+              format: "date-time",
+              description: "Cart deletion date"
+            }
+          }
+        },
         Cheff: {
           type: "object",
           properties: {
@@ -142,6 +193,57 @@ const options = {
               type: "string",
               format: "date-time",
               description: "User deletion date"
+            }
+          }
+        },
+        CheffRequestRegistrationBodySchema: {
+          type: "object",
+          properties: {
+            name: {
+              type: "string",
+              description: "User name"
+            },
+            email: {
+              type: "string",
+              format: "email",
+              description: "User email"
+            },
+            password: {
+              type: "string",
+              format: "password",
+              description: "User password"
+            },
+            gender: {
+              type: "string",
+              pattern: "^(female|male|other|preferNotToSay)$",
+              description: "User gender"
+            },
+            mainCuisine: {
+              type: "string",
+              description: "User main cuisine"
+            },
+            city: {
+              type: "string",
+              description: "User city"
+            },
+            registerReason: {
+              type: "string",
+              description: "User register reason"
+            }
+          }
+        },
+        CheffSignInBodySchema: {
+          type: "object",
+          properties: {
+            email: {
+              type: "string",
+              format: "email",
+              description: "User email"
+            },
+            password: {
+              type: "string",
+              format: "password",
+              description: "User password"
             }
           }
         }
