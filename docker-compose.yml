@@ -15,6 +15,20 @@ services:
       - /usr/local/gc-db-pg/data:/var/lib/postgresql/data
     networks:
       - gc-network
+  gc-api:
+    container_name: gc-api
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - ${API_PORT}:${API_PORT}
+    depends_on:
+      - gc-db
+    command: bash -c "npx prisma migrate deploy && npm run start"
+    env_file:
+      - .env
+    networks:
+      - gc-network
 
 networks:
   gc-network:
