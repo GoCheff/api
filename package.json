@@ -14,6 +14,7 @@
     "dev:seed": "npm run dev:load-envs prisma db seed",
     "dev:generate": "npm run dev:load-envs prisma generate",
     "dev:migrate": "npm run dev:load-envs prisma migrate dev",
+    "dev:build": "npm run dev:load-envs tsc",
     "dev:load-envs": "dotenv -e .env.development",
     "test": "npm run test:load-envs jest -- -- -i --passWithNoTests --coverage --verbose",
     "test:int": "npm run test -- --testPathPattern=integration",

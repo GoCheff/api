@@ -16,8 +16,10 @@ class SignInAdminUseCaseFactory
     return {
       user: {
         id: faker.datatype.number(),
+        name: faker.name.fullName(),
         email: faker.internet.email(),
         password: faker.internet.password(),
+        gender: "male",
         createdAt: faker.date.past(),
         updatedAt: faker.date.past(),
         deletedAt: null

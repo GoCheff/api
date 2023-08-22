@@ -12,8 +12,7 @@ const sshKeyPath = process.env.SSH_KEY_PATH;
 const commands = [
   `ssh -i ${sshKeyPath} ${username}@${ip} "sudo rm -r /var/www/docker/api"`,
   `ssh -i ${sshKeyPath} ${username}@${ip} "git clone git@github.com:GoCheff/api.git /var/www/docker/api"`,
-  `scp -i ${sshKeyPath} -r .env ${username}@${ip}:/var/www/docker/api`,
-  `ssh -i ${sshKeyPath} ${username}@${ip} "cd /var/www/docker/api && docker-compose up -d --build"`
+  `scp -i ${sshKeyPath} -r .env ${username}@${ip}:/var/www/docker/api`
 ];
 
 const deployCommand = commands.join(" && ");
