@@ -22,7 +22,8 @@
     "test:unit:watch": "npm run test:unit -- --watch",
     "test:generate": "npm run test:load-envs prisma generate",
     "test:migrate": "npm run test:load-envs prisma migrate dev",
-    "test:load-envs": "dotenv -e .env.test"
+    "test:load-envs": "dotenv -e .env.test",
+    "prod:deploy": "node ./scripts/deploy.js"
   },
   "dependencies": {
     "@prisma/client": "^4.16.2",
