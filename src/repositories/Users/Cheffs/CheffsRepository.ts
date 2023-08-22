@@ -48,6 +48,58 @@ class CheffsRepository implements CheffsRepositoryDTO.ICheffsRepository {
     });
   }
 
+  public async findWithMultipleFilters({
+    name,
+    mainCuisine,
+    city,
+    glutenFree,
+    lactoseFree,
+    vegan,
+    vegetarian,
+    light,
+    limit,
+    offset,
+    include = {}
+  }: CheffsRepositoryDTO.FindWithMultipleFiltersDTO): CheffsRepositoryDTO.FindWithMultipleFiltersResponseDTO {
+    return this.cheffs.findMany({
+      include,
+      where: {
+        AND: [
+          {
+            name: {
+              contains: name
+            }
+          },
+          {
+            mainCuisine: {
+              contains: mainCuisine
+            }
+          },
+          {
+            city: {
+              contains: city
+            }
+          },
+          {
+            foodPlates: {
+              some: {
+                AND: [
+                  ...(glutenFree !== undefined ? [{ glutenFree }] : []),
+                  ...(lactoseFree !== undefined ? [{ lactoseFree }] : []),
+                  ...(vegan !== undefined ? [{ vegan }] : []),
+                  ...(vegetarian !== undefined ? [{ vegetarian }] : []),
+                  ...(light !== undefined ? [{ light }] : [])
+                ]
+              }
+            }
+          }
+        ]
+      },
+      take: limit,
+      skip: offset
+    });
+  }
+
   public async create(
     data: CheffsRepositoryDTO.CreateDTO
   ): CheffsRepositoryDTO.CreateResponseDTO {

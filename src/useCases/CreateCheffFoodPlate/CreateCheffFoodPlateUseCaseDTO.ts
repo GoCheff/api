@@ -12,6 +12,11 @@ namespace CreateCheffFoodPlateUseCaseDTO {
     minServe: number;
     maxServe: number;
     cookTime: number;
+    glutenFree?: boolean;
+    lactoseFree?: boolean;
+    vegan?: boolean;
+    vegetarian?: boolean;
+    light?: boolean;
   };
 
   export type ExecuteResponseDTO = Promise<void>;

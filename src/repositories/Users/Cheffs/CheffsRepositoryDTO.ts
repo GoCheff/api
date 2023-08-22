@@ -10,6 +10,10 @@ namespace CheffsRepositoryDTO {
 
     findByStatus(data: FindByStatusDTO): FindByStatusResponseDTO;
 
+    findWithMultipleFilters(
+      data: FindWithMultipleFiltersDTO
+    ): FindWithMultipleFiltersResponseDTO;
+
     create(data: CreateDTO): CreateResponseDTO;
 
     updateStatus(data: UpdateStatusDTO): UpdateStatusResponseDTO;
@@ -34,6 +38,23 @@ namespace CheffsRepositoryDTO {
   };
 
   export type FindByStatusResponseDTO = Promise<Cheff[]>;
+
+  export type FindWithMultipleFiltersDTO = {
+    name?: string;
+    mainCuisine?: string;
+    city?: string;
+    glutenFree?: boolean;
+    lactoseFree?: boolean;
+    vegan?: boolean;
+    vegetarian?: boolean;
+    light?: boolean;
+    limit?: number;
+    offset?: number;
+  } & {
+    include?: CheffIncludeRelations;
+  };
+
+  export type FindWithMultipleFiltersResponseDTO = Promise<Cheff[]>;
 
   export type CreateDTO = UsersRepositoryDTO.CreateDTO & {
     registerReason: string;

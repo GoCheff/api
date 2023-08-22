@@ -4,6 +4,7 @@ import { CheffFoodPlatesControllerDTO } from "./CheffFoodPlatesControllerDTO";
 import { CreateCheffFoodPlateUseCaseDTO } from "../../../../../../useCases/CreateCheffFoodPlate/CreateCheffFoodPlateUseCaseDTO";
 import { responseHandler } from "../../../handlers";
 import { CheffFoodPlatesSchema } from "../../../../../../schemas/Cheffs";
+import { bool } from "joi";
 
 class CheffFoodPlatesController
   implements CheffFoodPlatesControllerDTO.ICheffFoodPlatesController
@@ -27,7 +28,12 @@ class CheffFoodPlatesController
       price: parseFloat(source.price),
       minServe: +source.minServe,
       maxServe: +source.maxServe,
-      cookTime: parseFloat(source.cookTime)
+      cookTime: parseFloat(source.cookTime),
+      glutenFree: source.glutenFree ? Boolean(source.glutenFree) : false,
+      lactoseFree: source.lactoseFree ? Boolean(source.lactoseFree) : false,
+      vegan: source.vegan ? Boolean(source.vegan) : false,
+      vegetarian: source.vegetarian ? Boolean(source.vegetarian) : false,
+      light: source.light ? Boolean(source.light) : false
     } as CheffFoodPlatesSchema.CreateDTO);
     const statusCode = 201;
 
