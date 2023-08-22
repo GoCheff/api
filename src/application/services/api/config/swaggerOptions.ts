@@ -246,6 +246,43 @@ const options = {
               description: "User password"
             }
           }
+        },
+        CheffFoodPlateCreateBodySchema: {
+          type: "object",
+          properties: {
+            cheffId: {
+              type: "number",
+              description: "Cheff id"
+            },
+            name: {
+              type: "string",
+              description: "Food plate name"
+            },
+            description: {
+              type: "string",
+              description: "Food plate description"
+            },
+            imageUrl: {
+              type: "string",
+              description: "Food plate image url"
+            },
+            price: {
+              type: "number",
+              description: "Food plate price"
+            },
+            minServe: {
+              type: "number",
+              description: "Food plate min serve"
+            },
+            maxServe: {
+              type: "number",
+              description: "Food plate max serve"
+            },
+            cookTime: {
+              type: "number",
+              description: "Food plate cook time"
+            }
+          }
         }
       },
       securitySchemes: {

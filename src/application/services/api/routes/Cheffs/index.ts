@@ -12,7 +12,7 @@ const cheffsRoutes = Router();
  * /cheffs/request-registration:
  *   post:
  *     tags:
- *       - Cheffs
+ *       - Cheff
  *     requestBody:
  *       content:
  *         application/json:
@@ -39,7 +39,7 @@ cheffsRoutes.post(
  *   post:
  *     description: Sign in as cheff
  *     tags:
- *       - Cheffs
+ *       - Cheff
  *     requestBody:
  *       content:
  *         application/json:

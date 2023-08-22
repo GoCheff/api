@@ -27,9 +27,7 @@ customersRoutes.post(
 );
 
 customersRoutes.use("/cheffs", customerCheffsRoutes);
-
 customersRoutes.use("/carts", customerCartsRoutes);
-
 customersRoutes.use("/cart-items", customerCartItemsRoutes);
 
 export { customersRoutes };

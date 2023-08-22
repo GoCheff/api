@@ -9,6 +9,8 @@ const cheffCartsRoutes = Router();
  * /cheffs/carts:
  *   get:
  *     description: Get all carts
+ *     security:
+ *       - bearerAuth:
  *     tags:
  *       - CheffCart
  *     responses:
@@ -32,6 +34,8 @@ cheffCartsRoutes.get(
  * /cheffs/carts/sent:
  *   get:
  *     description: Get all carts sent
+ *     security:
+ *       - bearerAuth:
  *     tags:
  *       - CheffCart
  *     responses:
@@ -50,12 +54,54 @@ cheffCartsRoutes.get(
   (req, res) => cheffCartsController.getAllSent(req, res)
 );
 
+/**
+ * @swagger
+ * /cheffs/carts/{id}/approve:
+ *   patch:
+ *     description: Approve a cart
+ *     security:
+ *       - bearerAuth:
+ *     tags:
+ *       - CheffCart
+ *     responses:
+ *       200:
+ *         description: Cart approved
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Cart'
+ *       404:
+ *         description: Cart not found
+ *       409:
+ *         description: Cart is not sent
+ */
 cheffCartsRoutes.patch(
   "/:id/approve",
   (req, res, next) => isAuthenticatedMiddleware.cheff.handle(req, res, next),
   (req, res) => cheffCartsController.approve(req, res)
 );
 
+/**
+ * @swagger
+ * /cheffs/carts/{id}/refuse:
+ *   patch:
+ *     description: Refuse a cart
+ *     security:
+ *       - bearerAuth:
+ *     tags:
+ *       - CheffCart
+ *     responses:
+ *       200:
+ *         description: Cart refused
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Cart'
+ *       404:
+ *         description: Cart not found
+ *       409:
+ *         description: Cart is not sent
+ */
 cheffCartsRoutes.patch(
   "/:id/refuse",
   (req, res, next) => isAuthenticatedMiddleware.cheff.handle(req, res, next),

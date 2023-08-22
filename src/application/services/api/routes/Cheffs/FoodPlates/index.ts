@@ -6,6 +6,26 @@ import { CheffFoodPlatesSchema } from "../../../../../../schemas/Cheffs";
 
 const cheffFoodPlatesRoutes = Router();
 
+/**
+ * @swagger
+ * /cheffs/food-plates:
+ *   post:
+ *     description: Create a new food plate
+ *     security:
+ *       - bearerAuth:
+ *     tags:
+ *       - CheffFoodPlate
+ *     requestBody:
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: '#/components/schemas/CheffFoodPlateCreateBodySchema'
+ *     responses:
+ *       201:
+ *         description: Food plate created
+ *       404:
+ *         description: Cheff not found
+ */
 cheffFoodPlatesRoutes.post(
   "/",
   validateSchemaMiddleware.handle({
