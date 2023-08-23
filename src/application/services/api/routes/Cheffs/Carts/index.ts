@@ -10,7 +10,7 @@ const cheffCartsRoutes = Router();
  *   get:
  *     description: Get all carts
  *     security:
- *       - bearerAuth:
+ *       - bearerAuth: []
  *     tags:
  *       - CheffCart
  *     responses:
@@ -35,7 +35,7 @@ cheffCartsRoutes.get(
  *   get:
  *     description: Get all carts sent
  *     security:
- *       - bearerAuth:
+ *       - bearerAuth: []
  *     tags:
  *       - CheffCart
  *     responses:
@@ -60,7 +60,7 @@ cheffCartsRoutes.get(
  *   patch:
  *     description: Approve a cart
  *     security:
- *       - bearerAuth:
+ *       - bearerAuth: []
  *     tags:
  *       - CheffCart
  *     responses:
@@ -87,7 +87,7 @@ cheffCartsRoutes.patch(
  *   patch:
  *     description: Refuse a cart
  *     security:
- *       - bearerAuth:
+ *       - bearerAuth: []
  *     tags:
  *       - CheffCart
  *     responses:

@@ -12,7 +12,7 @@ const adminCheffsRoutes = Router();
  *   get:
  *     description: Get all pending cheffs
  *     security:
- *       - bearerAuth:
+ *       - bearerAuth: []
  *     tags:
  *       - AdminCheff
  *     responses:
@@ -37,7 +37,7 @@ adminCheffsRoutes.get(
  *   get:
  *     description: Get all approved cheffs
  *     security:
- *       - bearerAuth:
+ *       - bearerAuth: []
  *     tags:
  *       - AdminCheff
  *     responses:
@@ -62,7 +62,7 @@ adminCheffsRoutes.get(
  *   patch:
  *     description: Approve cheff
  *     security:
- *       - bearerAuth:
+ *       - bearerAuth: []
  *     tags:
  *       - AdminCheff
  *     parameters:
@@ -100,7 +100,7 @@ adminCheffsRoutes.patch(
  *   patch:
  *     description: Refuse cheff
  *     security:
- *       - bearerAuth:
+ *       - bearerAuth: []
  *     tags:
  *       - AdminCheff
  *     parameters:

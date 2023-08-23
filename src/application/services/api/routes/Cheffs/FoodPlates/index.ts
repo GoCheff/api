@@ -12,7 +12,7 @@ const cheffFoodPlatesRoutes = Router();
  *   post:
  *     description: Create a new food plate
  *     security:
- *       - bearerAuth:
+ *       - bearerAuth: []
  *     tags:
  *       - CheffFoodPlate
  *     requestBody:

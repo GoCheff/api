@@ -5,7 +5,7 @@ import { errorHandler } from "../handlers";
 import { environment } from "../../../environment";
 import { routes } from "../routes";
 import swaggerUi from "swagger-ui-express";
-import { swaggerOptions } from "../config/swaggerOptions";
+import swaggerJson from "../config/swagger.json";
 
 const { NODE_ENV, API_PORT, DOMAIN } = environment;
 
@@ -27,7 +27,7 @@ class Server {
 
   private useRoutes(): void {
     if (NODE_ENV === "development") {
-      this.app.use("/docs", swaggerUi.serve, swaggerUi.setup(swaggerOptions));
+      this.app.use("/docs", swaggerUi.serve, swaggerUi.setup(swaggerJson));
     }
 
     this.app.use("/", routes);
