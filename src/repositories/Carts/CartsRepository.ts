@@ -97,7 +97,7 @@ class CartsRepository implements CartsRepositoryDTO.ICartsRepository {
     include = {}
   }: CartsRepositoryDTO.CreateDTO): CartsRepositoryDTO.CreateResponseDTO {
     return this.carts.create({
-      include,
+      ...(include && Object.entries(include).length && { include }),
       data: {
         customerId,
         locale,

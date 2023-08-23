@@ -12,7 +12,7 @@ class CheffsRepository implements CheffsRepositoryDTO.ICheffsRepository {
   }: CheffsRepositoryDTO.FindByIdDTO): CheffsRepositoryDTO.FindByIdResponseDTO {
     return (
       this.cheffs.findFirst({
-        include,
+        ...(include && Object.entries(include).length && { include }),
         where: {
           id,
           deletedAt: null
@@ -27,7 +27,7 @@ class CheffsRepository implements CheffsRepositoryDTO.ICheffsRepository {
   }: CheffsRepositoryDTO.FindByEmailDTO): CheffsRepositoryDTO.FindByEmailResponseDTO {
     return (
       this.cheffs.findFirst({
-        include,
+        ...(include && Object.entries(include).length && { include }),
         where: {
           email,
           deletedAt: null
@@ -41,7 +41,7 @@ class CheffsRepository implements CheffsRepositoryDTO.ICheffsRepository {
     include = {}
   }: CheffsRepositoryDTO.FindByStatusDTO): CheffsRepositoryDTO.FindByStatusResponseDTO {
     return this.cheffs.findMany({
-      include,
+      ...(include && Object.entries(include).length && { include }),
       where: {
         registerStatus
       }
@@ -62,7 +62,7 @@ class CheffsRepository implements CheffsRepositoryDTO.ICheffsRepository {
     include = {}
   }: CheffsRepositoryDTO.FindWithMultipleFiltersDTO): CheffsRepositoryDTO.FindWithMultipleFiltersResponseDTO {
     return this.cheffs.findMany({
-      include,
+      ...(include && Object.entries(include).length && { include }),
       where: {
         AND: [
           {
