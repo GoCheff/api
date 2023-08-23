@@ -18,12 +18,13 @@ const sshKeyPath = process.env.SSH_KEY_PATH;
 const dropletPath = process.env.DROPLET_PATH;
 const dockerComposeName =
   mode === "production" ? "docker-compose.yml" : "docker-compose.prod-dev.yml";
+const env = mode === "production" ? ".env" : ".env.prod-dev";
 
 const commands = [
   `ssh -i ${sshKeyPath} ${username}@${ip} "sudo rm -r ${dropletPath}"`,
   `ssh -i ${sshKeyPath} ${username}@${ip} "git clone git@github.com:GoCheff/api.git ${dropletPath}"`,
   `ssh -i ${sshKeyPath} ${username}@${ip} "cd ${dropletPath} && rm -rf docs && rm -rf .husky && rm -rf scripts"`,
-  `scp -i ${sshKeyPath} -r .env ${username}@${ip}:${dropletPath}`,
+  `scp -i ${sshKeyPath} -r ${env} ${username}@${ip}:${dropletPath}/.env`,
   `ssh -i ${sshKeyPath} ${username}@${ip} "cd ${dropletPath} && docker compose -f ${dockerComposeName} up -d --build"`,
   `ssh -i ${sshKeyPath} ${username}@${ip} "docker image prune -f"`
 ];
