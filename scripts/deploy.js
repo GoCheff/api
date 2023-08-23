@@ -1,20 +1,28 @@
 const child_process = require("child_process");
 const dotenv = require("dotenv");
 
-dotenv.config();
-
 const { execSync } = child_process;
+
+const args = process.argv.slice(2);
+const mode = args[0] || "production";
+
+dotenv.config({
+  path: mode === "production" ? ".env" : ".env.prod-dev"
+});
+
+console.log("Iniciando deploy em modo: ", mode);
 
 const username = process.env.DROPLET_USERNAME;
 const ip = process.env.DROPLET_IP;
 const sshKeyPath = process.env.SSH_KEY_PATH;
+const dropletPath = process.env.DROPLET_PATH;
 
 const commands = [
-  `ssh -i ${sshKeyPath} ${username}@${ip} "sudo rm -r /var/www/docker/api"`,
-  `ssh -i ${sshKeyPath} ${username}@${ip} "git clone git@github.com:GoCheff/api.git /var/www/docker/api"`,
-  `ssh -i ${sshKeyPath} ${username}@${ip} "cd /var/www/docker/api && rm -rf docs && rm -rf .husky && rm -rf scripts"`,
-  `scp -i ${sshKeyPath} -r .env ${username}@${ip}:/var/www/docker/api`,
-  `ssh -i ${sshKeyPath} ${username}@${ip} "cd /var/www/docker/api && docker compose up -d --build"`,
+  `ssh -i ${sshKeyPath} ${username}@${ip} "sudo rm -r ${dropletPath}"`,
+  `ssh -i ${sshKeyPath} ${username}@${ip} "git clone git@github.com:GoCheff/api.git ${dropletPath}"`,
+  `ssh -i ${sshKeyPath} ${username}@${ip} "cd ${dropletPath} && rm -rf docs && rm -rf .husky && rm -rf scripts"`,
+  `scp -i ${sshKeyPath} -r .env ${username}@${ip}:${dropletPath}`,
+  `ssh -i ${sshKeyPath} ${username}@${ip} "cd ${dropletPath} && docker compose up -d --build -f docker-compose.prod-dev.yml"`,
   `ssh -i ${sshKeyPath} ${username}@${ip} "docker image prune -f"`
 ];
 

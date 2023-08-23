@@ -3,6 +3,9 @@ import { NotFoundError } from "../../../../errors/NotFoundError";
 import { customersRoutes } from "./Customers";
 import { adminRoutes } from "./Admin";
 import { cheffsRoutes } from "./Cheffs";
+import { environment } from "../../../environment";
+
+const { NODE_ENV } = environment;
 
 const routes = Router();
 
@@ -18,7 +21,7 @@ const routes = Router();
  *         description: Returns a message with the API name
  */
 routes.get("/", (req, res) => {
-  res.send("GoCheff API");
+  res.send(`GoCheff API - ${NODE_ENV}`);
 });
 
 routes.use("/admin", adminRoutes);

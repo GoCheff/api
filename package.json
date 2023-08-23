@@ -24,7 +24,8 @@
     "test:generate": "npm run test:load-envs prisma generate",
     "test:migrate": "npm run test:load-envs prisma migrate dev",
     "test:load-envs": "dotenv -e .env.test",
-    "prod:deploy": "node ./scripts/deploy.js"
+    "prod:deploy": "node ./scripts/deploy.js",
+    "prod-dev:deploy": "node ./scripts/deploy.js dev"
   },
   "dependencies": {
     "@prisma/client": "^4.16.2",
