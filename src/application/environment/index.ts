@@ -12,7 +12,8 @@ const environment = {
   JWT_SECRET_ADMIN: process.env.JWT_SECRET_ADMIN,
   JWT_SECRET_CHEF: process.env.JWT_SECRET_CHEF,
   JWT_SECRET_CUSTOMER: process.env.JWT_SECRET_CUSTOMER,
-  CRYPT_SALT: +process.env.CRYPT_SALT
+  CRYPT_SALT: +process.env.CRYPT_SALT,
+  BUILD: process.env.BUILD || null
 };
 
 if (Object.values(environment).includes(undefined)) {

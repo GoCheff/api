@@ -1,4 +1,7 @@
 import swaggerJSDoc from "swagger-jsdoc";
+import { environment } from "../../../environment";
+
+const { BUILD } = environment;
 
 const options = {
   swaggerDefinition: {
@@ -312,7 +315,7 @@ const options = {
       }
     ]
   },
-  apis: ["./src/application/services/api/routes/**/*.ts"]
+  apis: [BUILD ? "./**/*.js" : "./**/*.ts"]
 };
 
 const swaggerOptions = swaggerJSDoc(options);
