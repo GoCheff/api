@@ -320,9 +320,7 @@
             "bearerAuth": []
           }
         ],
-        "tags": [
-          "AdminCheff"
-        ],
+        "tags": ["AdminCheff"],
         "responses": {
           "200": {
             "description": "All pending cheffs",
@@ -348,9 +346,7 @@
             "bearerAuth": []
           }
         ],
-        "tags": [
-          "AdminCheff"
-        ],
+        "tags": ["AdminCheff"],
         "responses": {
           "200": {
             "description": "All approved cheffs",
@@ -376,9 +372,7 @@
             "bearerAuth": []
           }
         ],
-        "tags": [
-          "AdminCheff"
-        ],
+        "tags": ["AdminCheff"],
         "parameters": [
           {
             "id": null,
@@ -418,9 +412,7 @@
             "bearerAuth": []
           }
         ],
-        "tags": [
-          "AdminCheff"
-        ],
+        "tags": ["AdminCheff"],
         "parameters": [
           {
             "id": null,
@@ -455,9 +447,7 @@
     "/admin/sign-in": {
       "post": {
         "description": "Sign in as admin",
-        "tags": [
-          "Admin"
-        ],
+        "tags": ["Admin"],
         "requestBody": {
           "content": {
             "application/json": {
@@ -502,9 +492,7 @@
             "bearerAuth": []
           }
         ],
-        "tags": [
-          "CheffCart"
-        ],
+        "tags": ["CheffCart"],
         "responses": {
           "200": {
             "description": "All carts with cheff food plates",
@@ -530,9 +518,7 @@
             "bearerAuth": []
           }
         ],
-        "tags": [
-          "CheffCart"
-        ],
+        "tags": ["CheffCart"],
         "responses": {
           "200": {
             "description": "All carts with cheff food plates sent",
@@ -558,9 +544,7 @@
             "bearerAuth": []
           }
         ],
-        "tags": [
-          "CheffCart"
-        ],
+        "tags": ["CheffCart"],
         "responses": {
           "200": {
             "description": "Cart approved",
@@ -589,9 +573,7 @@
             "bearerAuth": []
           }
         ],
-        "tags": [
-          "CheffCart"
-        ],
+        "tags": ["CheffCart"],
         "responses": {
           "200": {
             "description": "Cart refused",
@@ -620,9 +602,7 @@
             "bearerAuth": []
           }
         ],
-        "tags": [
-          "CheffFoodPlate"
-        ],
+        "tags": ["CheffFoodPlate"],
         "requestBody": {
           "content": {
             "application/json": {
@@ -644,9 +624,7 @@
     },
     "/cheffs/request-registration": {
       "post": {
-        "tags": [
-          "Cheff"
-        ],
+        "tags": ["Cheff"],
         "requestBody": {
           "content": {
             "application/json": {
@@ -669,9 +647,7 @@
     "/cheffs/sign-in": {
       "post": {
         "description": "Sign in as cheff",
-        "tags": [
-          "Cheff"
-        ],
+        "tags": ["Cheff"],
         "requestBody": {
           "content": {
             "application/json": {
@@ -694,9 +670,7 @@
     "/": {
       "get": {
         "description": "GoCheff API",
-        "tags": [
-          "Config"
-        ],
+        "tags": ["Config"],
         "responses": {
           "200": {
             "description": "Returns a message with the API name"

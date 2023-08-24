@@ -4,6 +4,7 @@ import { CustomerCartItemsControllerDTO } from "./CustomerCartItemsControllerDTO
 import { AddCheffFoodPlateToCartUseCaseDTO } from "../../../../../../useCases/AddCheffFoodPlateToCart/AddCheffFoodPlateToCartUseCaseDTO";
 import { responseHandler } from "../../../handlers";
 import { CustomerCartItemsSchema } from "../../../../../../schemas/Customers";
+import { UPDATED_CART } from "../../../../../../data/texts";
 
 class CustomerCartItemsController
   implements CustomerCartItemsControllerDTO.ICustomerCartItemsController
@@ -27,7 +28,7 @@ class CustomerCartItemsController
       quantity: +req.body.quantity
     };
 
-    const message = "Cart updated successfully!";
+    const message = UPDATED_CART;
     const data = await this.addCheffFoodPlateToCartUseCase.execute(
       source as CustomerCartItemsSchema.UpdateOrCreateDTO
     );

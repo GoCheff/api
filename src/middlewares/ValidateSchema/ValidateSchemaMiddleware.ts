@@ -2,6 +2,7 @@ import { NextFunction, Request, Response } from "express";
 import { responseHandler } from "../../application/services/api/handlers";
 import { ValidateSchemaMiddlewareDTO } from "./ValidateSchemaMiddlewareDTO";
 import { AppError } from "../../errors/AppError";
+import { VALIDATION_FAILED } from "../../data/texts";
 
 class ValidateSchemaMiddleware
   implements ValidateSchemaMiddlewareDTO.IValidateSchemaMiddleware
@@ -27,7 +28,7 @@ class ValidateSchemaMiddleware
         };
       });
 
-      const _error = new AppError("Validation failed");
+      const _error = new AppError(VALIDATION_FAILED);
 
       return res.status(_error.statusCode).json(
         responseHandler({

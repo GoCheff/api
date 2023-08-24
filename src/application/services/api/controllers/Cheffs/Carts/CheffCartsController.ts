@@ -6,6 +6,12 @@ import { GetAllSentCartsFromCheffUseCaseDTO } from "../../../../../../useCases/G
 import { ApproveCustomerCartUseCaseDTO } from "../../../../../../useCases/ApproveCustomerCart/ApproveCustomerCartUseCaseDTO";
 import { GetAllCartsFromCheffUseCaseDTO } from "../../../../../../useCases/GetAllCartsFromCheff/GetAllCartsFromCheffUseCaseDTO";
 import { RefuseCustomerCartUseCaseDTO } from "../../../../../../useCases/RefuseCustomerCart/RefuseCustomerCartUseCaseDTO";
+import {
+  APPROVED_CART,
+  CART_REFUSED,
+  CARTS_FETCHED,
+  SENT_CARTS_FETCHED
+} from "../../../../../../data/texts";
 
 class CheffCartsController
   implements CheffCartsControllerDTO.ICheffCartsController
@@ -23,7 +29,7 @@ class CheffCartsController
   ): Promise<ExpressCustomTypes.Response> {
     const { id } = req.user;
 
-    const message = "Sent carts retrieved successfully";
+    const message = CARTS_FETCHED;
     const data = await this.getAllCartsFromCheffUseCase.execute({
       cheffId: id
     });
@@ -40,7 +46,7 @@ class CheffCartsController
   ): Promise<ExpressCustomTypes.Response> {
     const { id } = req.user;
 
-    const message = "Sent carts retrieved successfully";
+    const message = SENT_CARTS_FETCHED;
     const data = await this.getAllSentCartsFromCheffUseCase.execute({
       cheffId: id
     });
@@ -57,7 +63,7 @@ class CheffCartsController
   ): Promise<ExpressCustomTypes.Response> {
     const { id: cartId } = req.params;
 
-    const message = "Cart approved successfully";
+    const message = APPROVED_CART;
     const data = await this.approveCustomerCartUseCase.execute({
       cartId: +cartId
     });
@@ -74,7 +80,7 @@ class CheffCartsController
   ): Promise<ExpressCustomTypes.Response> {
     const { id: cartId } = req.params;
 
-    const message = "Cart refused successfully";
+    const message = CART_REFUSED;
     const data = await this.refuseCustomerCartUseCase.execute({
       cartId: +cartId
     });

@@ -4,6 +4,7 @@ import { responseHandler } from "../../handlers";
 import { SignInAdminUseCaseDTO } from "../../../../../useCases/SignInAdmin/SignInAdminUseCaseDTO";
 import { AdminControllerDTO } from "./AdminControllerDTO";
 import { AdminSchema } from "../../../../../schemas/Admin";
+import { ADMIN_SIGNED_IN } from "../../../../../data/texts";
 
 class AdminController implements AdminControllerDTO.IAdminController {
   constructor(
@@ -16,7 +17,7 @@ class AdminController implements AdminControllerDTO.IAdminController {
   ): Promise<ExpressCustomTypes.Response> {
     const source = req.body;
 
-    const message = "Admin signed in successfully";
+    const message = ADMIN_SIGNED_IN;
     const data = await this.signInAdminUseCase.execute({
       email: source.email,
       password: source.password

@@ -5,6 +5,10 @@ import { CheffsSchema } from "../../../../../schemas/Cheffs";
 import { CheffsControllerDTO } from "./CheffsControllerDTO";
 import { SignInCheffUseCaseDTO } from "../../../../../useCases/SignInCheff/SignInCheffUseCaseDTO";
 import { RequestRegistrationForCheffUseCaseDTO } from "../../../../../useCases/RequestRegistrationForCheff/RequestRegistrationForCheffUseCaseDTO";
+import {
+  CHEFF_REQUEST_REGISTRATION,
+  CHEFF_SIGNED_IN
+} from "../../../../../data/texts";
 
 class CheffsController implements CheffsControllerDTO.ICheffsController {
   constructor(
@@ -18,7 +22,7 @@ class CheffsController implements CheffsControllerDTO.ICheffsController {
   ): Promise<ExpressCustomTypes.Response> {
     const source = req.body;
 
-    const message = "Cheff registration requested successfully";
+    const message = CHEFF_REQUEST_REGISTRATION;
     await this.requestRegistrationCheffUseCase.execute({
       name: source.name,
       email: source.email,
@@ -44,7 +48,7 @@ class CheffsController implements CheffsControllerDTO.ICheffsController {
   ): Promise<ExpressCustomTypes.Response> {
     const source = req.body;
 
-    const message = "Cheff signed in successfully";
+    const message = CHEFF_SIGNED_IN;
     const data = await this.signInCheffUseCase.execute({
       email: source.email,
       password: source.password

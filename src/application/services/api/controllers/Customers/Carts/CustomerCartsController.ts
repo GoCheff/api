@@ -5,6 +5,11 @@ import { SendCartToCheffUseCaseDTO } from "../../../../../../useCases/SendCartTo
 import { responseHandler } from "../../../handlers";
 import { GetAllCartsFromCustomerUseCaseDTO } from "../../../../../../useCases/GetAllCartsFromCustomer/GetAllCartsFromCustomerUseCaseDTO";
 import { CancelCartToCheffUseCaseDTO } from "../../../../../../useCases/CancelCartToCheff/CancelCartToCheffUseCaseDTO";
+import {
+  CANCLED_CART,
+  CUSTOMER_CARTS_FETCHED,
+  SENT_CART_TO_CHEFF
+} from "../../../../../../data/texts";
 
 class CustomerCartsController
   implements CustomerCartsControllerDTO.ICustomerCartsController
@@ -21,7 +26,7 @@ class CustomerCartsController
   ): Promise<ExpressCustomTypes.Response> {
     const { id: customerId } = req.user;
 
-    const message = "Carts found";
+    const message = CUSTOMER_CARTS_FETCHED;
     const data = await this.getAllCartsFromCustomerUseCase.execute({
       customerId
     });
@@ -42,7 +47,7 @@ class CustomerCartsController
   ): Promise<ExpressCustomTypes.Response> {
     const { id: cartId } = req.params;
 
-    const message = "Cart sent to cheff";
+    const message = SENT_CART_TO_CHEFF;
     const data = await this.sendCartToCheffUseCase.execute({ cartId: +cartId });
     const statusCode = 200;
 
@@ -61,7 +66,7 @@ class CustomerCartsController
   ): Promise<ExpressCustomTypes.Response> {
     const { id: cartId } = req.params;
 
-    const message = "Cart canceled";
+    const message = CANCLED_CART;
     const data = await this.cancelCartToCheffUseCase.execute({
       cartId: +cartId
     });

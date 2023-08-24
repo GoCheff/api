@@ -5,6 +5,7 @@ import { CreateCustomerUseCaseDTO } from "../../../../../useCases/CreateCustomer
 import { SignInCustomerUseCaseDTO } from "../../../../../useCases/SignInCustomer/SignInCustomerUseCaseDTO";
 import { responseHandler } from "../../handlers";
 import { CustomersSchema } from "../../../../../schemas/Customers";
+import { CUSTOMER_SIGN_IN, CUSTOMER_SIGN_UP } from "../../../../../data/texts";
 
 class CustomersController
   implements CustomersControllerDTO.ICustomersController
@@ -20,7 +21,7 @@ class CustomersController
   ): Promise<ExpressCustomTypes.Response> {
     const source = req.body;
 
-    const message = "Customer created successfully";
+    const message = CUSTOMER_SIGN_UP;
     const data = await this.createCustomerUseCase.execute({
       name: source.name,
       email: source.email,
@@ -44,7 +45,7 @@ class CustomersController
   ): Promise<ExpressCustomTypes.Response> {
     const source = req.body;
 
-    const message = "Customer signed in successfully";
+    const message = CUSTOMER_SIGN_IN;
     const data = await this.signInCustomerUseCase.execute({
       email: source.email,
       password: source.password

@@ -4,7 +4,7 @@ import { CheffFoodPlatesControllerDTO } from "./CheffFoodPlatesControllerDTO";
 import { CreateCheffFoodPlateUseCaseDTO } from "../../../../../../useCases/CreateCheffFoodPlate/CreateCheffFoodPlateUseCaseDTO";
 import { responseHandler } from "../../../handlers";
 import { CheffFoodPlatesSchema } from "../../../../../../schemas/Cheffs";
-import { bool } from "joi";
+import { CREATED_FOOD_PLATE } from "../../../../../../data/texts";
 
 class CheffFoodPlatesController
   implements CheffFoodPlatesControllerDTO.ICheffFoodPlatesController
@@ -19,7 +19,7 @@ class CheffFoodPlatesController
   ): Promise<ExpressCustomTypes.Response> {
     const source = req.body;
 
-    const message = "Food plate created successfully!";
+    const message = CREATED_FOOD_PLATE;
     await this.createCheffFoodPlateUseCase.execute({
       cheffId: req.user.id,
       name: source.name,

@@ -5,6 +5,7 @@ import { GetCheffUseCaseDTO } from "../../../../../../useCases/GetCheff/GetCheff
 import { responseHandler } from "../../../handlers";
 import { CustomerCheffsSchema } from "../../../../../../schemas/Customers/Cheffs";
 import { GetAllCheffsUseCaseDTO } from "../../../../../../useCases/GetAllCheffs/GetAllCheffsUseCaseDTO";
+import { CHEFF_FETCHED, CHEFFS_FETCHED } from "../../../../../../data/texts";
 
 class CustomerCheffsController
   implements CustomerCheffsControllerDTO.ICustomerCheffsController
@@ -20,7 +21,7 @@ class CustomerCheffsController
   ): Promise<ExpressCustomTypes.Response> {
     const source = req.query;
 
-    const message = "Cheffs retrieved successfully!";
+    const message = CHEFFS_FETCHED;
     const data = await this.getAllCheffsUseCase.execute({
       name: source.name || "",
       mainCuisine: source.mainCuisine || "",
@@ -50,7 +51,7 @@ class CustomerCheffsController
   ): Promise<ExpressCustomTypes.Response> {
     const { id: cheffId } = req.params;
 
-    const message = "Cheff retrieved successfully!";
+    const message = CHEFF_FETCHED;
     const data = await this.getCheffUseCase.execute({ cheffId: +cheffId });
     const statusCode = 200;
 

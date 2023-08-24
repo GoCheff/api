@@ -1,0 +1,24 @@
+export const ADMIN_SIGNED_IN = "Admin logado com sucesso!";
+export const APPROVED_CHEFFS_FETCHED = "Cheffs aprovados listados com sucesso!";
+export const PENDING_CHEFFS_FETCHED = "Cheffs pendentes listados com sucesso!";
+export const CHEFF_APPROVED = "Cheff aprovado com sucesso!";
+export const CHEFF_REFUSED = "Cheff recusado com sucesso!";
+export const CHEFF_REQUEST_REGISTRATION =
+  "Solicitação de cadastro de cheff enviada com sucesso!";
+export const CHEFF_SIGNED_IN = "Cheff logado com sucesso!";
+export const SENT_CARTS_FETCHED = "Carrinhos enviados listados com sucesso!";
+export const CARTS_FETCHED = "Carrinhos listados com sucesso!";
+export const APPROVED_CART = "Carrinho aprovado com sucesso!";
+export const CART_REFUSED = "Carrinho recusado com sucesso!";
+export const CREATED_FOOD_PLATE = "Prato criado com sucesso!";
+export const CUSTOMER_SIGN_UP = "Cliente cadastrado com sucesso!";
+export const CUSTOMER_SIGN_IN = "Cliente logado com sucesso!";
+export const UPDATED_CART = "Carrinho atualizado com sucesso!";
+export const CUSTOMER_CARTS_FETCHED = "Carrinhos listados com sucesso!";
+export const SENT_CART_TO_CHEFF = "Carrinho enviado para o cheff com sucesso!";
+export const CANCLED_CART = "Carrinho cancelado com sucesso!";
+export const CHEFFS_FETCHED = "Cheffs listados com sucesso!";
+export const CHEFF_FETCHED = "Cheff listado com sucesso!";
+export const UNAUTHORIZED = "Não autorizado";
+export const VALIDATION_FAILED = "Falha na validação";
+export const UNPROCESSABLE_ENTITY = "Falha no processamento da entidade";

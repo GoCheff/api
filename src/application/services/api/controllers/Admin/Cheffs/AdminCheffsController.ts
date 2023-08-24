@@ -7,6 +7,12 @@ import { ConfirmRegistrationForCheffUseCaseDTO } from "../../../../../../useCase
 import { AdminCheffsSchema } from "../../../../../../schemas/Admin";
 import { RefuseRegistrationForCheffUseCaseDTO } from "../../../../../../useCases/RefuseResgistrationForCheff/RefuseRegistrationForCheffUseCaseDTO";
 import { GetAllApprovedCheffsUseCaseDTO } from "../../../../../../useCases/GetAllApprovedCheffs/GetAllApprovedCheffsUseCaseDTO";
+import {
+  APPROVED_CHEFFS_FETCHED,
+  CHEFF_APPROVED,
+  CHEFF_REFUSED,
+  PENDING_CHEFFS_FETCHED
+} from "../../../../../../data/texts";
 
 class AdminCheffsController
   implements AdminCheffsControllerDTO.IAdminCheffsController
@@ -22,7 +28,7 @@ class AdminCheffsController
     req: ExpressCustomTypes.AuthenticatedRequest,
     res: Response
   ): Promise<ExpressCustomTypes.Response> {
-    const message = "All pending cheffs fetched successfully";
+    const message = PENDING_CHEFFS_FETCHED;
     const data = await this.getAllPendingCheffs.execute();
     const statusCode = 200;
 
@@ -35,7 +41,7 @@ class AdminCheffsController
     req: ExpressCustomTypes.AuthenticatedRequest,
     res: Response
   ): Promise<ExpressCustomTypes.Response> {
-    const message = "All approved cheffs fetched successfully";
+    const message = APPROVED_CHEFFS_FETCHED;
     const data = await this.getAllApprovedCheffs.execute();
     const statusCode = 200;
 
@@ -52,7 +58,7 @@ class AdminCheffsController
     const { email: adminEmail } = req.user;
     const { password: adminPassword } = req.body;
 
-    const message = "Cheff approved successfully";
+    const message = CHEFF_APPROVED;
     await this.confirmRegistrationForCheff.execute({
       id: +id,
       adminEmail,
@@ -73,7 +79,7 @@ class AdminCheffsController
     const { email: adminEmail } = req.user;
     const { password: adminPassword } = req.body;
 
-    const message = "Cheff refused successfully";
+    const message = CHEFF_REFUSED;
     await this.refuseRegistrationForCheff.execute({
       id: +id,
       adminEmail,
