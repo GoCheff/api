@@ -6,6 +6,11 @@ namespace CustomersControllerDTO {
     signUp(req: Request, res: Response): Promise<ExpressCustomTypes.Response>;
 
     signIn(req: Request, res: Response): Promise<ExpressCustomTypes.Response>;
+
+    auth(
+      req: ExpressCustomTypes.AuthenticatedRequest,
+      res: Response
+    ): Promise<ExpressCustomTypes.Response>;
   }
 }
 

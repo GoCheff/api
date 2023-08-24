@@ -4,6 +4,7 @@ import { CheffsSchema } from "../../../../../schemas/Cheffs";
 import { cheffsController } from "../../controllers/Cheffs";
 import { cheffFoodPlatesRoutes } from "./FoodPlates";
 import { cheffCartsRoutes } from "./Carts";
+import { isAuthenticatedMiddleware } from "../../../../../middlewares/IsAuthenticated";
 
 const cheffsRoutes = Router();
 
@@ -58,6 +59,12 @@ cheffsRoutes.post(
     schema: CheffsSchema.SignInBodySchema
   }),
   (req, res) => cheffsController.signIn(req, res)
+);
+
+cheffsRoutes.get(
+  "/auth",
+  (req, res, next) => isAuthenticatedMiddleware.cheff.handle(req, res, next),
+  (req, res) => cheffsController.auth(req, res)
 );
 
 cheffsRoutes.use("/carts", cheffCartsRoutes);

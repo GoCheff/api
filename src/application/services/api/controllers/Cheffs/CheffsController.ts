@@ -6,6 +6,7 @@ import { CheffsControllerDTO } from "./CheffsControllerDTO";
 import { SignInCheffUseCaseDTO } from "../../../../../useCases/SignInCheff/SignInCheffUseCaseDTO";
 import { RequestRegistrationForCheffUseCaseDTO } from "../../../../../useCases/RequestRegistrationForCheff/RequestRegistrationForCheffUseCaseDTO";
 import {
+  ADMIN_SIGNED_IN,
   CHEFF_REQUEST_REGISTRATION,
   CHEFF_SIGNED_IN
 } from "../../../../../data/texts";
@@ -53,6 +54,25 @@ class CheffsController implements CheffsControllerDTO.ICheffsController {
       email: source.email,
       password: source.password
     } as CheffsSchema.SignInDTO);
+    const statusCode = 200;
+
+    return res.status(statusCode).json(
+      responseHandler({
+        message,
+        data,
+        statusCode
+      })
+    );
+  }
+
+  public async auth(
+    req: ExpressCustomTypes.AuthenticatedRequest,
+    res: Response
+  ): Promise<ExpressCustomTypes.Response> {
+    const source = req.user;
+
+    const message = CHEFF_SIGNED_IN;
+    const data = source;
     const statusCode = 200;
 
     return res.status(statusCode).json(

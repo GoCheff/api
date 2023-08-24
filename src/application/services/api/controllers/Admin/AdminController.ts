@@ -32,6 +32,25 @@ class AdminController implements AdminControllerDTO.IAdminController {
       })
     );
   }
+
+  public async auth(
+    req: ExpressCustomTypes.AuthenticatedRequest,
+    res: Response
+  ): Promise<ExpressCustomTypes.Response> {
+    const source = req.user;
+
+    const message = ADMIN_SIGNED_IN;
+    const data = source;
+    const statusCode = 200;
+
+    return res.status(statusCode).json(
+      responseHandler({
+        message,
+        data,
+        statusCode
+      })
+    );
+  }
 }
 
 export { AdminController };

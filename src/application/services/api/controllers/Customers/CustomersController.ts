@@ -5,7 +5,11 @@ import { CreateCustomerUseCaseDTO } from "../../../../../useCases/CreateCustomer
 import { SignInCustomerUseCaseDTO } from "../../../../../useCases/SignInCustomer/SignInCustomerUseCaseDTO";
 import { responseHandler } from "../../handlers";
 import { CustomersSchema } from "../../../../../schemas/Customers";
-import { CUSTOMER_SIGN_IN, CUSTOMER_SIGN_UP } from "../../../../../data/texts";
+import {
+  ADMIN_SIGNED_IN,
+  CUSTOMER_SIGN_IN,
+  CUSTOMER_SIGN_UP
+} from "../../../../../data/texts";
 
 class CustomersController
   implements CustomersControllerDTO.ICustomersController
@@ -50,6 +54,25 @@ class CustomersController
       email: source.email,
       password: source.password
     } as CustomersSchema.SignInDTO);
+    const statusCode = 200;
+
+    return res.status(statusCode).json(
+      responseHandler({
+        message,
+        data,
+        statusCode
+      })
+    );
+  }
+
+  public async auth(
+    req: ExpressCustomTypes.AuthenticatedRequest,
+    res: Response
+  ): Promise<ExpressCustomTypes.Response> {
+    const source = req.user;
+
+    const message = CUSTOMER_SIGN_IN;
+    const data = source;
     const statusCode = 200;
 
     return res.status(statusCode).json(

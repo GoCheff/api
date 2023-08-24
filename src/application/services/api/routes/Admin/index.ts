@@ -3,6 +3,7 @@ import { validateSchemaMiddleware } from "../../../../../middlewares";
 import { adminController } from "../../controllers/Admin";
 import { AdminSchema } from "../../../../../schemas/Admin";
 import { adminCheffsRoutes } from "./Cheffs";
+import { isAuthenticatedMiddleware } from "../../../../../middlewares/IsAuthenticated";
 
 const adminRoutes = Router();
 
@@ -42,6 +43,12 @@ adminRoutes.post(
     schema: AdminSchema.SignInBodySchema
   }),
   (req, res) => adminController.signIn(req, res)
+);
+
+adminRoutes.get(
+  "/auth",
+  (req, res, next) => isAuthenticatedMiddleware.admin.handle(req, res, next),
+  (req, res) => adminController.auth(req, res)
 );
 
 adminRoutes.use("/cheffs", adminCheffsRoutes);

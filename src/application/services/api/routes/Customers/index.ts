@@ -5,6 +5,7 @@ import { customersController } from "../../controllers/Customers";
 import { customerCheffsRoutes } from "./Cheffs";
 import { customerCartItemsRoutes } from "./CartItems";
 import { customerCartsRoutes } from "./Carts";
+import { isAuthenticatedMiddleware } from "../../../../../middlewares/IsAuthenticated";
 
 const customersRoutes = Router();
 
@@ -24,6 +25,12 @@ customersRoutes.post(
     schema: CustomersSchema.SignInBodySchema
   }),
   (req, res) => customersController.signIn(req, res)
+);
+
+customersRoutes.get(
+  "/auth",
+  (req, res, next) => isAuthenticatedMiddleware.customer.handle(req, res, next),
+  (req, res) => customersController.auth(req, res)
 );
 
 customersRoutes.use("/cheffs", customerCheffsRoutes);
