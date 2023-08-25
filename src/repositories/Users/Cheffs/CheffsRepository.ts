@@ -112,12 +112,15 @@ class CheffsRepository implements CheffsRepositoryDTO.ICheffsRepository {
     id,
     registerStatus
   }: CheffsRepositoryDTO.UpdateStatusDTO): CheffsRepositoryDTO.UpdateStatusResponseDTO {
+    const deletedAt = registerStatus === "rejected" ? new Date() : null;
+
     this.cheffs.update({
       where: {
         id
       },
       data: {
-        registerStatus
+        registerStatus,
+        deletedAt
       }
     });
   }
