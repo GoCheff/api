@@ -1,12 +1,7 @@
 import { ConfirmRegistrationForCheffUseCase } from "./ConfirmRegistrationForCheffUseCase";
-import { adminRepository, cheffsRepository } from "../../repositories";
-import { cryptProvider } from "../../providers";
+import { cheffsRepository } from "../../repositories";
 
 const confirmRegistrationForCheffUseCase =
-  new ConfirmRegistrationForCheffUseCase(
-    adminRepository,
-    cheffsRepository,
-    cryptProvider
-  );
+  new ConfirmRegistrationForCheffUseCase(cheffsRepository);
 
 export { confirmRegistrationForCheffUseCase };

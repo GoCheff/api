@@ -1,11 +1,8 @@
 import { RefuseRegistrationForCheffUseCase } from "./RefuseRegistrationForCheffUseCase";
-import { adminRepository, cheffsRepository } from "../../repositories";
-import { cryptProvider } from "../../providers";
+import { cheffsRepository } from "../../repositories";
 
 const refuseRegistrationForCheffUseCase = new RefuseRegistrationForCheffUseCase(
-  adminRepository,
-  cheffsRepository,
-  cryptProvider
+  cheffsRepository
 );
 
 export { refuseRegistrationForCheffUseCase };

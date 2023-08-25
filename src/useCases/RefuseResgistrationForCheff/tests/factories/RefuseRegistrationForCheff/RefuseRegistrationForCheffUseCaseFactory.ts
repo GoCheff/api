@@ -8,9 +8,7 @@ class RefuseRegistrationForCheffUseCaseFactory
 {
   public getExecuteData(): RefuseRegistrationForCheffUseCaseDTO.ExecuteDTO {
     return {
-      id: faker.datatype.number(),
-      adminEmail: faker.internet.email(),
-      adminPassword: faker.internet.password()
+      id: faker.datatype.number()
     };
   }
 }

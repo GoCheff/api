@@ -1,8 +1,6 @@
 import { RefuseRegistrationForCheffUseCaseDTO } from "./RefuseRegistrationForCheffUseCaseDTO";
-import { AdminRepositoryDTO } from "../../repositories/Users/Admin/AdminRepositoryDTO";
 import { CheffsRepositoryDTO } from "../../repositories/Users/Cheffs/CheffsRepositoryDTO";
 import { NotFoundError } from "../../errors/NotFoundError";
-import { CryptProviderDTO } from "../../providers";
 import { UnprocessableEntityError } from "../../errors/UnprocessableEntityError";
 
 class RefuseRegistrationForCheffUseCase
@@ -10,33 +8,12 @@ class RefuseRegistrationForCheffUseCase
     RefuseRegistrationForCheffUseCaseDTO.IRefuseRegistrationForCheffUseCase
 {
   constructor(
-    private readonly adminRepository: AdminRepositoryDTO.IAdminRepository,
-    private readonly cheffsRepository: CheffsRepositoryDTO.ICheffsRepository,
-    private readonly cryptProvider: CryptProviderDTO.ICryptProvider
+    private readonly cheffsRepository: CheffsRepositoryDTO.ICheffsRepository
   ) {}
 
   public async execute({
-    id,
-    adminEmail,
-    adminPassword
+    id
   }: RefuseRegistrationForCheffUseCaseDTO.ExecuteDTO): RefuseRegistrationForCheffUseCaseDTO.ExecuteResponseDTO {
-    const admin = await this.adminRepository.findByEmail({
-      email: adminEmail
-    });
-
-    if (!admin) {
-      throw new NotFoundError("Admin not found");
-    }
-
-    const passwordMatch = await this.cryptProvider.compare({
-      data: adminPassword,
-      encrypted: admin.password
-    });
-
-    if (!passwordMatch) {
-      throw new UnprocessableEntityError("Invalid password");
-    }
-
     const cheffExists = await this.cheffsRepository.findById({ id });
 
     if (!cheffExists) {

@@ -55,14 +55,10 @@ class AdminCheffsController
     res: Response
   ): Promise<ExpressCustomTypes.Response> {
     const { id } = req.params;
-    const { email: adminEmail } = req.user;
-    const { password: adminPassword } = req.body;
 
     const message = CHEFF_APPROVED;
     await this.confirmRegistrationForCheff.execute({
-      id: +id,
-      adminEmail,
-      adminPassword
+      id: +id
     } as AdminCheffsSchema.ApproveDTO);
     const statusCode = 200;
 
@@ -76,14 +72,10 @@ class AdminCheffsController
     res: Response
   ): Promise<ExpressCustomTypes.Response> {
     const { id } = req.params;
-    const { email: adminEmail } = req.user;
-    const { password: adminPassword } = req.body;
 
     const message = CHEFF_REFUSED;
     await this.refuseRegistrationForCheff.execute({
-      id: +id,
-      adminEmail,
-      adminPassword
+      id: +id
     } as AdminCheffsSchema.RefuseDTO);
     const statusCode = 200;
 
