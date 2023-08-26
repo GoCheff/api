@@ -3,6 +3,7 @@ import { AdminRepositoryDTO } from "../../repositories/Users/Admin/AdminReposito
 import { CryptProviderDTO } from "../../providers";
 import { TokenProviderDTO } from "../../providers";
 import { NotFoundError } from "../../errors/NotFoundError";
+import { ADMIN_NOT_FOUND } from "../../data/texts";
 
 class SignInAdminUseCase implements SignInAdminUseCaseDTO.ISignInAdminUseCase {
   constructor(
@@ -18,7 +19,7 @@ class SignInAdminUseCase implements SignInAdminUseCaseDTO.ISignInAdminUseCase {
     const admin = await this.adminRepository.findByEmail({ email });
 
     if (!admin) {
-      throw new NotFoundError("Admin not found");
+      throw new NotFoundError(ADMIN_NOT_FOUND);
     }
 
     const passwordMatch = await this.cryptProvider.compare({
@@ -27,7 +28,7 @@ class SignInAdminUseCase implements SignInAdminUseCaseDTO.ISignInAdminUseCase {
     });
 
     if (!passwordMatch) {
-      throw new NotFoundError("Admin not found");
+      throw new NotFoundError(ADMIN_NOT_FOUND);
     }
 
     const token = await this.tokenProvider.generate({

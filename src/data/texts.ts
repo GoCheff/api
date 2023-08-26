@@ -22,3 +22,4 @@ export const CHEFF_FETCHED = "Cheff listado com sucesso!";
 export const UNAUTHORIZED = "Não autorizado";
 export const VALIDATION_FAILED = "Falha na validação";
 export const UNPROCESSABLE_ENTITY = "Falha no processamento da entidade";
+export const ADMIN_NOT_FOUND = "Admin não encontrado";

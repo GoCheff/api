@@ -71,11 +71,6 @@ adminCheffsRoutes.get(
  *         in: path
  *         required: true
  *         type: number
- *     requestBody:
- *       content:
- *         application/json:
- *           schema:
- *             $ref: '#/components/schemas/AdminCheffApproveBodySchema'
  *     responses:
  *       200:
  *         description: Cheff approved
