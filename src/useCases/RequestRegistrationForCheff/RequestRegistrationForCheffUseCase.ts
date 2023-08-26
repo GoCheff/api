@@ -1,13 +1,15 @@
 import { RequestRegistrationForCheffUseCaseDTO } from "./RequestRegistrationForCheffUseCaseDTO";
 import { CheffsRepositoryDTO } from "../../repositories/Users/Cheffs/CheffsRepositoryDTO";
 import { UnprocessableEntityError } from "../../errors/UnprocessableEntityError";
+import { CryptProviderDTO } from "../../providers";
 
 class RequestRegistrationForCheffUseCase
   implements
     RequestRegistrationForCheffUseCaseDTO.IRequestRegistrationForCheffUseCase
 {
   constructor(
-    private readonly cheffsRepository: CheffsRepositoryDTO.ICheffsRepository
+    private readonly cheffsRepository: CheffsRepositoryDTO.ICheffsRepository,
+    private readonly cryptProvider: CryptProviderDTO.ICryptProvider
   ) {}
 
   public async execute({
@@ -27,10 +29,12 @@ class RequestRegistrationForCheffUseCase
       throw new UnprocessableEntityError("Cheff already exists");
     }
 
+    const passwordHash = await this.cryptProvider.crypt(password);
+
     await this.cheffsRepository.create({
       name,
       email,
-      password,
+      password: passwordHash,
       gender,
       mainCuisine,
       city,
