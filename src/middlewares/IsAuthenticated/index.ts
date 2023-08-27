@@ -1,5 +1,9 @@
 import { IsAuthenticatedMiddleware } from "./IsAuthenticatedMiddleware";
-import { adminRepository } from "../../repositories";
+import {
+  adminRepository,
+  cheffsRepository,
+  customersRepository
+} from "../../repositories";
 import { tokenProvider } from "../../providers";
 
 const isAuthenticatedAdminMiddleware = new IsAuthenticatedMiddleware(
@@ -8,12 +12,12 @@ const isAuthenticatedAdminMiddleware = new IsAuthenticatedMiddleware(
 );
 
 const isAuthenticatedCheffMiddleware = new IsAuthenticatedMiddleware(
-  adminRepository,
+  cheffsRepository,
   tokenProvider.cheff
 );
 
 const isAuthenticatedCustomerMiddleware = new IsAuthenticatedMiddleware(
-  adminRepository,
+  customersRepository,
   tokenProvider.customer
 );
 
