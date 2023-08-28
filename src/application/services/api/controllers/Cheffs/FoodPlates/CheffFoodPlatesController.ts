@@ -39,11 +39,12 @@ class CheffFoodPlatesController
     req: ExpressCustomTypes.AuthenticatedRequest,
     res: Response
   ): Promise<ExpressCustomTypes.Response> {
+    const { id: cheffId } = req.user;
     const source = req.body;
 
     const message = CREATED_FOOD_PLATE;
     await this.createCheffFoodPlateUseCase.execute({
-      cheffId: req.user.id,
+      cheffId,
       name: source.name,
       description: source.description,
       imageUrl: source.imageUrl,

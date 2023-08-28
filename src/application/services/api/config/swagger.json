@@ -268,10 +268,6 @@
       "CheffFoodPlateCreateBodySchema": {
         "type": "object",
         "properties": {
-          "cheffId": {
-            "type": "number",
-            "description": "Cheff id"
-          },
           "name": {
             "type": "string",
             "description": "Food plate name"

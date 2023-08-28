@@ -18,7 +18,6 @@ namespace CheffFoodPlatesSchema {
   };
 
   export const CreateBodySchema = Joi.object<CreateDTO>({
-    cheffId: Joi.number().required(),
     name: Joi.string().required(),
     description: Joi.string().required(),
     imageUrl: Joi.string().uri().required(),
