@@ -2,6 +2,10 @@ import { CancelCartToCheffUseCaseDTO } from "./CancelCartToCheffUseCaseDTO";
 import { CartsRepositoryDTO } from "../../repositories/Carts/CartsRepositoryDTO";
 import { AppError } from "../../errors/AppError";
 import { NotFoundError } from "../../errors/NotFoundError";
+import {
+  CART_NOT_AVAILABLE_TO_CANCEL,
+  CHEFF_NOT_FOUND
+} from "../../data/texts";
 
 class CancelCartToCheffUseCase
   implements CancelCartToCheffUseCaseDTO.ICancelCartToCheffUseCase
@@ -18,13 +22,13 @@ class CancelCartToCheffUseCase
     });
 
     if (!cart) {
-      throw new NotFoundError("Cart not found");
+      throw new NotFoundError(CHEFF_NOT_FOUND);
     }
 
     const availableStatus = ["open", "sent", "approved"];
 
     if (!availableStatus.includes(cart.status)) {
-      throw new AppError("Cart is not available to cancel", 409);
+      throw new AppError(CART_NOT_AVAILABLE_TO_CANCEL, 409);
     }
 
     return this.cartsRepository.update({

@@ -2,6 +2,7 @@ import { RequestRegistrationForCheffUseCaseDTO } from "./RequestRegistrationForC
 import { CheffsRepositoryDTO } from "../../repositories/Users/Cheffs/CheffsRepositoryDTO";
 import { UnprocessableEntityError } from "../../errors/UnprocessableEntityError";
 import { CryptProviderDTO } from "../../providers";
+import { CHEFF_ALREADY_EXISTS } from "../../data/texts";
 
 class RequestRegistrationForCheffUseCase
   implements
@@ -26,7 +27,7 @@ class RequestRegistrationForCheffUseCase
     });
 
     if (cheffAlreadyExists) {
-      throw new UnprocessableEntityError("Cheff already exists");
+      throw new UnprocessableEntityError(CHEFF_ALREADY_EXISTS);
     }
 
     const passwordHash = await this.cryptProvider.crypt(password);

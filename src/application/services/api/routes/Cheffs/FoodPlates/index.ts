@@ -6,6 +6,12 @@ import { CheffFoodPlatesSchema } from "../../../../../../schemas/Cheffs";
 
 const cheffFoodPlatesRoutes = Router();
 
+cheffFoodPlatesRoutes.get(
+  "/",
+  (req, res, next) => isAuthenticatedMiddleware.cheff.handle(req, res, next),
+  (req, res) => cheffFoodPlatesController.get(req, res)
+);
+
 /**
  * @swagger
  * /cheffs/food-plates:

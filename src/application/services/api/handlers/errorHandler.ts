@@ -1,6 +1,7 @@
 import { Request, Response, NextFunction } from "express";
 import { responseHandler } from "./responseHandler";
 import { AppError } from "../../../../errors/AppError";
+import { INTERNAL_SERVER_ERROR } from "../../../../data/texts";
 
 function errorHandler(
   err: AppError | Error,
@@ -18,7 +19,7 @@ function errorHandler(
   console.log(err);
   console.log("-----------------------------------------------------");
 
-  const _err = new AppError("Internal server error", 500);
+  const _err = new AppError(INTERNAL_SERVER_ERROR, 500);
 
   res.status(_err.statusCode).json(responseHandler(_err));
 }

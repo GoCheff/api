@@ -2,6 +2,7 @@ import { ApproveCustomerCartUseCaseDTO } from "./ApproveCustomerCartUseCaseDTO";
 import { CartsRepositoryDTO } from "../../repositories/Carts/CartsRepositoryDTO";
 import { AppError } from "../../errors/AppError";
 import { NotFoundError } from "../../errors/NotFoundError";
+import { CART_IS_NOT_SENT, CART_NOT_FOUND } from "../../data/texts";
 
 class ApproveCustomerCartUseCase
   implements ApproveCustomerCartUseCaseDTO.IApproveCustomerCartUseCase
@@ -22,11 +23,11 @@ class ApproveCustomerCartUseCase
     });
 
     if (!cart) {
-      throw new NotFoundError("Cart not found");
+      throw new NotFoundError(CART_NOT_FOUND);
     }
 
     if (cart.status !== "sent") {
-      throw new AppError("Cart is not sent", 409);
+      throw new AppError(CART_IS_NOT_SENT, 409);
     }
 
     return await this.cartsRepository.update({

@@ -1,6 +1,7 @@
 import { GetCheffUseCaseDTO } from "./GetCheffUseCaseDTO";
 import { CheffsRepositoryDTO } from "../../repositories/Users/Cheffs/CheffsRepositoryDTO";
 import { NotFoundError } from "../../errors/NotFoundError";
+import { CHEFF_NOT_FOUND } from "../../data/texts";
 
 class GetCheffUseCase implements GetCheffUseCaseDTO.IGetCheffUseCase {
   constructor(
@@ -18,7 +19,7 @@ class GetCheffUseCase implements GetCheffUseCaseDTO.IGetCheffUseCase {
     });
 
     if (!cheff || cheff.registerStatus !== "approved") {
-      throw new NotFoundError("Cheff not found");
+      throw new NotFoundError(CHEFF_NOT_FOUND);
     }
 
     return cheff;

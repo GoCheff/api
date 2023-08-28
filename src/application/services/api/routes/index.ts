@@ -4,6 +4,7 @@ import { customersRoutes } from "./Customers";
 import { adminRoutes } from "./Admin";
 import { cheffsRoutes } from "./Cheffs";
 import { environment } from "../../../environment";
+import { ROUTE_NOT_FOUND } from "../../../../data/texts";
 
 const { NODE_ENV } = environment;
 
@@ -29,7 +30,7 @@ routes.use("/cheffs", cheffsRoutes);
 routes.use("/customers", customersRoutes);
 
 routes.use("/*", () => {
-  throw new NotFoundError("Route not found");
+  throw new NotFoundError(ROUTE_NOT_FOUND);
 });
 
 export { routes };

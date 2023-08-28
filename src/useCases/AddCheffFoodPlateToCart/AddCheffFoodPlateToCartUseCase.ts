@@ -4,6 +4,10 @@ import { AppError } from "../../errors/AppError";
 import { FoodPlatesRepositoryDTO } from "../../repositories/FoodPlates/FoodPlatesRepositoryDTO";
 import { CartItemsRepositoryDTO } from "../../repositories/CartItems/CartItemsRepositoryDTO";
 import { NotFoundError } from "../../errors/NotFoundError";
+import {
+  FOOD_PLATE_ADD_NOT_ALLOWED_FROM_OTHER_CHEFF,
+  FOOD_PLATE_NOT_FOUND
+} from "../../data/texts";
 
 class AddCheffFoodPlateToCartUseCase
   implements AddCheffFoodPlateToCartUseCaseDTO.IAddCheffFoodPlateToCartUseCase
@@ -43,7 +47,7 @@ class AddCheffFoodPlateToCartUseCase
       cart.cartItems.some((cartItem) => cartItem.foodPlate.cheffId !== cheffId);
     // if yes, throw an error
     if (hasCartItemFromOtherCheff) {
-      throw new AppError("You can't add food plates from other cheffs");
+      throw new AppError(FOOD_PLATE_ADD_NOT_ALLOWED_FROM_OTHER_CHEFF);
     }
 
     // check if cheff-food-plate exists
@@ -53,7 +57,7 @@ class AddCheffFoodPlateToCartUseCase
     });
     // if not, throw an error
     if (!foodPlate) {
-      throw new NotFoundError("Food plate not found");
+      throw new NotFoundError(FOOD_PLATE_NOT_FOUND);
     }
 
     // if customer has no cart open, create a new cart with the cheff-food-plate

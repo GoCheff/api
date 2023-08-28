@@ -2,6 +2,7 @@ import { CreateCheffFoodPlateUseCaseDTO } from "./CreateCheffFoodPlateUseCaseDTO
 import { FoodPlatesRepositoryDTO } from "../../repositories/FoodPlates/FoodPlatesRepositoryDTO";
 import { CheffsRepositoryDTO } from "../../repositories/Users/Cheffs/CheffsRepositoryDTO";
 import { NotFoundError } from "../../errors/NotFoundError";
+import { CHEFF_NOT_FOUND } from "../../data/texts";
 
 class CreateCheffFoodPlateUseCase
   implements CreateCheffFoodPlateUseCaseDTO.ICreateCheffFoodPlateUseCase
@@ -19,7 +20,7 @@ class CreateCheffFoodPlateUseCase
     });
 
     if (!cheffExists) {
-      throw new NotFoundError("Cheff not found");
+      throw new NotFoundError(CHEFF_NOT_FOUND);
     }
 
     await this.foodPlatesRepository.create(data);

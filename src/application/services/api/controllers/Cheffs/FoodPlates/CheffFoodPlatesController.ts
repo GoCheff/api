@@ -4,14 +4,36 @@ import { CheffFoodPlatesControllerDTO } from "./CheffFoodPlatesControllerDTO";
 import { CreateCheffFoodPlateUseCaseDTO } from "../../../../../../useCases/CreateCheffFoodPlate/CreateCheffFoodPlateUseCaseDTO";
 import { responseHandler } from "../../../handlers";
 import { CheffFoodPlatesSchema } from "../../../../../../schemas/Cheffs";
-import { CREATED_FOOD_PLATE } from "../../../../../../data/texts";
+import {
+  CREATED_FOOD_PLATE,
+  FOOD_PLATES_FETCHED
+} from "../../../../../../data/texts";
+import { GetCheffUseCaseDTO } from "../../../../../../useCases/GetCheff/GetCheffUseCaseDTO";
 
 class CheffFoodPlatesController
   implements CheffFoodPlatesControllerDTO.ICheffFoodPlatesController
 {
   constructor(
+    private readonly getCheffUseCase: GetCheffUseCaseDTO.IGetCheffUseCase,
     private readonly createCheffFoodPlateUseCase: CreateCheffFoodPlateUseCaseDTO.ICreateCheffFoodPlateUseCase
   ) {}
+
+  public async get(
+    req: ExpressCustomTypes.AuthenticatedRequest,
+    res: Response
+  ): Promise<ExpressCustomTypes.Response> {
+    const { id: cheffId } = req.user;
+
+    const message = FOOD_PLATES_FETCHED;
+    const { foodPlates } = await this.getCheffUseCase.execute({
+      cheffId
+    } as GetCheffUseCaseDTO.ExecuteDTO);
+    const statusCode = 200;
+
+    return res
+      .status(statusCode)
+      .json(responseHandler({ data: foodPlates, statusCode, message }));
+  }
 
   public async create(
     req: ExpressCustomTypes.AuthenticatedRequest,

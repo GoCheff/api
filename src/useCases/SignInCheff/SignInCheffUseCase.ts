@@ -2,6 +2,7 @@ import { SignInCheffUseCaseDTO } from "./SignInCheffUseCaseDTO";
 import { CryptProviderDTO, TokenProviderDTO } from "../../providers";
 import { NotFoundError } from "../../errors/NotFoundError";
 import { CheffsRepositoryDTO } from "../../repositories/Users/Cheffs/CheffsRepositoryDTO";
+import { CHEFF_NOT_FOUND } from "../../data/texts";
 
 class SignInCheffUseCase implements SignInCheffUseCaseDTO.ISignInCheffUseCase {
   constructor(
@@ -17,7 +18,7 @@ class SignInCheffUseCase implements SignInCheffUseCaseDTO.ISignInCheffUseCase {
     const cheff = await this.cheffsRepository.findByEmail({ email });
 
     if (!cheff || cheff.registerStatus !== "approved") {
-      throw new NotFoundError("Cheff not found");
+      throw new NotFoundError(CHEFF_NOT_FOUND);
     }
 
     const passwordMatch = await this.cryptProvider.compare({
@@ -26,7 +27,7 @@ class SignInCheffUseCase implements SignInCheffUseCaseDTO.ISignInCheffUseCase {
     });
 
     if (!passwordMatch) {
-      throw new NotFoundError("Cheff not found");
+      throw new NotFoundError(CHEFF_NOT_FOUND);
     }
 
     const token = await this.tokenProvider.generate({

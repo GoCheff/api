@@ -3,6 +3,7 @@ import { CustomersRepositoryDTO } from "../../repositories/Users/Customers/Custo
 import { CryptProviderDTO } from "../../providers";
 import { TokenProviderDTO } from "../../providers";
 import { NotFoundError } from "../../errors/NotFoundError";
+import { CUSTOMER_NOT_FOUND } from "../../data/texts";
 
 class SignInCustomerUseCase
   implements SignInCustomerUseCaseDTO.ISignInCustomerUseCase
@@ -20,7 +21,7 @@ class SignInCustomerUseCase
     const customer = await this.customersRepository.findByEmail({ email });
 
     if (!customer) {
-      throw new NotFoundError("Customer not found");
+      throw new NotFoundError(CUSTOMER_NOT_FOUND);
     }
 
     const passwordMatch = await this.cryptProvider.compare({
@@ -29,7 +30,7 @@ class SignInCustomerUseCase
     });
 
     if (!passwordMatch) {
-      throw new NotFoundError("Customer not found");
+      throw new NotFoundError(CUSTOMER_NOT_FOUND);
     }
 
     const token = await this.tokenProvider.generate({

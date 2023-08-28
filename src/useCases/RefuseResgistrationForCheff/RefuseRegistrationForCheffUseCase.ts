@@ -2,6 +2,11 @@ import { RefuseRegistrationForCheffUseCaseDTO } from "./RefuseRegistrationForChe
 import { CheffsRepositoryDTO } from "../../repositories/Users/Cheffs/CheffsRepositoryDTO";
 import { NotFoundError } from "../../errors/NotFoundError";
 import { UnprocessableEntityError } from "../../errors/UnprocessableEntityError";
+import {
+  CHEFF_ALREADY_APPROVED,
+  CHEFF_ALREADY_REFUSED,
+  CHEFF_NOT_FOUND
+} from "../../data/texts";
 
 class RefuseRegistrationForCheffUseCase
   implements
@@ -17,15 +22,15 @@ class RefuseRegistrationForCheffUseCase
     const cheffExists = await this.cheffsRepository.findById({ id });
 
     if (!cheffExists) {
-      throw new NotFoundError("Cheff not found");
+      throw new NotFoundError(CHEFF_NOT_FOUND);
     }
 
     if (cheffExists.registerStatus === "approved") {
-      throw new UnprocessableEntityError("Cheff already approved");
+      throw new UnprocessableEntityError(CHEFF_ALREADY_APPROVED);
     }
 
     if (cheffExists.registerStatus === "rejected") {
-      throw new UnprocessableEntityError("Cheff already rejected");
+      throw new UnprocessableEntityError(CHEFF_ALREADY_REFUSED);
     }
 
     await this.cheffsRepository.updateStatus({
