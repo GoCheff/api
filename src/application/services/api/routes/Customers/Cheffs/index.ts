@@ -16,6 +16,31 @@ customerCheffsRoutes.get(
   (req, res) => customerCheffsController.getAll(req, res)
 );
 
+/**
+ * @swagger
+ * /customers/cheffs/{id}:
+ *   patch:
+ *     description: Get cheff by id
+ *     security:
+ *       - bearerAuth: []
+ *     tags:
+ *       - Customer
+ *     parameters:
+ *       - id:
+ *         description: Cheff id
+ *         in: path
+ *         required: true
+ *         type: number
+ *     responses:
+ *      200:
+ *        description: Cheff found
+ *        content:
+ *          application/json:
+ *            schema:
+ *              $ref: '#/components/schemas/Cheff'
+ *      404:
+ *        description: Cheff or admin not found
+ */
 customerCheffsRoutes.get(
   "/:id",
   (req, res, next) => isAuthenticatedMiddleware.customer.handle(req, res, next),

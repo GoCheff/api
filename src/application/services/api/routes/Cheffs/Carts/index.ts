@@ -12,7 +12,7 @@ const cheffCartsRoutes = Router();
  *     security:
  *       - bearerAuth: []
  *     tags:
- *       - CheffCart
+ *       - Cheff
  *     responses:
  *       200:
  *         description: All carts with cheff food plates
@@ -37,7 +37,7 @@ cheffCartsRoutes.get(
  *     security:
  *       - bearerAuth: []
  *     tags:
- *       - CheffCart
+ *       - Cheff
  *     responses:
  *       200:
  *         description: All carts with cheff food plates sent
@@ -62,7 +62,7 @@ cheffCartsRoutes.get(
  *     security:
  *       - bearerAuth: []
  *     tags:
- *       - CheffCart
+ *       - Cheff
  *     responses:
  *       200:
  *         description: Cart approved
@@ -89,7 +89,7 @@ cheffCartsRoutes.patch(
  *     security:
  *       - bearerAuth: []
  *     tags:
- *       - CheffCart
+ *       - Cheff
  *     responses:
  *       200:
  *         description: Cart refused

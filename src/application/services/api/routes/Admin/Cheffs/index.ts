@@ -1,8 +1,6 @@
 import { Router } from "express";
 import { isAuthenticatedMiddleware } from "../../../../../../middlewares/IsAuthenticated";
 import { adminCheffsController } from "../../../controllers/Admin/Cheffs";
-import { validateSchemaMiddleware } from "../../../../../../middlewares";
-import { AdminCheffsSchema } from "../../../../../../schemas/Admin";
 
 const adminCheffsRoutes = Router();
 
@@ -14,7 +12,7 @@ const adminCheffsRoutes = Router();
  *     security:
  *       - bearerAuth: []
  *     tags:
- *       - AdminCheff
+ *       - Admin
  *     responses:
  *       200:
  *         description: All pending cheffs
@@ -39,7 +37,7 @@ adminCheffsRoutes.get(
  *     security:
  *       - bearerAuth: []
  *     tags:
- *       - AdminCheff
+ *       - Admin
  *     responses:
  *       200:
  *         description: All approved cheffs
@@ -64,7 +62,7 @@ adminCheffsRoutes.get(
  *     security:
  *       - bearerAuth: []
  *     tags:
- *       - AdminCheff
+ *       - Admin
  *     parameters:
  *       - id:
  *         description: Cheff id
@@ -93,7 +91,7 @@ adminCheffsRoutes.patch(
  *     security:
  *       - bearerAuth: []
  *     tags:
- *       - AdminCheff
+ *       - Admin
  *     parameters:
  *       - id:
  *         description: Cheff id

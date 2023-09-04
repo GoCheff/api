@@ -1,0 +1,26 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "GoCheff API",
+    "version": "1.0.0",
+    "contact": {
+      "name": "Vinícius Gugelmin",
+      "email": "vinigugelmin@gmail.com"
+    }
+  },
+  "servers": [
+    {
+      "url": "http://localhost:5000",
+      "description": "Local server"
+    },
+    {
+      "url": "https://www.gocheff.systems/api",
+      "description": "Production server"
+    },
+    {
+      "url": "https://www.gocheff.systems/dev/api",
+      "description": "Development server"
+    }
+  ],
+  "tags": []
+}

@@ -22,6 +22,7 @@
       "description": "Development server"
     }
   ],
+  "tags": [],
   "components": {
     "schemas": {
       "Admin": {
@@ -297,6 +298,64 @@
             "description": "Food plate cook time"
           }
         }
+      },
+      "Customer": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number",
+            "description": "User id"
+          },
+          "name": {
+            "type": "string",
+            "description": "User name"
+          },
+          "email": {
+            "type": "string",
+            "format": "email",
+            "description": "User email"
+          },
+          "password": {
+            "type": "string",
+            "format": "password",
+            "description": "User hashed password"
+          },
+          "gender": {
+            "type": "string",
+            "pattern": "^(female|male|other|preferNotToSay)$",
+            "description": "User gender"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time",
+            "description": "User creation date"
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "date-time",
+            "description": "User update date"
+          },
+          "deletedAt": {
+            "type": "string",
+            "format": "date-time",
+            "description": "User deletion date"
+          }
+        }
+      },
+      "CustomerSignInBodySchema": {
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string",
+            "format": "email",
+            "description": "User email"
+          },
+          "password": {
+            "type": "string",
+            "format": "password",
+            "description": "User password"
+          }
+        }
       }
     },
     "securitySchemes": {
@@ -316,7 +375,9 @@
             "bearerAuth": []
           }
         ],
-        "tags": ["AdminCheff"],
+        "tags": [
+          "Admin"
+        ],
         "responses": {
           "200": {
             "description": "All pending cheffs",
@@ -342,7 +403,9 @@
             "bearerAuth": []
           }
         ],
-        "tags": ["AdminCheff"],
+        "tags": [
+          "Admin"
+        ],
         "responses": {
           "200": {
             "description": "All approved cheffs",
@@ -368,7 +431,9 @@
             "bearerAuth": []
           }
         ],
-        "tags": ["AdminCheff"],
+        "tags": [
+          "Admin"
+        ],
         "parameters": [
           {
             "id": null,
@@ -378,15 +443,6 @@
             "type": "number"
           }
         ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/AdminCheffApproveBodySchema"
-              }
-            }
-          }
-        },
         "responses": {
           "200": {
             "description": "Cheff approved"
@@ -408,7 +464,9 @@
             "bearerAuth": []
           }
         ],
-        "tags": ["AdminCheff"],
+        "tags": [
+          "Admin"
+        ],
         "parameters": [
           {
             "id": null,
@@ -443,7 +501,9 @@
     "/admin/sign-in": {
       "post": {
         "description": "Sign in as admin",
-        "tags": ["Admin"],
+        "tags": [
+          "Admin"
+        ],
         "requestBody": {
           "content": {
             "application/json": {
@@ -480,6 +540,44 @@
         }
       }
     },
+    "/admin/auth": {
+      "post": {
+        "description": "Authenticate as admin",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "tags": [
+          "Admin"
+        ],
+        "responses": {
+          "200": {
+            "description": "Authenticated as admin",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "user": {
+                      "$ref": "#/components/schemas/Admin",
+                      "description": "Admin"
+                    },
+                    "token": {
+                      "type": "string",
+                      "description": "JWT token"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      }
+    },
     "/cheffs/carts": {
       "get": {
         "description": "Get all carts",
@@ -488,7 +586,9 @@
             "bearerAuth": []
           }
         ],
-        "tags": ["CheffCart"],
+        "tags": [
+          "Cheff"
+        ],
         "responses": {
           "200": {
             "description": "All carts with cheff food plates",
@@ -514,7 +614,9 @@
             "bearerAuth": []
           }
         ],
-        "tags": ["CheffCart"],
+        "tags": [
+          "Cheff"
+        ],
         "responses": {
           "200": {
             "description": "All carts with cheff food plates sent",
@@ -540,7 +642,9 @@
             "bearerAuth": []
           }
         ],
-        "tags": ["CheffCart"],
+        "tags": [
+          "Cheff"
+        ],
         "responses": {
           "200": {
             "description": "Cart approved",
@@ -569,7 +673,9 @@
             "bearerAuth": []
           }
         ],
-        "tags": ["CheffCart"],
+        "tags": [
+          "Cheff"
+        ],
         "responses": {
           "200": {
             "description": "Cart refused",
@@ -598,7 +704,9 @@
             "bearerAuth": []
           }
         ],
-        "tags": ["CheffFoodPlate"],
+        "tags": [
+          "Cheff"
+        ],
         "requestBody": {
           "content": {
             "application/json": {
@@ -620,7 +728,9 @@
     },
     "/cheffs/request-registration": {
       "post": {
-        "tags": ["Cheff"],
+        "tags": [
+          "Cheff"
+        ],
         "requestBody": {
           "content": {
             "application/json": {
@@ -643,7 +753,9 @@
     "/cheffs/sign-in": {
       "post": {
         "description": "Sign in as cheff",
-        "tags": ["Cheff"],
+        "tags": [
+          "Cheff"
+        ],
         "requestBody": {
           "content": {
             "application/json": {
@@ -663,10 +775,167 @@
         }
       }
     },
+    "/cheffs/auth": {
+      "post": {
+        "description": "Authenticate as cheff",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "tags": [
+          "Cheff"
+        ],
+        "responses": {
+          "200": {
+            "description": "Authenticated as cheff",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "user": {
+                      "$ref": "#/components/schemas/Cheff",
+                      "description": "Cheff"
+                    },
+                    "token": {
+                      "type": "string",
+                      "description": "JWT token"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      }
+    },
+    "/customers/cheffs/{id}": {
+      "patch": {
+        "description": "Get cheff by id",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "tags": [
+          "Customer"
+        ],
+        "parameters": [
+          {
+            "id": null,
+            "description": "Cheff id",
+            "in": "path",
+            "required": true,
+            "type": "number"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Cheff found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Cheff"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Cheff or admin not found"
+          }
+        }
+      }
+    },
+    "/customers/sign-in": {
+      "post": {
+        "description": "Sign in as customer",
+        "tags": [
+          "Customer"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CustomerSignInBodySchema"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Customer signed in",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "user": {
+                      "$ref": "#/components/schemas/Customer",
+                      "description": "Customer"
+                    },
+                    "token": {
+                      "type": "string",
+                      "description": "JWT token"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Customer not found or password does not match"
+          }
+        }
+      }
+    },
+    "/customers/auth": {
+      "post": {
+        "description": "Authenticate as customer",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "tags": [
+          "Customer"
+        ],
+        "responses": {
+          "200": {
+            "description": "Authenticated as customer",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "user": {
+                      "$ref": "#/components/schemas/Customer",
+                      "description": "Customer"
+                    },
+                    "token": {
+                      "type": "string",
+                      "description": "JWT token"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      }
+    },
     "/": {
       "get": {
         "description": "GoCheff API",
-        "tags": ["Config"],
+        "tags": [
+          "Config"
+        ],
         "responses": {
           "200": {
             "description": "Returns a message with the API name"
@@ -674,6 +943,5 @@
         }
       }
     }
-  },
-  "tags": []
+  }
 }

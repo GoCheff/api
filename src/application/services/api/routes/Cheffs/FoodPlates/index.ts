@@ -20,7 +20,7 @@ cheffFoodPlatesRoutes.get(
  *     security:
  *       - bearerAuth: []
  *     tags:
- *       - CheffFoodPlate
+ *       - Cheff
  *     requestBody:
  *       content:
  *         application/json:

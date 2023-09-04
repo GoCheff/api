@@ -45,6 +45,32 @@ adminRoutes.post(
   (req, res) => adminController.signIn(req, res)
 );
 
+/**
+ * @swagger
+ * /admin/auth:
+ *   post:
+ *     description: Authenticate as admin
+ *     security:
+ *       - bearerAuth: []
+ *     tags:
+ *       - Admin
+ *     responses:
+ *       200:
+ *         description: Authenticated as admin
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 user:
+ *                   $ref: '#/components/schemas/Admin'
+ *                   description: Admin
+ *                 token:
+ *                   type: string
+ *                   description: JWT token
+ *       401:
+ *         description: Unauthorized
+ */
 adminRoutes.get(
   "/auth",
   (req, res, next) => isAuthenticatedMiddleware.admin.handle(req, res, next),

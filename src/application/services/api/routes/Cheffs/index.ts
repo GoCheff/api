@@ -61,6 +61,32 @@ cheffsRoutes.post(
   (req, res) => cheffsController.signIn(req, res)
 );
 
+/**
+ * @swagger
+ * /cheffs/auth:
+ *   post:
+ *     description: Authenticate as cheff
+ *     security:
+ *       - bearerAuth: []
+ *     tags:
+ *       - Cheff
+ *     responses:
+ *       200:
+ *         description: Authenticated as cheff
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 user:
+ *                   $ref: '#/components/schemas/Cheff'
+ *                   description: Cheff
+ *                 token:
+ *                   type: string
+ *                   description: JWT token
+ *       401:
+ *         description: Unauthorized
+ */
 cheffsRoutes.get(
   "/auth",
   (req, res, next) => isAuthenticatedMiddleware.cheff.handle(req, res, next),
