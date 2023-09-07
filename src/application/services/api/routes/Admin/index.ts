@@ -48,7 +48,7 @@ adminRoutes.post(
 /**
  * @swagger
  * /admin/auth:
- *   post:
+ *   get:
  *     description: Authenticate as admin
  *     security:
  *       - bearerAuth: []

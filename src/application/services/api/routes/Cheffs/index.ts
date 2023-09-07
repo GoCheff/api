@@ -64,7 +64,7 @@ cheffsRoutes.post(
 /**
  * @swagger
  * /cheffs/auth:
- *   post:
+ *   get:
  *     description: Authenticate as cheff
  *     security:
  *       - bearerAuth: []

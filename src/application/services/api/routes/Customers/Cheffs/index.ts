@@ -6,6 +6,24 @@ import { CustomerCheffsSchema } from "../../../../../../schemas/Customers/Cheffs
 
 const customerCheffsRoutes = Router();
 
+/**
+ * @swagger
+ * /customers/cheffs:
+ *   get:
+ *     description: Get all cheffs
+ *     security:
+ *       - bearerAuth: []
+ *     tags:
+ *       - Customer
+ *     responses:
+ *      200:
+ *        description: Cheffs found
+ *        content:
+ *          application/json:
+ *            schema:
+ *              type: array
+ *              $ref: '#/components/schemas/Cheff'
+ */
 customerCheffsRoutes.get(
   "/",
   validateSchemaMiddleware.handle({
@@ -19,7 +37,7 @@ customerCheffsRoutes.get(
 /**
  * @swagger
  * /customers/cheffs/{id}:
- *   patch:
+ *   get:
  *     description: Get cheff by id
  *     security:
  *       - bearerAuth: []

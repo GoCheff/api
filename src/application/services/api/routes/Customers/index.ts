@@ -9,6 +9,24 @@ import { isAuthenticatedMiddleware } from "../../../../../middlewares/IsAuthenti
 
 const customersRoutes = Router();
 
+/**
+ * @swagger
+ * /customers/sign-up:
+ *   post:
+ *     description: Sign up as customer
+ *     tags:
+ *       - Customer
+ *     requestBody:
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: '#/components/schemas/CustomerSignUpBodySchema'
+ *     responses:
+ *       201:
+ *         description: Customer signed up
+ *       422:
+ *         description: Email already in use
+ */
 customersRoutes.post(
   "/sign-up",
   validateSchemaMiddleware.handle({
@@ -18,6 +36,35 @@ customersRoutes.post(
   (req, res) => customersController.signUp(req, res)
 );
 
+/**
+ * @swagger
+ * /customers/sign-in:
+ *   post:
+ *     description: Sign in as customer
+ *     tags:
+ *       - Customer
+ *     requestBody:
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: '#/components/schemas/CustomerSignInBodySchema'
+ *     responses:
+ *       200:
+ *         description: Customer signed in
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 user:
+ *                   $ref: '#/components/schemas/Customer'
+ *                   description: Customer
+ *                 token:
+ *                   type: string
+ *                   description: JWT token
+ *       404:
+ *         description: Customer not found or password does not match
+ */
 customersRoutes.post(
   "/sign-in",
   validateSchemaMiddleware.handle({
@@ -30,7 +77,7 @@ customersRoutes.post(
 /**
  * @swagger
  * /customers/auth:
- *   post:
+ *   get:
  *     description: Authenticate as customer
  *     security:
  *       - bearerAuth: []
@@ -43,13 +90,7 @@ customersRoutes.post(
  *           application/json:
  *             schema:
  *               type: object
- *               properties:
- *                 user:
- *                   $ref: '#/components/schemas/Customer'
- *                   description: Customer
- *                 token:
- *                   type: string
- *                   description: JWT token
+ *               $ref: '#/components/schemas/Customer'
  *       401:
  *         description: Unauthorized
  */

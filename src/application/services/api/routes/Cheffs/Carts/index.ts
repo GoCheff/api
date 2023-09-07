@@ -63,6 +63,12 @@ cheffCartsRoutes.get(
  *       - bearerAuth: []
  *     tags:
  *       - Cheff
+ *     parameters:
+ *       - id:
+ *         name: Cart id
+ *         in: path
+ *         required: true
+ *         type: number
  *     responses:
  *       200:
  *         description: Cart approved

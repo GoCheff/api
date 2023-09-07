@@ -356,6 +356,43 @@
               "description": "User password"
             }
           }
+        },
+        "CustomerSignUpBodySchema": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string",
+              "description": "User name"
+            },
+            "email": {
+              "type": "string",
+              "format": "email",
+              "description": "User email"
+            },
+            "password": {
+              "type": "string",
+              "format": "password",
+              "description": "User password"
+            },
+            "gender": {
+              "type": "string",
+              "pattern": "^(female|male|other|preferNotToSay)$",
+              "description": "User gender"
+            }
+          }
+        },
+        "CustomerCartItemsUpdateOrCreateBodySchema": {
+          "type": "object",
+          "properties": {
+            "cheffId": {
+              "type": "number",
+              "description": "Cheff id"
+            },
+            "quantity": {
+              "type": "number",
+              "description": "Food plate quantity"
+            }
+          }
         }
       },
       "securitySchemes": {

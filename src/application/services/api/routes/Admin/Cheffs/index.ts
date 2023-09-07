@@ -65,7 +65,7 @@ adminCheffsRoutes.get(
  *       - Admin
  *     parameters:
  *       - id:
- *         description: Cheff id
+ *         name: Cheff id
  *         in: path
  *         required: true
  *         type: number
@@ -94,7 +94,7 @@ adminCheffsRoutes.patch(
  *       - Admin
  *     parameters:
  *       - id:
- *         description: Cheff id
+ *         name: Cheff id
  *         in: path
  *         required: true
  *         type: number
