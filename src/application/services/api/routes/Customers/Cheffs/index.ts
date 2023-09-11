@@ -45,10 +45,12 @@ customerCheffsRoutes.get(
  *       - Customer
  *     parameters:
  *       - id:
+ *         name: id
  *         description: Cheff id
  *         in: path
  *         required: true
- *         type: number
+ *         schema:
+ *           type: integer
  *     responses:
  *      200:
  *        description: Cheff found

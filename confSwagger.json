@@ -384,6 +384,23 @@
         "CustomerCartItemsUpdateOrCreateBodySchema": {
           "type": "object",
           "properties": {
+            "locale": {
+              "type": "string",
+              "description": "Cart locale"
+            },
+            "eventDate": {
+              "type": "string",
+              "format": "date-time",
+              "description": "Cart event date"
+            },
+            "phoneContact": {
+              "type": "string",
+              "description": "Cart phone contact"
+            },
+            "observation": {
+              "type": "string",
+              "description": "Cart observation"
+            },
             "cheffId": {
               "type": "number",
               "description": "Cheff id"

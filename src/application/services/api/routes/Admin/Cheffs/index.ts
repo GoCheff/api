@@ -65,10 +65,11 @@ adminCheffsRoutes.get(
  *       - Admin
  *     parameters:
  *       - id:
- *         name: Cheff id
+ *         name: id
  *         in: path
  *         required: true
- *         type: number
+ *         schema:
+ *           type: integer
  *     responses:
  *       200:
  *         description: Cheff approved
@@ -94,10 +95,11 @@ adminCheffsRoutes.patch(
  *       - Admin
  *     parameters:
  *       - id:
- *         name: Cheff id
+ *         name: id
  *         in: path
  *         required: true
- *         type: number
+ *         schema:
+ *           type: integer
  *     requestBody:
  *       content:
  *         application/json:

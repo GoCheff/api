@@ -11,7 +11,10 @@ class GetAllCartsFromCustomerUseCase
   public async execute({
     customerId
   }: GetAllCartsFromCustomerUseCaseDTO.ExecuteDTO): GetAllCartsFromCustomerUseCaseDTO.ExecuteResponseDTO {
-    return this.cartsRepository.findAllByCustomerId({ customerId });
+    return this.cartsRepository.findAllByCustomerId({
+      customerId,
+      include: { cartItems: { include: { foodPlate: true } } }
+    });
   }
 }
 

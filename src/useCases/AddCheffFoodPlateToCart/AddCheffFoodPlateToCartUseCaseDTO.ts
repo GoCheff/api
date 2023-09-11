@@ -10,7 +10,7 @@ namespace AddCheffFoodPlateToCartUseCaseDTO {
     locale: string;
     eventDate: Date;
     phoneContact: string;
-    observation: string;
+    observation?: string;
     cheffId: number;
     foodPlateId: number;
     quantity: number;

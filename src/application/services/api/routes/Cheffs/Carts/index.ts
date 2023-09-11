@@ -65,10 +65,11 @@ cheffCartsRoutes.get(
  *       - Cheff
  *     parameters:
  *       - id:
- *         name: Cart id
+ *         name: id
  *         in: path
  *         required: true
- *         type: number
+ *         schema:
+ *           type: integer
  *     responses:
  *       200:
  *         description: Cart approved

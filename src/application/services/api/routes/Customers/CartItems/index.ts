@@ -17,10 +17,12 @@ const customerCartItemsRoutes = Router();
  *       - Customer
  *     parameters:
  *       - id:
- *         name: Food plate id
+ *         name: id
  *         in: path
  *         required: true
- *         type: number
+ *         description: Food plate id
+ *         schema:
+ *           type: integer
  *     requestBody:
  *       content:
  *         application/json:

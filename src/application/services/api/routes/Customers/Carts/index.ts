@@ -22,4 +22,10 @@ customerCartsRoutes.delete(
   (req, res) => customerCartsController.delete(req, res)
 );
 
+customerCartsRoutes.post(
+  "/:id/payment",
+  (req, res, next) => isAuthenticatedMiddleware.customer.handle(req, res, next),
+  (req, res) => customerCartsController.payment(req, res)
+);
+
 export { customerCartsRoutes };

@@ -17,6 +17,11 @@ namespace CustomerCartsControllerDTO {
       req: ExpressCustomTypes.AuthenticatedRequest,
       res: Response
     ): Promise<ExpressCustomTypes.Response>;
+
+    payment(
+      req: ExpressCustomTypes.AuthenticatedRequest,
+      res: Response
+    ): Promise<ExpressCustomTypes.Response>;
   }
 }
 

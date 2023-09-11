@@ -8,7 +8,7 @@ class CartsRepository implements CartsRepositoryDTO.ICartsRepository {
 
   public async findById({
     id,
-    include = {}
+    include = null
   }: CartsRepositoryDTO.FindByIdDTO): CartsRepositoryDTO.FindByIdResponseDTO {
     return (
       this.carts.findFirst({
@@ -20,7 +20,7 @@ class CartsRepository implements CartsRepositoryDTO.ICartsRepository {
 
   public async findAllByCustomerId({
     customerId,
-    include = {},
+    include = null,
     where = {}
   }: CartsRepositoryDTO.FindAllByCustomerIdDTO): CartsRepositoryDTO.FindAllByCustomerIdResponseDTO {
     return (
