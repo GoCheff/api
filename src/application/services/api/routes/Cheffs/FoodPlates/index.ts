@@ -6,6 +6,25 @@ import { CheffFoodPlatesSchema } from "../../../../../../schemas/Cheffs";
 
 const cheffFoodPlatesRoutes = Router();
 
+/**
+ * @swagger
+ * /cheffs/food-plates:
+ *   get:
+ *     description: Get all food plates from cheff
+ *     security:
+ *       - bearerAuth: []
+ *     tags:
+ *       - Cheff
+ *     responses:
+ *       201:
+ *         description: Food plate created
+ *         content:
+ *         application/json:
+ *           schema:
+ *             type: array
+ *             items:
+ *             $ref: '#/components/schemas/FoodPlate'
+ */
 cheffFoodPlatesRoutes.get(
   "/",
   (req, res, next) => isAuthenticatedMiddleware.cheff.handle(req, res, next),

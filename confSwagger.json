@@ -68,6 +68,82 @@
             }
           }
         },
+        "FoodPlate": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "number",
+              "description": "Food plate id"
+            },
+            "cheffId": {
+              "type": "number",
+              "description": "Food plate cheff id"
+            },
+            "name": {
+              "type": "string",
+              "description": "Food plate name"
+            },
+            "description": {
+              "type": "string",
+              "description": "Food plate description"
+            },
+            "imageUrl": {
+              "type": "string",
+              "description": "Food plate image url"
+            },
+            "price": {
+              "type": "number",
+              "description": "Food plate price"
+            },
+            "minServe": {
+              "type": "number",
+              "description": "Food plate min serve"
+            },
+            "maxServe": {
+              "type": "number",
+              "description": "Food plate max serve"
+            },
+            "cookTime": {
+              "type": "number",
+              "description": "Food plate cook time"
+            },
+            "glutenFree": {
+              "type": "boolean",
+              "description": "Food plate gluten free"
+            },
+            "lactoseFree": {
+              "type": "boolean",
+              "description": "Food plate lactose free"
+            },
+            "vegan": {
+              "type": "boolean",
+              "description": "Food plate vegan"
+            },
+            "vegetarian": {
+              "type": "boolean",
+              "description": "Food plate vegetarian"
+            },
+            "light": {
+              "type": "boolean",
+              "description": "Food plate light"
+            },
+            "createdAt": {
+              "type": "string",
+              "format": "date-time",
+              "description": "Food plate creation date"
+            },
+            "updatedAt": {
+              "type": "string",
+              "format": "date-time",
+              "description": "Food plate update date"
+            },
+            "deletedAt": {
+              "type": "string",
+              "format": "date-time",
+              "description": "Food plate deletion date"
+            }
+          }
+        },
         "AdminSignInBodySchema": {
           "type": "object",
           "properties": {
