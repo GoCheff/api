@@ -57,7 +57,7 @@ adminCheffsRoutes.get(
 /**
  * @swagger
  * /admin/cheffs/approve/{id}:
- *   patch:
+ *   put:
  *     description: Approve cheff
  *     security:
  *       - bearerAuth: []
@@ -78,7 +78,7 @@ adminCheffsRoutes.get(
  *       422:
  *         description: Invalid admin password, cheff already approved or cheff already rejected
  */
-adminCheffsRoutes.patch(
+adminCheffsRoutes.put(
   "/approve/:id",
   (req, res, next) => isAuthenticatedMiddleware.admin.handle(req, res, next),
   (req, res) => adminCheffsController.approve(req, res)
@@ -87,7 +87,7 @@ adminCheffsRoutes.patch(
 /**
  * @swagger
  * /admin/cheffs/refuse/{id}:
- *   patch:
+ *   put:
  *     description: Refuse cheff
  *     security:
  *       - bearerAuth: []
@@ -113,7 +113,7 @@ adminCheffsRoutes.patch(
  *         422:
  *           description: Invalid admin password, cheff already approved or cheff already rejected
  */
-adminCheffsRoutes.patch(
+adminCheffsRoutes.put(
   "/refuse/:id",
   (req, res, next) => isAuthenticatedMiddleware.admin.handle(req, res, next),
   (req, res) => adminCheffsController.refuse(req, res)
