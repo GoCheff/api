@@ -207,7 +207,16 @@ async function prodSeed(): Promise<void> {
     console.log(createdUsers);
   };
 
+  await resetDatabase();
   await adminSeed();
+}
+
+async function resetDatabase() {
+  await prisma.cartItem.deleteMany();
+  await prisma.cart.deleteMany();
+  await prisma.foodPlate.deleteMany();
+  await prisma.cheff.deleteMany();
+  await prisma.admin.deleteMany();
 }
 
 export { runSeeds };

@@ -25,6 +25,7 @@
     "test:migrate": "npm run test:load-envs prisma migrate dev",
     "test:load-envs": "dotenv -e .env.test",
     "prod:deploy": "node ./scripts/deploy.js",
+    "prod:seed": "prisma db seed",
     "prod-dev:seed": "npm run prod-dev:load-envs prisma db seed",
     "prod-dev:deploy": "node ./scripts/deploy.js dev",
     "prod-dev:load-envs": "dotenv -e .env.prod-dev",

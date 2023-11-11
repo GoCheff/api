@@ -55,15 +55,6 @@ class CreatePaymentToCartUseCase
       },
       transactions: [
         {
-          item_list: {
-            items: cart.cartItems.map((cartItem) => ({
-              name: cartItem.foodPlate.name,
-              sku: cartItem.foodPlate.id.toString(),
-              price: cartItem.foodPlate.price.toString(),
-              currency: "BRL",
-              quantity: cartItem.quantity
-            }))
-          },
           amount: {
             currency: "BRL",
             total: totalPrice.toString()
@@ -75,12 +66,14 @@ class CreatePaymentToCartUseCase
 
     let paymentLink = "";
 
+    console.log(create_payment_json);
+
     try {
       paymentLink = await this.paymentProvider.createPayment(
         create_payment_json
       );
     } catch (error) {
-      throw new AppError(error.message, 500);
+      throw new AppError("Erro interno do Paypal", 500);
     }
 
     return {
