@@ -217,6 +217,7 @@ async function resetDatabase() {
   await prisma.foodPlate.deleteMany();
   await prisma.cheff.deleteMany();
   await prisma.admin.deleteMany();
+  await prisma.customer.deleteMany();
 }
 
 export { runSeeds };
